@@ -1,18 +1,38 @@
-/* General body styles */
+/* Body and general text */
 body {
     font-family: Arial, sans-serif;
     background-color: #faf9f5;
     color: #222;
-    margin: 20px;
+    margin: 0;
+    padding: 0 15px;
 }
 
-/* Page title */
-h1 {
+/* Header and navigation */
+header {
     text-align: center;
-    margin-bottom: 40px;
+    padding: 20px 0;
+    background-color: #fff;
 }
 
-/* Book container: image left, info right */
+nav a {
+    margin: 0 10px;
+    text-decoration: none;
+    color: #da0011;
+    font-weight: bold;
+}
+
+nav a:hover {
+    color: #b3000f;
+}
+
+/* Main content */
+main {
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px 0;
+}
+
+/* Book container (Trilogy page) */
 .book-container {
     display: flex;
     flex-wrap: wrap;
@@ -21,9 +41,10 @@ h1 {
     padding-bottom: 30px;
 }
 
-/* Left-side image */
+/* Left image */
 .book-image img {
-    width: 250px;
+    width: 100%;
+    max-width: 250px;
     height: auto;
     cursor: pointer;
     border: 1px solid #ddd;
@@ -31,16 +52,11 @@ h1 {
     box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
 }
 
-/* Right-side info */
+/* Right info */
 .book-info {
     flex: 1;
     padding-left: 30px;
     min-width: 250px;
-}
-
-/* Book title */
-.book-info h2 {
-    margin-top: 0;
 }
 
 /* Buy Now button */
@@ -59,7 +75,7 @@ h1 {
     background-color: #b3000f;
 }
 
-/* Responsive for small screens */
+/* Media queries for smaller screens */
 @media (max-width: 768px) {
     .book-container {
         flex-direction: column;
@@ -70,5 +86,16 @@ h1 {
         padding-left: 0;
         text-align: center;
         margin-top: 20px;
+    }
+
+    nav a {
+        display: block;
+        margin: 10px 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .book-image img {
+        max-width: 200px;
     }
 }
