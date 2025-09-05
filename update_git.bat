@@ -1,16 +1,22 @@
 @echo off
 cd /d "%~dp0"
 
-REM Delete existing Git history (optional, only for fresh start)
-REM rm -rf .git   <-- Not needed normally; only use if resetting
-
 REM Stage all changes
 git add .
 
-REM Commit changes
-git commit -m "Auto-commit: update trilogy site"
+REM Commit with default message
+git commit -m "Auto-commit: update hedz book"
+
+REM Check if commit succeeded
+IF %ERRORLEVEL% NEQ 0 (
+    echo Nothing to commit or commit failed.
+    REM continue anyway
+)
 
 REM Push to GitHub
 git push origin main
 
-REM pause
+IF %ERRORLEVEL% NEQ 0 (
+    echo Push failed. Check remote repository or internet connection.
+    exit /b 1
+)
