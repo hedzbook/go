@@ -13,4 +13,4 @@ git commit -m "Auto-commit: update trilogy site"
 REM Push to GitHub
 git push origin main
 
-pause
+REM pause
