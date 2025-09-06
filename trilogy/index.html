@@ -19,7 +19,7 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            box-shadow: 0 3px 7px rgba(0,0,0,0.16); /* Sharper shadow */
+            box-shadow: 0 6px 24px rgba(0,0,0,0.22); /* Sharper, more pronounced shadow */
         }
         .logo {
             font-size: 1.5rem;
@@ -28,7 +28,7 @@
             color: #222;
         }
         .logo img {
-            height: 32px;
+            height: 32px; /* Reduced logo size */
             vertical-align: middle;
         }
         nav a {
@@ -61,16 +61,16 @@
         .book-container {
             background: #fff;
             border-radius: 12px;
-            box-shadow: 0 3px 7px rgba(0,0,0,0.16); /* Sharper shadow */
+            box-shadow: 0 6px 24px rgba(0,0,0,0.22); /* Sharper shadow */
             padding: 2rem;
             display: flex;
             flex-direction: column;
             align-items: center;
             transition: box-shadow 0.2s;
         }
-.book-container:hover {
-box-shadow: 0 6px 24px rgba(0,0,0,0.16); /* Sharper shadow */
-}
+        .book-container:hover {
+            box-shadow: 0 12px 36px rgba(0,0,0,0.28); /* Even sharper on hover */
+        }
         .book-image {
             margin-bottom: 1.5rem;
         }
@@ -115,7 +115,7 @@ box-shadow: 0 6px 24px rgba(0,0,0,0.16); /* Sharper shadow */
             text-align: center;
             padding: 1rem 0;
             margin-top: 3rem;
-            box-shadow: 0 3px 7px rgba(0,0,0,0.16); /* Sharper shadow */
+            box-shadow: 0 6px 24px rgba(0,0,0,0.22); /* Sharper shadow */
         }
         /* Modal styles */
         .img-modal {
@@ -167,7 +167,7 @@ box-shadow: 0 6px 24px rgba(0,0,0,0.16); /* Sharper shadow */
 
 <header>
     <a href="../" class="logo">
-        <img src="../images/HEDZ%20BOOK%20LOGO.png" alt="HEDZ Logo" style="height:45px; vertical-align:middle;">
+        <img src="../images/HEDZ%20BOOK%20LOGO.png" alt="HEDZ Logo" style="height:32px; vertical-align:middle;">
     </a>
     <nav>
         <a href="../">Home</a>
@@ -180,7 +180,7 @@ box-shadow: 0 6px 24px rgba(0,0,0,0.16); /* Sharper shadow */
 
 <main>
     <h1>HEDZ Forex Trilogy</h1>
-    <p style="text-align:justify; width:100%; padding:0 0rem 2rem 0cap; font-size:1.1rem;">
+    <p style="text-align:justify; width:100%; padding:0 0rem 2rem 0rem; font-size:1.1rem;">
         HEDZ Forex Trilogy is a three-part collection that explores the Mastery of Forex Trading through Foundations, Psychology, and Strategy. Together, the volumes provide a clear path from understanding the market’s structure, to strengthening the discipline of the mind, to applying risk-controlled strategies for growth. Each book focuses on one pillar while connecting seamlessly to the next, creating a complete journey. The trilogy reflects HEDZ’s commitment to clarity, depth, and lasting insight for readers seeking knowledge, discipline, and resilience in the world of forex.
     </p>
     <div class="books-grid">
