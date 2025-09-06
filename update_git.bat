@@ -1,10 +1,10 @@
 @echo off
 cd /d "%~dp0"
 
-REM --- Rename files if they have unwanted .txt extension ---
-for %%f in (*.html.txt) do ren "%%f" "%%~nf.html"
-for %%f in (*.css.txt) do ren "%%f" "%%~nf.css"
-for %%f in (*.js.txt) do ren "%%f" "%%~nf.js"
+REM Rename HTML, CSS, JS files recursively in subfolders
+for /r %%f in (*.html.txt) do ren "%%f" "%%~nf.html"
+for /r %%f in (*.css.txt) do ren "%%f" "%%~nf.css"
+for /r %%f in (*.js.txt) do ren "%%f" "%%~nf.js"
 
 REM Stage all changes
 git add .
