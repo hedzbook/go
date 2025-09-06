@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>HEDZ Forex Trilogy</title>
-  <link rel="stylesheet" href="css/style.css">
   <style>
     body {
       font-family: 'Segoe UI', Arial, sans-serif;
@@ -153,9 +152,44 @@
       text-decoration: none;
       box-shadow: 0 2px 6px rgba(0,0,0,0.07);
       transition: background 0.2s;
+      margin-top: 1rem;
     }
     .buy-now-button:hover {
       background: #ffb700;
+    }
+
+    /* Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 2000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background: rgba(0,0,0,0.8);
+    }
+    .modal-content {
+      background: #fff;
+      margin: 10% auto;
+      padding: 2rem;
+      border-radius: 12px;
+      max-width: 600px;
+      position: relative;
+      text-align: center;
+    }
+    .close {
+      color: #aaa;
+      position: absolute;
+      right: 1rem;
+      top: 0.5rem;
+      font-size: 2rem;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .close:hover {
+      color: #000;
     }
 
     footer {
@@ -187,28 +221,90 @@
 
 <main>
   <h1>HEDZ Forex Trilogy</h1>
-  <!-- your book grid here -->
+
+  <div class="books-grid">
+    <!-- Book 1 -->
+    <div class="book-container">
+      <div class="book-image">
+        <img src="../images/book1.png" alt="Book 1" onclick="openModal('modal1')">
+      </div>
+      <a href="#" class="buy-now-button">Buy Now</a>
+    </div>
+
+    <!-- Book 2 -->
+    <div class="book-container">
+      <div class="book-image">
+        <img src="../images/book2.png" alt="Book 2" onclick="openModal('modal2')">
+      </div>
+      <a href="#" class="buy-now-button">Buy Now</a>
+    </div>
+
+    <!-- Book 3 -->
+    <div class="book-container">
+      <div class="book-image">
+        <img src="../images/book3.png" alt="Book 3" onclick="openModal('modal3')">
+      </div>
+      <a href="#" class="buy-now-button">Buy Now</a>
+    </div>
+  </div>
 </main>
 
 <footer>
   &copy; 2025 HEDZ Forex Books. All rights reserved.
 </footer>
 
-<script>
-const menuToggle = document.getElementById('menuToggle');
-const menuClose = document.getElementById('menuClose');
-const nav = document.getElementById('mainNav');
+<!-- Modals -->
+<div id="modal1" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('modal1')">&times;</span>
+    <h2>Book 1</h2>
+    <p>Details about Book 1...</p>
+  </div>
+</div>
+<div id="modal2" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('modal2')">&times;</span>
+    <h2>Book 2</h2>
+    <p>Details about Book 2...</p>
+  </div>
+</div>
+<div id="modal3" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('modal3')">&times;</span>
+    <h2>Book 3</h2>
+    <p>Details about Book 3...</p>
+  </div>
+</div>
 
-menuToggle.onclick = function() {
-  nav.classList.add('active');
-  menuToggle.style.display = 'none';
-  menuClose.style.display = 'block';
-};
-menuClose.onclick = function() {
-  nav.classList.remove('active');
-  menuClose.style.display = 'none';
-  menuToggle.style.display = 'block';
-};
+<script>
+  // nav toggle
+  const menuToggle = document.getElementById('menuToggle');
+  const menuClose = document.getElementById('menuClose');
+  const nav = document.getElementById('mainNav');
+
+  menuToggle.onclick = function() {
+    nav.classList.add('active');
+    menuToggle.style.display = 'none';
+    menuClose.style.display = 'block';
+  };
+  menuClose.onclick = function() {
+    nav.classList.remove('active');
+    menuClose.style.display = 'none';
+    menuToggle.style.display = 'block';
+  };
+
+  // modal functions
+  function openModal(id) {
+    document.getElementById(id).style.display = 'block';
+  }
+  function closeModal(id) {
+    document.getElementById(id).style.display = 'none';
+  }
+  window.onclick = function(e) {
+    document.querySelectorAll('.modal').forEach(modal => {
+      if (e.target === modal) modal.style.display = 'none';
+    });
+  };
 </script>
 </body>
 </html>
