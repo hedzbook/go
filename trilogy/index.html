@@ -461,9 +461,9 @@
         if (e.deltaY < 0) {
           zoom = Math.min(zoom + 0.15, 3);
         } else {
-          zoom = Math.max(zoom - 0.15, 1);
-          // If zoomed out to minimum, close lightbox
-          if (zoom === 1) closeLightbox();
+          zoom = Math.max(zoom - 0.15, 0.5);
+          // If zoomed out below threshold, close lightbox
+          if (zoom < 0.85) closeLightbox();
         }
         lightboxImg.style.transformOrigin = `${originX}% ${originY}%`;
         lightboxImg.style.transform = `scale(${zoom})`;
