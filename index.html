@@ -1,27 +1,155 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HEDZ Forex Books</title>
-    <link rel="stylesheet" href="css/style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HEDZ Forex Books</title>
+<link rel="stylesheet" href="css/style.css">
+<style>
+/* --- Modern responsive home page styles --- */
+
+/* Reset some defaults */
+body, h1, h2, p, ul, li, a {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #faf9f5;
+    color: #222;
+    line-height: 1.6;
+}
+
+/* Sticky header */
+header {
+    position: sticky;
+    top: 0;
+    background-color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    z-index: 1000;
+}
+
+/* Logo on the left */
+header .logo {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #da0011;
+    text-decoration: none;
+}
+
+/* Navigation on the right */
+header nav a {
+    margin-left: 20px;
+    text-decoration: none;
+    color: #222;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+header nav a:hover {
+    color: #da0011;
+}
+
+/* Main hero section */
+main {
+    max-width: 1200px;
+    margin: 100px auto 50px; /* margin-top leaves space for sticky header */
+    padding: 0 20px;
+    text-align: center;
+}
+
+main h1 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+main p {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+}
+
+/* Call-to-action buttons */
+.cta-buttons a {
+    display: inline-block;
+    padding: 12px 25px;
+    margin: 5px;
+    background-color: #da0011;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.cta-buttons a:hover {
+    background-color: #b3000f;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px;
+    font-size: 0.9em;
+    color: #666;
+}
+
+/* Responsive navigation: stack on small screens */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    header nav {
+        margin-top: 10px;
+    }
+
+    header nav a {
+        display: block;
+        margin: 5px 0;
+    }
+
+    main h1 {
+        font-size: 2em;
+    }
+
+    main p {
+        font-size: 1em;
+    }
+}
+</style>
 </head>
 <body>
-    <header>
-        <h1>HEDZ Forex Books</h1>
-        <nav>
-            <a href="trilogy.html">Forex Trilogy</a> |
-            <a href="classics.html">Forex Classics</a> |
-            <a href="about.html">About Author</a>
-        </nav>
-    </header>
 
-    <main>
-        <section>
-            <h2>Welcome</h2>
-            <p>Discover our Forex books covering the foundations, psychology, and strategies of trading. Scroll down to explore our collections.</p>
-            <p>Click on "Forex Trilogy" or "Forex Classics" above to browse the books.</p>
-        </section>
-    </main>
+<header>
+    <a href="index.html" class="logo">HEDZ</a>
+    <nav>
+        <a href="trilogy.html">Forex Trilogy</a>
+        <a href="classics.html">Forex Classics</a>
+        <a href="#">ZLCHS Access</a>
+        <a href="about.html">About Author</a>
+    </nav>
+</header>
+
+<main>
+    <h1>Master Forex Trading with HEDZ Books</h1>
+    <p>Explore the foundations, psychology, and strategies of Forex trading. Scroll through our collections and take your trading to the next level.</p>
+    <div class="cta-buttons">
+        <a href="trilogy.html">Browse Trilogy</a>
+        <a href="classics.html">Browse Classics</a>
+    </div>
+</main>
+
+<footer>
+    &copy; 2025 HEDZ Forex Books. All rights reserved.
+</footer>
+
 </body>
 </html>
