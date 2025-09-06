@@ -14,5 +14,5 @@ if (book && links[book]) {
     window.location.href = links[book];
 } else {
     // Default fallback (home page or all books)
-    window.location.href = "https://www.amazon.com/hedz-forex-books";
+    //window.location.href = "https://www.amazon.com/hedz-forex-books";
 }
