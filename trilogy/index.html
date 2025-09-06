@@ -486,6 +486,9 @@ function setMenuIcon() {
     }
 }
 
+// Ensure the correct icon is set on initial page load
+setMenuIcon();
+
 menuToggle.onclick = function() {
     menuOpen = !menuOpen;
     nav.classList.toggle('active', menuOpen);
