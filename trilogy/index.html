@@ -25,7 +25,7 @@
             box-shadow: 0 6px 24px rgba(0,0,0,0.22);
             position: sticky;
             top: 0;
-            z-index: 1101;
+            z-index: 100;
         }
         main {
             max-width: 1200px;
@@ -69,13 +69,13 @@
                 flex-direction: column;
                 align-items: flex-start;
                 position: fixed;
-                top: 0;
+                top: 56px; /* height of header, so menu starts below header */
                 left: 0;
                 width: 100vw;
-                height: 100vh;
+                height: calc(100vh - 56px);
                 background: #fff;
-                box-shadow: inset 0 24px 32px rgba(0,0,0,0.22); /* stronger inset shadow falling toward menu content */
-                padding: 56px 2.5rem 2rem 2.5rem; /* top padding = header height */
+                box-shadow: 0 6px 24px rgba(0,0,0,0.22);
+                padding: 2.5rem 2.5rem 2rem 2.5rem;
                 display: none;
                 z-index: 1000;
             }
@@ -177,7 +177,7 @@
                 flex-direction: column;
                 align-items: flex-start;
                 position: fixed;
-                top: 52px;
+                top: 0;
                 left: 0;
                 width: 100vw;
                 height: 100vh;
@@ -211,9 +211,9 @@
                 line-height: 36px;
                 cursor: pointer;
                 position: absolute;
+                top: 0rem;
                 right: 0.4rem;
                 margin-left: 0;
-                top: 50px;
                 display: flex;
                 align-items: center;
                 justify-content: center;
