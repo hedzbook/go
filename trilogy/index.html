@@ -363,28 +363,16 @@
   &copy; 2025 HEDZ Forex Books. All rights reserved.
 </footer>
 
-<!-- Modals -->
-<div id="modal1" class="modal">
-  <div class="modal-content">
-    <span class="close" onclick="closeModal('modal1')">&times;</span>
-    <h2>Book 1</h2>
-    <p>Details about Book 1...</p>
+<!-- Universal Lightbox -->
+<div id="lightbox" class="lightbox">
+  <span class="close" onclick="closeLightbox()">&times;</span>
+  <span class="prev" onclick="changeImage(-1)">&#10094;</span>
+  <div class="lightbox-content">
+    <img id="lightbox-img" src="" alt="Book Cover">
   </div>
+  <span class="next" onclick="changeImage(1)">&#10095;</span>
 </div>
-<div id="modal2" class="modal">
-  <div class="modal-content">
-    <span class="close" onclick="closeModal('modal2')">&times;</span>
-    <h2>Book 2</h2>
-    <p>Details about Book 2...</p>
-  </div>
-</div>
-<div id="modal3" class="modal">
-  <div class="modal-content">
-    <span class="close" onclick="closeModal('modal3')">&times;</span>
-    <h2>Book 3</h2>
-    <p>Details about Book 3...</p>
-  </div>
-</div>
+
 
 <script>
   // nav toggle
