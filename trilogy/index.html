@@ -353,7 +353,7 @@
             <div class="book-subtitle">Timeless Lessons on Markets,<br>Money, and Methodology</div>
             <p class="book-desc"><em>What if "The Mastery of Forex Trading" begins with understanding the foundational structures of the market?</em> <strong>Foundation</strong> marks the stage where traders gain insight into the market’s framework. Insight into how currency pairs interrelate, how liquidity drives these relationships, and how intermarket correlations influence price movements is essential. Knowledge of brokers, platforms, swaps, and hidden costs forms a reliable base. Mastering capital management, leverage, and risk ensures a sustainable trading approach. Developing technical skills, from candlesticks to multi-timeframe analysis, supports identifying trends and patterns. Awareness of economic indicators and geopolitical events shaping currency valuations sharpens decision-making. Armed with a professional blueprint emphasizing disciplined routines, trade selection, journaling, and financial integration, traders build the foundation required to achieve success in Retail Forex Trading.</p>
             <div style="display:flex; justify-content:space-between; align-items:flex-end; width:100%; margin-bottom:0.5rem;">
-              <div><a href="redirect.html?book=foundation" class="buy-now-button">Buy Now</a></div>
+              <div><a href="#" class="buy-now-button" data-asin="B0CXYZFND1">Buy Now</a></div>
               <div class="book-prices" style="text-align:right;">
                 <span class="book-format">Kindle</span> &nbsp;&nbsp;<span class="book-price">$9.99</span><br>
                 <span class="book-format">Paperback</span> <span class="book-price">$23.33</span><br>
@@ -373,7 +373,7 @@
             <div class="book-subtitle">Timeless Lessons on Markets,<br>Money, and Methodology</div>
             <p class="book-desc"><em>What if "The Mastery of Forex Trading" truly depends on mastering the mind as much as the market itself?</em> <strong>Psychology</strong> marks the stage where trading foundations give way to the mind that governs every decision. Stress responses and primal instincts influence judgement, while biases such as overconfidence, illusion of control, and loss aversion distort risk perception. Emotional triggers and discipline gaps cause repeated trading failures unless countered with proven mental tools like mindfulness, journaling, cognitive reframing, and resilience practices. Transformation grows through rest, recovery, micro-progress, mentorship, and true community support, turning setbacks into psychological strength. Over time, psychology and discipline integrate into identity, creating a resilient long-game mindset. This mental evolution becomes the bridge to strategy, where risk control, survival, and compounding profits truly define success in Retail Forex Trading.</p>
             <div style="display:flex; justify-content:space-between; align-items:flex-end; width:100%; margin-bottom:0.5rem;">
-              <div><a href="redirect.html?book=foundation" class="buy-now-button">Buy Now</a></div>
+              <div><a href="#" class="buy-now-button" data-asin="B0CXYPSY2">Buy Now</a></div>
               <div class="book-prices" style="text-align:right;">
                 <span class="book-format">Kindle</span> &nbsp;&nbsp;<span class="book-price">$9.99</span><br>
                 <span class="book-format">Paperback</span> <span class="book-price">$23.33</span><br>
@@ -393,7 +393,7 @@
             <div class="book-subtitle">Timeless Lessons on Markets,<br>Money, and Methodology</div>
             <p class="book-desc"><em>What if "The Mastery of Forex Trading" rests on a strategy built to control risk, survive, and compound profits?</em> <strong>Strategy</strong> marks the stage where strong foundations and psychology converge into execution. The ZeroLoss Compounded Hedging System (CHS) provides a systematic framework that unites capital protection with steady, long-term growth. Hedging protects capital, while structured compounding turns small gains into cumulative returns. All positions are dynamically managed to control risk and secure profits. System design includes coding an MT5 Expert Advisor with supporting indicators, backtesting, optimization, and automation for reliable execution. Testing in trending, ranging, and volatile markets shows resilience and adaptability. As traders apply and refine CHS on VPS hosting, it evolves with them, cultivating consistency and control. Over time, strategy and identity merge, enabling risk-controlled growth and success in Retail Forex Trading.</p>
             <div style="display:flex; justify-content:space-between; align-items:flex-end; width:100%; margin-bottom:0.5rem;">
-              <div><a href="redirect.html?book=foundation" class="buy-now-button">Buy Now</a></div>
+              <div><a href="#" class="buy-now-button" data-asin="B0CXYSTR3">Buy Now</a></div>
               <div class="book-prices" style="text-align:right;">
                 <span class="book-format">Kindle</span> &nbsp;&nbsp;<span class="book-price">$9.99</span><br>
                 <span class="book-format">Paperback</span> <span class="book-price">$23.33</span><br>
@@ -432,6 +432,62 @@
         menuClose.style.display = 'none';
         menuToggle.style.display = 'block';
       };
+
+      // Buy Now button country-aware redirect
+      const asinMap = {
+        'B0CXYZFND1': {
+          US: 'B0CXYZFND1',
+          UK: 'B0CXYZFND1',
+          CA: 'B0CXYZFND1',
+          IN: 'B0CXYZFND1',
+          AU: 'B0CXYZFND1',
+        },
+        'B0CXYPSY2': {
+          US: 'B0CXYPSY2',
+          UK: 'B0CXYPSY2',
+          CA: 'B0CXYPSY2',
+          IN: 'B0CXYPSY2',
+          AU: 'B0CXYPSY2',
+        },
+        'B0CXYSTR3': {
+          US: 'B0CXYSTR3',
+          UK: 'B0CXYSTR3',
+          CA: 'B0CXYSTR3',
+          IN: 'B0CXYSTR3',
+          AU: 'B0CXYSTR3',
+        }
+      };
+      function getAmazonUrl(countryCode, asin) {
+        let domain = 'com';
+        switch (countryCode) {
+          case 'UK': domain = 'co.uk'; break;
+          case 'CA': domain = 'ca'; break;
+          case 'IN': domain = 'in'; break;
+          case 'AU': domain = 'com.au'; break;
+        }
+        return `https://www.amazon.${domain}/dp/${asin}`;
+      }
+      document.querySelectorAll('.buy-now-button').forEach(btn => {
+        btn.addEventListener('click', function(e) {
+          e.preventDefault();
+          const asin = btn.getAttribute('data-asin');
+          fetch('https://ipapi.co/country/')
+            .then(resp => resp.text())
+            .then(countryCode => {
+              countryCode = countryCode.trim();
+              let mappedAsin = asin;
+              if (asinMap[asin] && asinMap[asin][countryCode]) {
+                mappedAsin = asinMap[asin][countryCode];
+              }
+              const url = getAmazonUrl(countryCode, mappedAsin);
+              window.open(url, '_blank');
+            })
+            .catch(() => {
+              // fallback to US
+              window.open(getAmazonUrl('US', asin), '_blank');
+            });
+        });
+      });
 
       // Lightbox
       const lightbox = document.getElementById("lightbox");
@@ -568,13 +624,13 @@
       let originX = 0;
       let originY = 0;
       function resetZoom() {
-  zoom = 1;
-  originX = 0;
-  originY = 0;
-  imgOffsetX = 0;
-  imgOffsetY = 0;
-  lightboxImg.style.transform = '';
-  lightboxImg.style.transformOrigin = '';
+        zoom = 1;
+        originX = 0;
+        originY = 0;
+        imgOffsetX = 0;
+        imgOffsetY = 0;
+        lightboxImg.style.transform = '';
+        lightboxImg.style.transformOrigin = '';
       }
       lightboxImg.addEventListener('wheel', function(e) {
         e.preventDefault();
@@ -592,7 +648,7 @@
           // If zoomed out below threshold, close lightbox
           if (zoom < 0.65) closeLightbox();
         }
-  updateTransform();
+        updateTransform();
       }, { passive: false });
     </script>
   </body>
