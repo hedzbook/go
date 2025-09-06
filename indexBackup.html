@@ -1,29 +1,283 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>HEDZ Forex Books</title>
-<link rel="stylesheet" href="css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HEDZ Forex Trilogy</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: #F9F8F4;
+            margin: 0;
+            color: #222;
+        }
+        header {
+            background: #fff;
+            color: #222;
+            padding: 0.25rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 6px 24px rgba(0,0,0,0.22);
+        }
+        .logo img {
+            height: 32px;
+            vertical-align: middle;
+        }
+        nav a {
+            color: #222;
+            text-decoration: none;
+            margin-left: 2rem;
+            font-size: 1rem;
+            font-weight: bold;
+            transition: color 0.2s;
+        }
+        nav a:hover {
+            color: #ffd700;
+        }
+        main {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 2.5rem;
+            letter-spacing: 2px;
+        }
+        .books-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 2rem;
+        }
+        .book-container {
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 6px 24px rgba(0,0,0,0.22);
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: box-shadow 0.2s;
+        }
+        .book-container:hover {
+            box-shadow: 0 12px 36px rgba(0,0,0,0.28);
+        }
+        .book-image {
+            margin-bottom: 1.5rem;
+        }
+        .book-image img {
+            width: 180px;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+            transition: transform 0.2s;
+            cursor: pointer;
+        }
+        .book-image img:hover {
+            transform: scale(1.05);
+        }
+        .book-info h2 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            text-align: center;
+        }
+        .book-info p {
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        .buy-now-button {
+            display: inline-block;
+            background: #ffd700;
+            color: #222;
+            padding: 0.7rem 1.5rem;
+            border-radius: 6px;
+            font-weight: bold;
+            text-decoration: none;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.07);
+            transition: background 0.2s;
+        }
+        .buy-now-button:hover {
+            background: #ffb700;
+        }
+        footer {
+            background: #F9F8F4;
+            color: #222;
+            text-align: center;
+            padding: 1rem 0;
+            margin-top: 3rem;
+            box-shadow: 0 6px 24px rgba(0,0,0,0.22);
+        }
+        /* Modal styles */
+        .img-modal {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            left: 0;
+            top: 0;
+            width: 100vw;
+            height: 100vh;
+            overflow: auto;
+            background: rgba(0,0,0,0.6);
+            backdrop-filter: blur(2px);
+            justify-content: center;
+            align-items: center;
+        }
+        .img-modal-content {
+            display: block;
+            margin: auto;
+            max-width: 90vw;
+            max-height: 80vh;
+            border-radius: 10px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.25);
+        }
+        .img-modal-close {
+            position: absolute;
+            top: 32px;
+            right: 48px;
+            color: #fff;
+            background: rgba(0,0,0,0.5);
+            border-radius: 50%;
+            font-size: 2rem;
+            width: 40px;
+            height: 40px;
+            text-align: center;
+            line-height: 40px;
+            cursor: pointer;
+            z-index: 10001;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+            transition: background 0.2s;
+        }
+        .img-modal-close:hover {
+            background: #ffd700;
+            color: #222;
+        }
+        .img-modal-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #fff;
+            background: rgba(0,0,0,0.5);
+            border-radius: 50%;
+            font-size: 2rem;
+            width: 40px;
+            height: 40px;
+            text-align: center;
+            line-height: 40px;
+            cursor: pointer;
+            z-index: 10001;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+            transition: background 0.2s;
+            user-select: none;
+        }
+        #imgModalPrev { left: 32px; }
+        #imgModalNext { right: 32px; }
+        .img-modal-arrow:hover {
+            background: #ffd700;
+            color: #222;
+        }
+    </style>
 </head>
 <body>
 
 <header>
-    <a href="/" class="logo">HEDZ</a>
+    <a href="../" class="logo">
+        <img src="../images/HEDZ%20BOOK%20LOGO.png" alt="HEDZ Logo" style="height:44px; vertical-align:middle;">
+    </a>
     <nav>
-        <a href="trilogy/">Forex Trilogy</a>
-        <a href="classics/">Forex Classics</a>
-        <a href="#">ZLCHS Access</a>
-        <a href="about/">About Author</a>
+        <a href="../">Home</a>
+        <a href="./">Forex Trilogy</a>
+        <a href="../classics">Forex Classics</a>
+        <a href="../ZLCHS">ZLCHS Access</a>
+        <a href="../about">About Author</a>
     </nav>
 </header>
 
 <main>
-    <h1>Master Forex Trading with HEDZ Books</h1>
-    <p>Explore the foundations, psychology, and strategies of Forex trading. Scroll through our collections and take your trading to the next level.</p>
-    <div class="cta-buttons">
-        <a href="trilogy/">Browse Trilogy</a>
-        <a href="classics/">Browse Classics</a>
+    <h1>HEDZ Forex Trilogy</h1>
+    <p style="text-align:justify; width:100%; padding:0 0rem 2rem 0rem; font-size:1.1rem;">
+        HEDZ Forex Trilogy is a three-part collection that explores the Mastery of Forex Trading through Foundations, Psychology, and Strategy. Together, the volumes provide a clear path from understanding the market’s structure, to strengthening the discipline of the mind, to applying risk-controlled strategies for growth. Each book focuses on one pillar while connecting seamlessly to the next, creating a complete journey. The trilogy reflects HEDZ’s commitment to clarity, depth, and lasting insight for readers seeking knowledge, discipline, and resilience in the world of forex.
+    </p>
+    <div class="books-grid">
+        <!-- Book 1: Foundation -->
+        <div class="book-container">
+            <div class="book-image">
+                <img src="../images/foundation-front.jpg" alt="Foundation Front Cover" class="popup-img" data-img="../images/foundation-front.jpg" data-group="foundation">
+                <img src="../images/foundation-back.jpg" alt="Foundation Back Cover" class="popup-img" data-img="../images/foundation-back.jpg" data-group="foundation" style="display:none;">
+            </div>
+            <div class="book-info">
+                <h2 style="font-weight:bold; text-align:center; font-size:1.15rem; white-space:nowrap;">The Foundation of Forex Trading</h2>
+                <div style="font-weight:bold; text-align:center; margin-bottom:0.5rem;">
+                    Timeless Lessons on Markets,<br>Money, and Methodology
+                </div>
+                <p style="text-align:justify;">
+                    What if "The Mastery of Forex Trading" begins with understanding the foundational structures of the market? Foundation marks the stage where traders gain insight into the market’s framework. Insight into how currency pairs interrelate, how liquidity drives these relationships, and how intermarket correlations influence price movements is essential. Knowledge of brokers, platforms, swaps, and hidden costs forms a reliable base. Mastering capital management, leverage, and risk ensures a sustainable trading approach. Developing technical skills, from candlesticks to multi-timeframe analysis, supports identifying trends and patterns. Awareness of economic indicators and geopolitical events shaping currency valuations sharpens decision-making. Armed with a professional blueprint emphasizing disciplined routines, trade selection, journaling, and financial integration, traders build the foundation required to achieve success in Retail Forex Trading.
+                </p>
+                                <div style="display:flex; justify-content:space-between; align-items:flex-end; width:100%; margin-bottom:0.5rem;">
+                                    <div style="text-align:left;">
+                                        <a href="redirect.html?book=foundation" class="buy-now-button">Buy Now</a>
+                                    </div>
+                                    <div style="text-align:right;">
+                                        Kindle&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-weight:bold;">$9.99</span><br>
+                                        Paperback&nbsp;&nbsp;&nbsp;<span style="font-weight:bold;">$23.33</span><br>
+                                        Hardcover&nbsp;&nbsp;&nbsp;<span style="font-weight:bold;">$33.33</span>
+                                    </div>
+                                </div>
+            </div>
+        </div>
+
+        <!-- Book 2: Psychology -->
+        <div class="book-container">
+            <div class="book-image">
+                <img src="../images/psychology-front.jpg" alt="Psychology Front Cover" class="popup-img" data-img="../images/psychology-front.jpg" data-group="psychology">
+            </div>
+            <div class="book-info">
+                <h2 style="font-weight:bold; text-align:center; font-size:1.15rem; white-space:nowrap;">The Psychology of Forex Trading</h2>
+                <div style="font-weight:bold; text-align:center; margin-bottom:0.5rem;">
+                    Timeless Lessons on Biases,<br>Behaviour, and Breakthroughs
+                </div>
+                <p style="text-align:justify;">
+                    What if "The Mastery of Forex Trading" truly depends on mastering the mind as much as the market itself? Psychology marks the stage where trading foundations give way to the mind that governs every decision. Stress responses and primal instincts influence judgement, while biases such as overconfidence, illusion of control, and loss aversion distort risk perception. Emotional triggers and discipline gaps cause repeated trading failures unless countered with proven mental tools like mindfulness, journaling, cognitive reframing, and resilience practices. Transformation grows through rest, recovery, micro-progress, mentorship, and true community support, turning setbacks into psychological strength. Over time, psychology and discipline integrate into identity, creating a resilient long-game mindset. This mental evolution becomes the bridge to strategy, where risk control, survival, and compounding profits truly define success in Retail Forex Trading.                </p>
+                                <div style="display:flex; justify-content:space-between; align-items:flex-end; width:100%; margin-bottom:0.5rem;">
+                                    <div style="text-align:left;">
+                                        <a href="redirect.html?book=psychology" class="buy-now-button">Buy Now</a>
+                                    </div>
+                                    <div style="text-align:right;">
+                                        Kindle&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-weight:bold;">$9.99</span><br>
+                                        Paperback&nbsp;&nbsp;&nbsp;<span style="font-weight:bold;">$23.33</span><br>
+                                        Hardcover&nbsp;&nbsp;&nbsp;<span style="font-weight:bold;">$33.33</span>
+                                    </div>
+                                </div>
+            </div>
+        </div>
+
+        <!-- Book 3: Strategy -->
+        <div class="book-container">
+            <div class="book-image">
+                <img src="../images/strategy-front.jpg" alt="Strategy Front Cover" class="popup-img" data-img="../images/strategy-front.jpg" data-group="strategy">
+            </div>
+            <div class="book-info">
+                <h2 style="font-weight:bold; text-align:center; font-size:1.15rem; white-space:nowrap;">The Strategy of Forex Trading</h2>
+                <div style="font-weight:bold; text-align:center; margin-bottom:0.5rem;">
+                    Timeless Lessons on ZeroLoss<br>Compounded Hedging System
+                </div>
+                <p style="text-align:justify;">
+                    What if "The Mastery of Forex Trading" rests on a strategy built to control risk, survive, and compound profits? Strategy marks the stage where strong foundations and psychology converge into execution. The ZeroLoss Compounded Hedging System (CHS) provides a systematic framework that unites capital protection with steady, long-term growth. Hedging protects capital, while structured compounding turns small gains into cumulative returns. All positions are dynamically managed to control risk and secure profits. System design includes coding an MT5 Expert Advisor with supporting indicators, backtesting, optimization, and automation for reliable execution. Testing in trending, ranging, and volatile markets shows resilience and adaptability. As traders apply and refine CHS on VPS hosting, it evolves with them, cultivating consistency and control. Over time, strategy and identity merge, enabling risk-controlled growth and success in Retail Forex Trading.                </p>
+                                <div style="display:flex; justify-content:space-between; align-items:flex-end; width:100%; margin-bottom:0.5rem;">
+                                    <div style="text-align:left;">
+                                        <a href="redirect.html?book=strategy" class="buy-now-button">Buy Now</a>
+                                    </div>
+                                    <div style="text-align:right;">
+                                        Kindle&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-weight:bold;">$9.99</span><br>
+                                        Paperback&nbsp;&nbsp;&nbsp;<span style="font-weight:bold;">$23.33</span><br>
+                                        Hardcover&nbsp;&nbsp;&nbsp;<span style="font-weight:bold;">$33.33</span>
+                                    </div>
+                                </div>
+            </div>
+        </div>
     </div>
 </main>
 
@@ -31,5 +285,61 @@
     &copy; 2025 HEDZ Forex Books. All rights reserved.
 </footer>
 
+<!-- Image Modal HTML -->
+<div id="imgModal" class="img-modal">
+    <span class="img-modal-close" id="imgModalClose">&times;</span>
+    <span class="img-modal-arrow" id="imgModalPrev">&#8592;</span>
+    <img class="img-modal-content" id="imgModalImg" src="" alt="">
+    <span class="img-modal-arrow" id="imgModalNext">&#8594;</span>
+</div>
+
+<script>
+let currentGroup = '';
+let currentIndex = 0;
+let groupImages = [];
+
+document.querySelectorAll('.popup-img').forEach(function(img) {
+    img.addEventListener('click', function() {
+        currentGroup = img.getAttribute('data-group');
+        groupImages = Array.from(document.querySelectorAll('.popup-img[data-group="' + currentGroup + '"]'));
+        currentIndex = groupImages.indexOf(img);
+
+        var modal = document.getElementById('imgModal');
+        var modalImg = document.getElementById('imgModalImg');
+        modal.style.display = 'flex';
+        modalImg.src = img.getAttribute('data-img');
+        modalImg.alt = img.alt;
+    });
+});
+
+function showImage(index) {
+    if (groupImages.length === 0) return;
+    currentIndex = (index + groupImages.length) % groupImages.length;
+    var img = groupImages[currentIndex];
+    var modalImg = document.getElementById('imgModalImg');
+    modalImg.src = img.getAttribute('data-img');
+    modalImg.alt = img.alt;
+}
+
+document.getElementById('imgModalPrev').onclick = function(e) {
+    e.stopPropagation();
+    showImage(currentIndex - 1);
+};
+document.getElementById('imgModalNext').onclick = function(e) {
+    e.stopPropagation();
+    showImage(currentIndex + 1);
+};
+document.getElementById('imgModalClose').onclick = function() {
+    document.getElementById('imgModal').style.display = 'none';
+    groupImages = [];
+};
+document.getElementById('imgModal').onclick = function(e) {
+    if (e.target === this) {
+        this.style.display = 'none';
+        groupImages = [];
+    }
+};
+</script>
+<script src="js/redirect.js"></script>
 </body>
 </html>
