@@ -396,9 +396,20 @@
         lightboxImg.src = currentGroup[currentIndex].dataset.img;
         resetZoom();
       }
-      window.addEventListener("click", e => {
-        if (e.target === lightbox) closeLightbox();
+
+      // --- Close on tap for mobile ---
+      lightboxImg.addEventListener('touchend', function(e) {
+        // If it's a tap (not swipe), close
+        if (e.changedTouches.length === 1 && (!touchStartX || Math.abs(e.changedTouches[0].clientX - touchStartX) < 10)) {
+          closeLightbox();
+        }
       });
+
+      // --- Close on left click for desktop ---
+      lightboxImg.addEventListener('click', function(e) {
+        if (e.button === 0) closeLightbox();
+      });
+
       window.addEventListener("keydown", e => {
         if (e.key === "Escape") closeLightbox();
         if (e.key === "ArrowRight") changeImage(1);
@@ -451,6 +462,8 @@
           zoom = Math.min(zoom + 0.15, 3);
         } else {
           zoom = Math.max(zoom - 0.15, 1);
+          // If zoomed out to minimum, close lightbox
+          if (zoom === 1) closeLightbox();
         }
         lightboxImg.style.transformOrigin = `${originX}% ${originY}%`;
         lightboxImg.style.transform = `scale(${zoom})`;
