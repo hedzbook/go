@@ -20,6 +20,9 @@
             align-items: center;
             justify-content: space-between;
             box-shadow: 0 6px 24px rgba(0,0,0,0.22);
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
         main {
             max-width: 1200px;
@@ -28,9 +31,16 @@
         }
         .books-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2rem;
             padding: 0 1rem;
+            box-sizing: border-box;
+        }
+        @media (max-width: 700px) {
+            .books-grid {
+                grid-template-columns: 1fr;
+                padding: 0 1rem;
+            }
         }
         nav {
             padding: 0 1rem;
