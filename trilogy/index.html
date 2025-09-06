@@ -418,36 +418,6 @@
     </div>
 
     <script>
-      // Amazon country redirect for Buy Now buttons
-      function getAmazonUrl(countryCode) {
-        const urls = {
-          US: "https://www.amazon.com/dp/YOUR_BOOK_ID",
-          IN: "https://www.amazon.in/dp/YOUR_BOOK_ID",
-          GB: "https://www.amazon.co.uk/dp/YOUR_BOOK_ID",
-          DE: "https://www.amazon.de/dp/YOUR_BOOK_ID",
-          CA: "https://www.amazon.ca/dp/YOUR_BOOK_ID",
-          AU: "https://www.amazon.com.au/dp/YOUR_BOOK_ID",
-          JP: "https://www.amazon.co.jp/dp/YOUR_BOOK_ID",
-          FR: "https://www.amazon.fr/dp/YOUR_BOOK_ID",
-          IT: "https://www.amazon.it/dp/YOUR_BOOK_ID",
-          ES: "https://www.amazon.es/dp/YOUR_BOOK_ID"
-        };
-        return urls[countryCode] || urls["US"];
-      }
-
-      document.querySelectorAll('.buy-now-button').forEach(btn => {
-        btn.addEventListener('click', function(e) {
-          e.preventDefault();
-          fetch('https://ipapi.co/country/')
-            .then(response => response.text())
-            .then(countryCode => {
-              window.open(getAmazonUrl(countryCode.trim()), '_blank');
-            })
-            .catch(() => {
-              window.open(getAmazonUrl("US"), '_blank');
-            });
-        });
-      });
       // nav toggle
       const menuToggle = document.getElementById('menuToggle');
       const menuClose = document.getElementById('menuClose');
