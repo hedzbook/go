@@ -381,6 +381,13 @@
         });
       });
 
+      // --- Pan/drag variables ---
+      let isDragging = false;
+      let dragStartX = 0;
+      let dragStartY = 0;
+      let imgOffsetX = 0;
+      let imgOffsetY = 0;
+
       function openLightbox(src) {
         lightbox.style.display = "flex";
         lightboxImg.src = src;
@@ -397,17 +404,68 @@
         resetZoom();
       }
 
-      // --- Close on tap for mobile ---
-      lightboxImg.addEventListener('touchend', function(e) {
-        // If it's a tap (not swipe), close
-        if (e.changedTouches.length === 1 && (!touchStartX || Math.abs(e.changedTouches[0].clientX - touchStartX) < 10)) {
-          closeLightbox();
+      // --- Desktop click-and-drag panning ---
+      lightboxImg.addEventListener('mousedown', function(e) {
+        if (zoom > 1) {
+          isDragging = true;
+          dragStartX = e.clientX;
+          dragStartY = e.clientY;
+          lightboxImg.style.cursor = 'grab';
+        }
+      });
+      window.addEventListener('mousemove', function(e) {
+        if (isDragging && zoom > 1) {
+          imgOffsetX += (e.clientX - dragStartX);
+          imgOffsetY += (e.clientY - dragStartY);
+          dragStartX = e.clientX;
+          dragStartY = e.clientY;
+          updateTransform();
+        }
+      });
+      window.addEventListener('mouseup', function() {
+        if (isDragging) {
+          isDragging = false;
+          lightboxImg.style.cursor = '';
         }
       });
 
-      // --- Close on left click for desktop ---
+      // --- Mobile touch-drag panning ---
+      lightboxImg.addEventListener('touchstart', function(e) {
+        if (zoom > 1 && e.touches.length === 1) {
+          isDragging = true;
+          dragStartX = e.touches[0].clientX;
+          dragStartY = e.touches[0].clientY;
+        }
+      });
+      lightboxImg.addEventListener('touchmove', function(e) {
+        if (isDragging && zoom > 1 && e.touches.length === 1) {
+          imgOffsetX += (e.touches[0].clientX - dragStartX);
+          imgOffsetY += (e.touches[0].clientY - dragStartY);
+          dragStartX = e.touches[0].clientX;
+          dragStartY = e.touches[0].clientY;
+          updateTransform();
+        }
+      });
+      lightboxImg.addEventListener('touchend', function(e) {
+        isDragging = false;
+      });
+
+      function updateTransform() {
+        lightboxImg.style.transform = `scale(${zoom}) translate(${imgOffsetX/zoom}px, ${imgOffsetY/zoom}px)`;
+        lightboxImg.style.transformOrigin = `${originX}% ${originY}%`;
+      }
+
+      // --- Close on tap/click on overlay only ---
+      lightbox.addEventListener('click', function(e) {
+        // Only close if click/tap is on overlay, not image or controls
+        if (e.target === lightbox) closeLightbox();
+      });
+      // Prevent image click/tap from closing
       lightboxImg.addEventListener('click', function(e) {
-        if (e.button === 0) closeLightbox();
+        e.stopPropagation();
+      });
+      lightboxImg.addEventListener('touchend', function(e) {
+        e.stopPropagation();
       });
 
       window.addEventListener("keydown", e => {
@@ -443,11 +501,13 @@
       let originX = 0;
       let originY = 0;
       function resetZoom() {
-        zoom = 1;
-        originX = 0;
-        originY = 0;
-        lightboxImg.style.transform = '';
-        lightboxImg.style.transformOrigin = '';
+  zoom = 1;
+  originX = 0;
+  originY = 0;
+  imgOffsetX = 0;
+  imgOffsetY = 0;
+  lightboxImg.style.transform = '';
+  lightboxImg.style.transformOrigin = '';
       }
       lightboxImg.addEventListener('wheel', function(e) {
         e.preventDefault();
@@ -465,8 +525,7 @@
           // If zoomed out below threshold, close lightbox
           if (zoom < 0.65) closeLightbox();
         }
-        lightboxImg.style.transformOrigin = `${originX}% ${originY}%`;
-        lightboxImg.style.transform = `scale(${zoom})`;
+  updateTransform();
       }, { passive: false });
     </script>
   </body>
