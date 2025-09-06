@@ -351,18 +351,6 @@
     </div>
 
     <script>
-      // --- Double click/tap to close on image ---
-      let lastTap = 0;
-      lightboxImg.addEventListener('dblclick', function(e) {
-        closeLightbox();
-      });
-      lightboxImg.addEventListener('touchend', function(e) {
-        const now = Date.now();
-        if (now - lastTap < 350) {
-          closeLightbox();
-        }
-        lastTap = now;
-      });
       // nav toggle
       const menuToggle = document.getElementById('menuToggle');
       const menuClose = document.getElementById('menuClose');
