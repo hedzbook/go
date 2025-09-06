@@ -544,17 +544,20 @@ document.getElementById('imgModal').onclick = function(e) {
 const menuToggle = document.getElementById('menuToggle');
 const menuClose = document.getElementById('menuClose');
 const nav = document.getElementById('mainNav');
+const menuShadowBox = document.getElementById('menuShadowBox');
 
 menuToggle.onclick = function() {
     nav.classList.add('active');
     menuToggle.style.display = 'none';
     menuClose.style.display = 'block';
+    menuShadowBox.style.display = 'block';
     document.querySelector('header').style.display = 'flex'; // Ensure header stays visible
 };
 menuClose.onclick = function() {
     nav.classList.remove('active');
     menuClose.style.display = 'none';
     menuToggle.style.display = 'block';
+    menuShadowBox.style.display = 'none';
     document.querySelector('header').style.display = 'flex';
 };
 // Optional: close menu if clicking outside nav (on overlay)
@@ -563,6 +566,7 @@ document.addEventListener('click', function(e) {
         nav.classList.remove('active');
         menuClose.style.display = 'none';
         menuToggle.style.display = 'block';
+        menuShadowBox.style.display = 'none';
         document.querySelector('header').style.display = 'flex';
     }
 });
