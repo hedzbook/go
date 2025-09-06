@@ -1,20 +1,39 @@
-# autopush.ps1
-$path = "C:\HEDZ BOOK\GitHub\hedzbook\go"
-Write-Host "Watching $path for changes... (Press Ctrl+C to stop)" -ForegroundColor Green
+# File: autopush.ps1
+# Auto-stage, commit, and push any changes in the repo
 
-# Store last push time so it doesn't spam on multiple quick changes
-$lastPush = Get-Date
+$path = Split-Path -Parent $MyInvocation.MyCommand.Definition
+Set-Location $path
 
-while ($true) {
-    $change = Get-ChildItem -Path $path -Recurse | 
-        Where-Object { $_.LastWriteTime -gt $lastPush }
+# Watch for any file changes in the repo
+$watcher = New-Object System.IO.FileSystemWatcher
+$watcher.Path = $path
+$watcher.IncludeSubdirectories = $true
+$watcher.EnableRaisingEvents = $true
+$watcher.Filter = "*.*"
 
-    if ($change) {
-        Write-Host "Detected change in $($change.Name). Pushing to GitHub..." -ForegroundColor Yellow
-        Start-Process -FilePath "cmd.exe" -ArgumentList "/c `"$path\update_git.bat`"" -Wait
-        $lastPush = Get-Date
-        Write-Host "Push complete at $lastPush" -ForegroundColor Cyan
+# Event action
+$action = {
+    Start-Sleep -Milliseconds 500  # debounce quick repeated changes
+    $status = git status --porcelain
+    if ($status) {
+        # Prepare commit message
+        $files = git status --porcelain | ForEach-Object { ($_ -split ' ')[-1] } | Out-String
+        $msg = "Auto-commit: $($files.Trim())"
+
+        git add .
+        git commit -m "$msg" 2>$null
+
+        # Push to origin
+        git push origin main 2>$null
+        Write-Host "$(Get-Date -Format 'HH:mm:ss') - Auto-pushed: $($files.Trim())"
     }
-
-    Start-Sleep -Seconds 2
 }
+
+# Register events
+Register-ObjectEvent $watcher Created -Action $action
+Register-ObjectEvent $watcher Changed -Action $action
+Register-ObjectEvent $watcher Deleted -Action $action
+Register-ObjectEvent $watcher Renamed -Action $action
+
+Write-Host "Watching for changes in $path. Press Ctrl+C to exit."
+while ($true) { Start-Sleep 1 }
