@@ -250,17 +250,19 @@
       cursor: pointer;
       z-index: 3100;
     }
-    .lightbox .prev, .lightbox .next {
-      cursor: pointer;
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      font-size: 3rem;
-      font-weight: bold;
-      color: #fff;
-      user-select: none;
-      padding: 0 15px;
-    }
+.lightbox .prev,
+.lightbox .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 3rem;
+  font-weight: bold;
+  color: #fff;
+  user-select: none;
+  padding: 0 15px;
+  z-index: 3100;   /* make sure arrows stay above the image */
+}
     .lightbox .prev { left: 10px; }
     .lightbox .next { right: 10px; }
     .lightbox .prev:hover,
