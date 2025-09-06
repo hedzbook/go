@@ -25,6 +25,10 @@
             height: 32px;
             vertical-align: middle;
         }
+        nav {
+            display: flex;
+            align-items: center;
+        }
         nav a {
             color: #222;
             text-decoration: none;
@@ -35,6 +39,38 @@
         }
         nav a:hover {
             color: #ffd700;
+        }
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 2rem;
+            margin-left: 1rem;
+            cursor: pointer;
+        }
+        @media (max-width: 700px) {
+            nav {
+                flex-direction: column;
+                align-items: flex-start;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                width: 100vw;
+                background: #fff;
+                box-shadow: 0 6px 24px rgba(0,0,0,0.22);
+                padding: 1rem 2rem;
+                display: none;
+            }
+            nav.active {
+                display: flex;
+            }
+            nav a {
+                margin: 1rem 0 0 0;
+                font-size: 1.2rem;
+            }
+            .menu-toggle {
+                display: block;
+            }
         }
         main {
             max-width: 1200px;
@@ -187,7 +223,8 @@
     <a href="../" class="logo">
         <img src="../images/HEDZ%20BOOK%20LOGO.png" alt="HEDZ Logo" style="height:44px; vertical-align:middle;">
     </a>
-    <nav>
+    <button class="menu-toggle" id="menuToggle" aria-label="Open menu">&#9776;</button>
+    <nav id="mainNav">
         <a href="../">Home</a>
         <a href="./">Forex Trilogy</a>
         <a href="../classics">Forex Classics</a>
@@ -341,5 +378,12 @@ document.getElementById('imgModal').onclick = function(e) {
 };
 </script>
 <script src="js/redirect.js"></script>
+<script>
+// Hamburger menu toggle
+document.getElementById('menuToggle').onclick = function() {
+    var nav = document.getElementById('mainNav');
+    nav.classList.toggle('active');
+};
+</script>
 </body>
 </html>
