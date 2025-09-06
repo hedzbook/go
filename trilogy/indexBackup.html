@@ -5,6 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HEDZ Forex Trilogy</title>
     <style>
+      html, body {
+        height: 100%;
+      }
+      body {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+      }
+      main {
+        flex: 1;
+      }
       .book-prices {
         font-size: 1.05rem;
         line-height: 1.5;
@@ -65,6 +76,9 @@
       }
       /* Mobile nav */
       @media (max-width: 700px) {
+        footer {
+          font-size: 0.7rem;
+        }
         .menu-toggle {
           display: block;
           background: none;
@@ -93,10 +107,10 @@
         }
         nav {
           flex-direction: column;
-          align-items: flex-start;
+          align-items: flex-end;
           position: fixed;
           top: 56px;
-          left: 0;
+          right: 0;
           width: 100vw;
           height: calc(100vh - 56px);
           background: #fff;
@@ -104,6 +118,9 @@
           padding: 2.5rem;
           display: none;
           z-index: 1000;
+        }
+        nav a {
+          text-align: left;
         }
         nav.active {
           display: flex;
@@ -141,19 +158,19 @@
       }
       @media (max-width: 700px) {
         main h1 {
-          font-size: 1.2rem !important;
-        }
-        main .intro {
           font-size: 1.1rem !important;
         }
-        main .book-title {
-          font-size: 1.0rem !important;
+        main .intro {
+          font-size: 0.88rem !important;
         }
-        main .book-subtitle {
+        main .book-title {
           font-size: 0.9rem !important;
         }
-        main .book-desc {
+        main .book-subtitle {
           font-size: 0.8rem !important;
+        }
+        main .book-desc {
+          font-size: 0.71rem !important;
         }
         main .buy-now-button {
           font-size: 1.0rem !important;
@@ -322,7 +339,7 @@
     <main>
       <h1>HEDZ Forex Trilogy</h1>
       <p class="intro">
-        HEDZ Forex Trilogy is a three-part collection that explores the Mastery of Forex Trading through Foundations, Psychology, and Strategy. Together, the volumes provide a clear path from understanding the market’s structure, to strengthening the discipline of the mind, to applying risk-controlled strategies for growth. Each book focuses on one pillar while connecting seamlessly to the next, creating a complete journey. The trilogy reflects HEDZ’s commitment to clarity, depth, and lasting insight for readers seeking knowledge, discipline, and resilience in the world of forex.
+        HEDZ Forex Trilogy is a comprehensive three-part collection that explores the Mastery of Forex Trading through Foundations, Psychology, and Strategy. Together, the volumes provide a clear path from thoroughly understanding the market’s structure, to strengthening the discipline of the mind, to applying risk-controlled strategies for sustainable growth. Each book focuses on one pillar while connecting seamlessly to the next, creating a complete journey. The trilogy reflects HEDZ’s commitment to clarity, depth, and lasting insight for readers seeking knowledge, discipline, and resilience in forex trading.
       </p>
       <div class="books-grid">
         <!-- Book 1 -->
@@ -334,7 +351,7 @@
           <div class="book-info">
             <h2 class="book-title">The Foundation of Forex Trading</h2>
             <div class="book-subtitle">Timeless Lessons on Markets,<br>Money, and Methodology</div>
-            <p class="book-desc">What if "The Mastery of Forex Trading" begins with understanding the foundational structures of the market? Foundation marks the stage where traders gain insight into the market’s framework. Insight into how currency pairs interrelate, how liquidity drives these relationships, and how intermarket correlations influence price movements is essential. Knowledge of brokers, platforms, swaps, and hidden costs forms a reliable base. Mastering capital management, leverage, and risk ensures a sustainable trading approach. Developing technical skills, from candlesticks to multi-timeframe analysis, supports identifying trends and patterns. Awareness of economic indicators and geopolitical events shaping currency valuations sharpens decision-making. Armed with a professional blueprint emphasizing disciplined routines, trade selection, journaling, and financial integration, traders build the foundation required to achieve success in Retail Forex Trading.</p>
+            <p class="book-desc"><em>What if "The Mastery of Forex Trading" begins with understanding the foundational structures of the market?</em> <strong>Foundation</strong> marks the stage where traders gain insight into the market’s framework. Insight into how currency pairs interrelate, how liquidity drives these relationships, and how intermarket correlations influence price movements is essential. Knowledge of brokers, platforms, swaps, and hidden costs forms a reliable base. Mastering capital management, leverage, and risk ensures a sustainable trading approach. Developing technical skills, from candlesticks to multi-timeframe analysis, supports identifying trends and patterns. Awareness of economic indicators and geopolitical events shaping currency valuations sharpens decision-making. Armed with a professional blueprint emphasizing disciplined routines, trade selection, journaling, and financial integration, traders build the foundation required to achieve success in Retail Forex Trading.</p>
             <div style="display:flex; justify-content:space-between; align-items:flex-end; width:100%; margin-bottom:0.5rem;">
               <div><a href="redirect.html?book=foundation" class="buy-now-button">Buy Now</a></div>
               <div class="book-prices" style="text-align:right;">
@@ -354,7 +371,7 @@
           <div class="book-info">
             <h2 class="book-title">The Foundation of Forex Trading</h2>
             <div class="book-subtitle">Timeless Lessons on Markets,<br>Money, and Methodology</div>
-            <p class="book-desc">What if "The Mastery of Forex Trading" truly depends on mastering the mind as much as the market itself? Psychology marks the stage where trading foundations give way to the mind that governs every decision. Stress responses and primal instincts influence judgement, while biases such as overconfidence, illusion of control, and loss aversion distort risk perception. Emotional triggers and discipline gaps cause repeated trading failures unless countered with proven mental tools like mindfulness, journaling, cognitive reframing, and resilience practices. Transformation grows through rest, recovery, micro-progress, mentorship, and true community support, turning setbacks into psychological strength. Over time, psychology and discipline integrate into identity, creating a resilient long-game mindset. This mental evolution becomes the bridge to strategy, where risk control, survival, and compounding profits truly define success in Retail Forex Trading.</p>
+            <p class="book-desc"><em>What if "The Mastery of Forex Trading" truly depends on mastering the mind as much as the market itself?</em> <strong>Psychology</strong> marks the stage where trading foundations give way to the mind that governs every decision. Stress responses and primal instincts influence judgement, while biases such as overconfidence, illusion of control, and loss aversion distort risk perception. Emotional triggers and discipline gaps cause repeated trading failures unless countered with proven mental tools like mindfulness, journaling, cognitive reframing, and resilience practices. Transformation grows through rest, recovery, micro-progress, mentorship, and true community support, turning setbacks into psychological strength. Over time, psychology and discipline integrate into identity, creating a resilient long-game mindset. This mental evolution becomes the bridge to strategy, where risk control, survival, and compounding profits truly define success in Retail Forex Trading.</p>
             <div style="display:flex; justify-content:space-between; align-items:flex-end; width:100%; margin-bottom:0.5rem;">
               <div><a href="redirect.html?book=foundation" class="buy-now-button">Buy Now</a></div>
               <div class="book-prices" style="text-align:right;">
@@ -374,7 +391,7 @@
           <div class="book-info">
             <h2 class="book-title">The Foundation of Forex Trading</h2>
             <div class="book-subtitle">Timeless Lessons on Markets,<br>Money, and Methodology</div>
-            <p class="book-desc">What if "The Mastery of Forex Trading" rests on a strategy built to control risk, survive, and compound profits? Strategy marks the stage where strong foundations and psychology converge into execution. The ZeroLoss Compounded Hedging System (CHS) provides a systematic framework that unites capital protection with steady, long-term growth. Hedging protects capital, while structured compounding turns small gains into cumulative returns. All positions are dynamically managed to control risk and secure profits. System design includes coding an MT5 Expert Advisor with supporting indicators, backtesting, optimization, and automation for reliable execution. Testing in trending, ranging, and volatile markets shows resilience and adaptability. As traders apply and refine CHS on VPS hosting, it evolves with them, cultivating consistency and control. Over time, strategy and identity merge, enabling risk-controlled growth and success in Retail Forex Trading.</p>
+            <p class="book-desc"><em>What if "The Mastery of Forex Trading" rests on a strategy built to control risk, survive, and compound profits?</em> <strong>Strategy</strong> marks the stage where strong foundations and psychology converge into execution. The ZeroLoss Compounded Hedging System (CHS) provides a systematic framework that unites capital protection with steady, long-term growth. Hedging protects capital, while structured compounding turns small gains into cumulative returns. All positions are dynamically managed to control risk and secure profits. System design includes coding an MT5 Expert Advisor with supporting indicators, backtesting, optimization, and automation for reliable execution. Testing in trending, ranging, and volatile markets shows resilience and adaptability. As traders apply and refine CHS on VPS hosting, it evolves with them, cultivating consistency and control. Over time, strategy and identity merge, enabling risk-controlled growth and success in Retail Forex Trading.</p>
             <div style="display:flex; justify-content:space-between; align-items:flex-end; width:100%; margin-bottom:0.5rem;">
               <div><a href="redirect.html?book=foundation" class="buy-now-button">Buy Now</a></div>
               <div class="book-prices" style="text-align:right;">
@@ -388,7 +405,7 @@
       </div>
     </main>
     <footer>
-      &copy; 2025 HEDZ Forex Books. All rights reserved.
+      &copy; 2025 HEDZ BOOK. All rights reserved.
     </footer>
 
     <!-- Lightbox -->
