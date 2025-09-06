@@ -104,6 +104,21 @@
         margin: 1.2rem 0;
         font-size: 1.4rem;
       }
+        /* Lightbox mobile tweaks */
+  .lightbox .prev,
+  .lightbox .next {
+    font-size: 2.2rem;
+    padding: 0 8px;
+    z-index: 3100; /* important for mobile too */
+  }
+  .lightbox .prev { left: 15px; }
+  .lightbox .next { right: 15px; }
+  .lightbox .close {
+    font-size: 2rem;
+    top: 10px;
+    right: 15px;
+    z-index: 3101;
+  }
     }
 
     main {
@@ -204,6 +219,56 @@
       padding: 1rem 0;
       margin-top: 3rem;
       box-shadow: 0 6px 24px rgba(0,0,0,0.22);
+    }
+        /* Modal (fullscreen popup) */
+    .lightbox {
+      display: none;
+      position: fixed;
+      z-index: 3000;
+      left: 0; top: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.9);
+      justify-content: center;
+      align-items: center;
+    }
+    .lightbox-content {
+      position: relative;
+      max-width: 90%;
+      max-height: 90%;
+    }
+    .lightbox-content img {
+      max-width: 100%;
+      max-height: 100%;
+      border-radius: 8px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+    }
+    .lightbox .close {
+      position: absolute;
+      top: 20px; right: 30px;
+      font-size: 2.5rem;
+      color: #fff;
+      cursor: pointer;
+      z-index: 3100;
+    }
+.lightbox .prev,
+.lightbox .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 3rem;
+  font-weight: bold;
+  color: #fff;
+  user-select: none;
+  padding: 0 15px;
+  z-index: 3100;   /* make sure arrows stay above the image */
+}
+    .lightbox .prev { left: 10px; }
+    .lightbox .next { right: 10px; }
+    .lightbox .prev:hover,
+    .lightbox .next:hover,
+    .lightbox .close:hover {
+      color: #ffd700;
     }
   </style>
 </head>
@@ -315,27 +380,14 @@
   &copy; 2025 HEDZ Forex Books. All rights reserved.
 </footer>
 
-<!-- Modals -->
-<div id="modal1" class="modal">
-  <div class="modal-content">
-    <span class="close" onclick="closeModal('modal1')">&times;</span>
-    <h2>Book 1</h2>
-    <p>Details about Book 1...</p>
+<!-- Universal Lightbox -->
+<div id="lightbox" class="lightbox">
+  <span class="close" onclick="closeLightbox()">&times;</span>
+  <span class="prev" onclick="changeImage(-1)">&#10094;</span>
+  <div class="lightbox-content">
+    <img id="lightbox-img" src="" alt="Book Cover">
   </div>
-</div>
-<div id="modal2" class="modal">
-  <div class="modal-content">
-    <span class="close" onclick="closeModal('modal2')">&times;</span>
-    <h2>Book 2</h2>
-    <p>Details about Book 2...</p>
-  </div>
-</div>
-<div id="modal3" class="modal">
-  <div class="modal-content">
-    <span class="close" onclick="closeModal('modal3')">&times;</span>
-    <h2>Book 3</h2>
-    <p>Details about Book 3...</p>
-  </div>
+  <span class="next" onclick="changeImage(1)">&#10095;</span>
 </div>
 
 <script>
@@ -367,6 +419,40 @@
       if (e.target === modal) modal.style.display = 'none';
     });
   };
+    // --- Lightbox Popup ---
+  const lightbox = document.getElementById("lightbox");
+  const lightboxImg = document.getElementById("lightbox-img");
+
+  let currentGroup = [];
+  let currentIndex = 0;
+
+  document.querySelectorAll(".popup-img").forEach(img => {
+    img.addEventListener("click", function() {
+      const groupName = this.dataset.group;
+      currentGroup = Array.from(document.querySelectorAll(`.popup-img[data-group="${groupName}"]`));
+      currentIndex = currentGroup.findIndex(i => i.dataset.img === this.dataset.img);
+      openLightbox(currentGroup[currentIndex].dataset.img);
+    });
+  });
+
+  function openLightbox(src) {
+    lightbox.style.display = "flex";
+    lightboxImg.src = src;
+  }
+  function closeLightbox() {
+    lightbox.style.display = "none";
+  }
+  function changeImage(step) {
+    if (!currentGroup.length) return;
+    currentIndex = (currentIndex + step + currentGroup.length) % currentGroup.length;
+    lightboxImg.src = currentGroup[currentIndex].dataset.img;
+  }
+
+  // close if clicked outside the image
+  window.addEventListener("click", e => {
+    if (e.target === lightbox) closeLightbox();
+  });
+
 </script>
 </body>
 </html>
