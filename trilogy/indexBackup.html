@@ -74,10 +74,22 @@
                 width: 100vw;
                 height: 100vh;
                 background: #fff;
-                box-shadow: inset 0 24px 32px rgba(0,0,0,0.22); /* stronger inset shadow falling toward menu content */
+                box-shadow: none;
                 padding: 56px 2.5rem 2rem 2.5rem; /* top padding = header height */
                 display: none;
                 z-index: 1000;
+            }
+            .menu-divider {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100vw;
+                height: 2px;
+                background: #eee;
+                box-shadow: 0 6px 24px rgba(0,0,0,0.22);
+                z-index: 1001;
+                border: none;
+            }
             }
             nav.active {
                 display: flex;
@@ -374,11 +386,12 @@
     <button class="menu-toggle" id="menuToggle" aria-label="Open menu" style="color:#222;">&#9776;</button>
     <button class="menu-close" id="menuClose" aria-label="Close menu" style="display:none; position:absolute; right:0.4rem; top:0rem; background:#fff; border:2px solid #222; color:#222; border-radius:50%; width:40px; height:40px; font-size:1.5rem; z-index:1100; cursor:pointer; line-height:36px;">&#10005;</button>
     <nav id="mainNav">
-        <a href="../">Home</a>
-        <a href="./">Forex Trilogy</a>
-        <a href="../classics">Forex Classics</a>
-        <a href="../ZLCHS">ZLCHS Access</a>
-        <a href="../about">About Author</a>
+    <a href="../">Home</a>
+    <a href="./">Forex Trilogy</a>
+    <a href="../classics">Forex Classics</a>
+    <a href="../ZLCHS">ZLCHS Access</a>
+    <a href="../about">About Author</a>
+    <div class="menu-divider"></div>
     </nav>
 </header>
 
