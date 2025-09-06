@@ -384,14 +384,17 @@
       function openLightbox(src) {
         lightbox.style.display = "flex";
         lightboxImg.src = src;
+        resetZoom();
       }
       function closeLightbox() {
         lightbox.style.display = "none";
+        resetZoom();
       }
       function changeImage(step) {
         if (!currentGroup.length) return;
         currentIndex = (currentIndex + step + currentGroup.length) % currentGroup.length;
         lightboxImg.src = currentGroup[currentIndex].dataset.img;
+        resetZoom();
       }
       window.addEventListener("click", e => {
         if (e.target === lightbox) closeLightbox();
@@ -401,6 +404,57 @@
         if (e.key === "ArrowRight") changeImage(1);
         if (e.key === "ArrowLeft") changeImage(-1);
       });
+
+      // --- Swipe gesture for mobile ---
+      let touchStartX = 0;
+      let touchEndX = 0;
+      lightboxImg.addEventListener('touchstart', function(e) {
+        if (e.touches.length === 1) {
+          touchStartX = e.touches[0].clientX;
+        }
+      });
+      lightboxImg.addEventListener('touchend', function(e) {
+        if (e.changedTouches.length === 1) {
+          touchEndX = e.changedTouches[0].clientX;
+          const deltaX = touchEndX - touchStartX;
+          if (Math.abs(deltaX) > 50) {
+            if (deltaX > 0) {
+              changeImage(-1); // swipe right
+            } else {
+              changeImage(1); // swipe left
+            }
+          }
+        }
+      });
+
+      // --- Mouse wheel zoom (desktop) ---
+      let zoom = 1;
+      let originX = 0;
+      let originY = 0;
+      function resetZoom() {
+        zoom = 1;
+        originX = 0;
+        originY = 0;
+        lightboxImg.style.transform = '';
+        lightboxImg.style.transformOrigin = '';
+      }
+      lightboxImg.addEventListener('wheel', function(e) {
+        e.preventDefault();
+        // Only zoom if lightbox is open
+        if (lightbox.style.display !== 'flex') return;
+        // Calculate mouse position relative to image
+        const rect = lightboxImg.getBoundingClientRect();
+        originX = ((e.clientX - rect.left) / rect.width) * 100;
+        originY = ((e.clientY - rect.top) / rect.height) * 100;
+        // Zoom in/out
+        if (e.deltaY < 0) {
+          zoom = Math.min(zoom + 0.15, 3);
+        } else {
+          zoom = Math.max(zoom - 0.15, 1);
+        }
+        lightboxImg.style.transformOrigin = `${originX}% ${originY}%`;
+        lightboxImg.style.transform = `scale(${zoom})`;
+      }, { passive: false });
     </script>
   </body>
 </html>
