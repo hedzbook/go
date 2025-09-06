@@ -394,22 +394,22 @@
     <div class="menu-divider"></div>
     </nav>
 </header>
-
-<main>
-    <h1>HEDZ Forex Trilogy</h1>
-    <p style="text-align:justify; width:100%; padding:0 0rem 2rem 0rem; font-size:1.1rem;">
-        HEDZ Forex Trilogy is a three-part collection that explores the Mastery of Forex Trading through Foundations, Psychology, and Strategy. Together, the volumes provide a clear path from understanding the market’s structure, to strengthening the discipline of the mind, to applying risk-controlled strategies for growth. Each book focuses on one pillar while connecting seamlessly to the next, creating a complete journey. The trilogy reflects HEDZ’s commitment to clarity, depth, and lasting insight for readers seeking knowledge, discipline, and resilience in the world of forex.
-    </p>
-    <div class="books-grid">
-        <!-- Book 1: Foundation -->
-        <div class="book-container">
-            <div class="book-image">
-                <img src="../images/foundation-front.jpg" alt="Foundation Front Cover" class="popup-img" data-img="../images/foundation-front.jpg" data-group="foundation">
-                <img src="../images/foundation-back.jpg" alt="Foundation Back Cover" class="popup-img" data-img="../images/foundation-back.jpg" data-group="foundation" style="display:none;">
-            </div>
+            nav {
+                flex-direction: column;
+                align-items: flex-start;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100vw;
+                height: 100vh;
+                background: #fff;
+                box-shadow: none;
+                padding: 56px 2.5rem 2rem 2.5rem; /* top padding = header height */
+                display: none !important;
+                z-index: 1000;
             <div class="book-info">
-                <h2 style="font-weight:bold; text-align:center; font-size:1.15rem; white-space:nowrap;">The Foundation of Forex Trading</h2>
-                <div style="font-weight:bold; text-align:center; margin-bottom:0.5rem;">
+            nav.active {
+                display: flex !important;
                     Timeless Lessons on Markets,<br>Money, and Methodology
                 </div>
                 <p style="text-align:justify;">
@@ -545,6 +545,11 @@ document.getElementById('imgModal').onclick = function(e) {
 const menuToggle = document.getElementById('menuToggle');
 const menuClose = document.getElementById('menuClose');
 const nav = document.getElementById('mainNav');
+
+// Ensure nav is closed by default
+nav.classList.remove('active');
+menuClose.style.display = 'none';
+menuToggle.style.display = 'block';
 
 menuToggle.onclick = function() {
     nav.classList.add('active');
