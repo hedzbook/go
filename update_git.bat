@@ -5,7 +5,7 @@ REM Stage all changes
 git add .
 
 REM Commit with default message
-git commit -m "Auto-commit: update trilogy site"
+git commit -m "Auto-commit: update hedz book"
 
 REM Check if commit succeeded
 IF %ERRORLEVEL% NEQ 0 (
