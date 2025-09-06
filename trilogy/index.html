@@ -106,24 +106,44 @@
             nav {
                 flex-direction: column;
                 align-items: flex-start;
-                position: absolute;
-                top: 60px;
+                position: fixed;
+                top: 0;
                 left: 0;
                 width: 100vw;
+                height: 100vh;
                 background: #fff;
                 box-shadow: 0 6px 24px rgba(0,0,0,0.22);
-                padding: 1rem 2rem;
+                padding: 3rem 2.5rem 2rem 2.5rem;
                 display: none;
+                z-index: 1000;
             }
             nav.active {
                 display: flex;
             }
             nav a {
-                margin: 1rem 0 0 0;
-                font-size: 1.2rem;
+                margin: 1.2rem 0 0 2.5rem;
+                font-size: 1.4rem;
+                font-weight: bold;
             }
             .menu-toggle {
                 display: block;
+                z-index: 1100;
+            }
+            .menu-toggle.close {
+                background: #fff;
+                border: 2px solid #222;
+                border-radius: 50%;
+                color: #222;
+                font-size: 2rem;
+                width: 44px;
+                height: 44px;
+                text-align: center;
+                line-height: 40px;
+                box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+                position: fixed;
+                top: 1.2rem;
+                right: 1.2rem;
+                margin-left: 0;
             }
         }
         main {
@@ -433,11 +453,46 @@ document.getElementById('imgModal').onclick = function(e) {
 </script>
 <script src="js/redirect.js"></script>
 <script>
-// Hamburger menu toggle
-document.getElementById('menuToggle').onclick = function() {
-    var nav = document.getElementById('mainNav');
-    nav.classList.toggle('active');
+// Hamburger menu toggle and close button
+const menuToggle = document.getElementById('menuToggle');
+const nav = document.getElementById('mainNav');
+let menuOpen = false;
+
+function setMenuIcon() {
+    if (menuOpen) {
+        menuToggle.classList.add('close');
+        menuToggle.innerHTML = '<span style="display:inline-block;width:40px;height:40px;line-height:40px;text-align:center;font-size:2rem;">&times;</span>';
+        menuToggle.setAttribute('aria-label', 'Close menu');
+    } else {
+        menuToggle.classList.remove('close');
+        menuToggle.innerHTML = '&#9776;';
+        menuToggle.setAttribute('aria-label', 'Open menu');
+    }
+}
+
+menuToggle.onclick = function() {
+    menuOpen = !menuOpen;
+    nav.classList.toggle('active', menuOpen);
+    setMenuIcon();
 };
+
+// Also close menu if clicking the close button when open
+menuToggle.addEventListener('click', function() {
+    if (menuOpen) {
+        nav.classList.add('active');
+    } else {
+        nav.classList.remove('active');
+    }
+});
+
+// Optional: close menu if clicking outside nav (on overlay)
+document.addEventListener('click', function(e) {
+    if (menuOpen && !nav.contains(e.target) && e.target !== menuToggle) {
+        menuOpen = false;
+        nav.classList.remove('active');
+        setMenuIcon();
+    }
+});
 </script>
 </body>
 </html>
