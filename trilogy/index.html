@@ -134,16 +134,19 @@
                 border: 2px solid #222;
                 border-radius: 50%;
                 color: #222;
-                font-size: 2rem;
                 width: 44px;
                 height: 44px;
                 text-align: center;
-                line-height: 40px;
+                line-height: 44px;
                 box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-                position: fixed;
-                top: 1.2rem;
-                right: 1.2rem;
+                position: absolute;
+                top: 0rem;
+                right: 0.4rem;
                 margin-left: 0;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 0;
             }
         }
         main {
@@ -461,11 +464,24 @@ let menuOpen = false;
 function setMenuIcon() {
     if (menuOpen) {
         menuToggle.classList.add('close');
-        menuToggle.innerHTML = '<span style="display:inline-block;width:40px;height:40px;line-height:40px;text-align:center;font-size:2rem;">&times;</span>';
+        menuToggle.innerHTML = `
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="14" cy="14" r="13" stroke="#222" stroke-width="2" fill="#fff"/>
+                <line x1="9" y1="9" x2="19" y2="19" stroke="#222" stroke-width="2" stroke-linecap="round"/>
+                <line x1="19" y1="9" x2="9" y2="19" stroke="#222" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+        `;
         menuToggle.setAttribute('aria-label', 'Close menu');
     } else {
         menuToggle.classList.remove('close');
-        menuToggle.innerHTML = '&#9776;';
+        menuToggle.innerHTML = `
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="14" cy="14" r="13" stroke="#222" stroke-width="2" fill="#fff"/>
+                <rect x="8" y="12" width="12" height="2" rx="1" fill="#222"/>
+                <rect x="8" y="8" width="12" height="2" rx="1" fill="#222"/>
+                <rect x="8" y="16" width="12" height="2" rx="1" fill="#222"/>
+            </svg>
+        `;
         menuToggle.setAttribute('aria-label', 'Open menu');
     }
 }
