@@ -6,6 +6,111 @@
     <title>HEDZ Forex Trilogy</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: #f8f9fa;
+            margin: 0;
+            color: #222;
+        }
+        header {
+            background: #222;
+            color: #fff;
+            padding: 1rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-decoration: none;
+            color: #fff;
+        }
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin-left: 2rem;
+            font-size: 1rem;
+            transition: color 0.2s;
+        }
+        nav a:hover {
+            color: #ffd700;
+        }
+        main {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 2.5rem;
+            letter-spacing: 2px;
+        }
+        .books-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 2rem;
+        }
+        .book-container {
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: box-shadow 0.2s;
+        }
+        .book-container:hover {
+            box-shadow: 0 4px 24px rgba(0,0,0,0.12);
+        }
+        .book-image {
+            margin-bottom: 1.5rem;
+        }
+        .book-image img {
+            width: 180px;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+            transition: transform 0.2s;
+        }
+        .book-image img:hover {
+            transform: scale(1.05);
+        }
+        .book-info h2 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            text-align: center;
+        }
+        .book-info p {
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        .buy-now-button {
+            display: inline-block;
+            background: #ffd700;
+            color: #222;
+            padding: 0.7rem 1.5rem;
+            border-radius: 6px;
+            font-weight: bold;
+            text-decoration: none;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.07);
+            transition: background 0.2s;
+        }
+        .buy-now-button:hover {
+            background: #ffb700;
+        }
+        footer {
+            background: #222;
+            color: #fff;
+            text-align: center;
+            padding: 1rem 0;
+            margin-top: 3rem;
+        }
+    </style>
 </head>
 <body>
 
@@ -21,52 +126,47 @@
 
 <main>
     <h1>HEDZ Forex Trilogy</h1>
+    <div class="books-grid">
+        <!-- Book 1: Foundation -->
+        <div class="book-container">
+            <div class="book-image">
+                <a href="images/foundation-front.jpg" data-lightbox="foundation" data-title="Front Cover">
+                    <img src="images/foundation-front.jpg" alt="Foundation Front Cover">
+                </a>
+            </div>
+            <div class="book-info">
+                <h2>The Foundation of Forex Trading</h2>
+                <p>Learn the core principles of Forex trading, laying a professional groundwork for markets, money, and methodology.</p>
+                <a href="redirect.html?book=foundation" class="buy-now-button">Buy Now</a>
+            </div>
+        </div>
 
-    <!-- Book 1: Foundation -->
-    <div class="book-container">
-        <div class="book-image">
-            <a href="images/foundation-front.jpg" data-lightbox="foundation" data-title="Front Cover">
-                <img src="images/foundation-front.jpg" alt="Foundation Front Cover">
-            </a>
-            <a href="images/foundation-back.jpg" data-lightbox="foundation" data-title="Back Cover"></a>
-            <a href="images/foundation-sample1.jpg" data-lightbox="foundation" data-title="Sample Page"></a>
+        <!-- Book 2: Psychology -->
+        <div class="book-container">
+            <div class="book-image">
+                <a href="images/psychology-front.jpg" data-lightbox="psychology" data-title="Front Cover">
+                    <img src="images/psychology-front.jpg" alt="Psychology Front Cover">
+                </a>
+            </div>
+            <div class="book-info">
+                <h2>The Psychology of Forex Trading</h2>
+                <p>Master the mental game: control stress, bias, and instincts that influence every trading decision.</p>
+                <a href="redirect.html?book=psychology" class="buy-now-button">Buy Now</a>
+            </div>
         </div>
-        <div class="book-info">
-            <h2>The Foundation of Forex Trading</h2>
-            <p>Learn the core principles of Forex trading, laying a professional groundwork for markets, money, and methodology.</p>
-            <a href="redirect.html?book=foundation" class="buy-now-button">Buy Now</a>
-        </div>
-    </div>
 
-    <!-- Book 2: Psychology -->
-    <div class="book-container">
-        <div class="book-image">
-            <a href="images/psychology-front.jpg" data-lightbox="psychology" data-title="Front Cover">
-                <img src="images/psychology-front.jpg" alt="Psychology Front Cover">
-            </a>
-            <a href="images/psychology-back.jpg" data-lightbox="psychology" data-title="Back Cover"></a>
-            <a href="images/psychology-sample1.jpg" data-lightbox="psychology" data-title="Sample Page"></a>
-        </div>
-        <div class="book-info">
-            <h2>The Psychology of Forex Trading</h2>
-            <p>Master the mental game: control stress, bias, and instincts that influence every trading decision.</p>
-            <a href="redirect.html?book=psychology" class="buy-now-button">Buy Now</a>
-        </div>
-    </div>
-
-    <!-- Book 3: Strategy -->
-    <div class="book-container">
-        <div class="book-image">
-            <a href="images/strategy-front.jpg" data-lightbox="strategy" data-title="Front Cover">
-                <img src="images/strategy-front.jpg" alt="Strategy Front Cover">
-            </a>
-            <a href="images/strategy-back.jpg" data-lightbox="strategy" data-title="Back Cover"></a>
-            <a href="images/strategy-sample1.jpg" data-lightbox="strategy" data-title="Sample Page"></a>
-        </div>
-        <div class="book-info">
-            <h2>The Strategy of Forex Trading</h2>
-            <p>Learn advanced strategies and methods that turn knowledge into actionable trading success.</p>
-            <a href="redirect.html?book=strategy" class="buy-now-button">Buy Now</a>
+        <!-- Book 3: Strategy -->
+        <div class="book-container">
+            <div class="book-image">
+                <a href="images/strategy-front.jpg" data-lightbox="strategy" data-title="Front Cover">
+                    <img src="images/strategy-front.jpg" alt="Strategy Front Cover">
+                </a>
+            </div>
+            <div class="book-info">
+                <h2>The Strategy of Forex Trading</h2>
+                <p>Learn advanced strategies and methods that turn knowledge into actionable trading success.</p>
+                <a href="redirect.html?book=strategy" class="buy-now-button">Buy Now</a>
+            </div>
         </div>
     </div>
 </main>
