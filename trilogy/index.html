@@ -21,6 +21,34 @@
             justify-content: space-between;
             box-shadow: 0 6px 24px rgba(0,0,0,0.22);
         }
+        main {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        .books-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 2rem;
+            padding: 0 1rem;
+        }
+        nav {
+            padding: 0 1rem;
+        }
+        @media (max-width: 700px) {
+            header {
+                padding: 0.25rem 1rem;
+            }
+            main {
+                padding: 0 1rem;
+            }
+            .books-grid {
+                padding: 0 1rem;
+            }
+            nav {
+                padding: 1rem 1rem;
+            }
+        }
         .logo img {
             height: 32px;
             vertical-align: middle;
