@@ -455,17 +455,17 @@
         lightboxImg.style.transformOrigin = `${originX}% ${originY}%`;
       }
 
-      // --- Close on tap for mobile ---
-      lightboxImg.addEventListener('touchend', function(e) {
-        // If it's a tap (not swipe), close
-        if (e.changedTouches.length === 1 && (!touchStartX || Math.abs(e.changedTouches[0].clientX - touchStartX) < 10)) {
-          closeLightbox();
-        }
+      // --- Close on tap/click on overlay only ---
+      lightbox.addEventListener('click', function(e) {
+        // Only close if click/tap is on overlay, not image or controls
+        if (e.target === lightbox) closeLightbox();
       });
-
-      // --- Close on left click for desktop ---
+      // Prevent image click/tap from closing
       lightboxImg.addEventListener('click', function(e) {
-        if (e.button === 0) closeLightbox();
+        e.stopPropagation();
+      });
+      lightboxImg.addEventListener('touchend', function(e) {
+        e.stopPropagation();
       });
 
       window.addEventListener("keydown", e => {
