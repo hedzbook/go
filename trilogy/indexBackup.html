@@ -66,13 +66,33 @@
                 padding: 0;
             }
             nav {
-                padding: 1rem 1rem;
+                flex-direction: column;
+                align-items: flex-start;
+                position: fixed;
+                top: 56px; /* height of header, so menu starts below header */
+                left: 0;
+                width: 100vw;
+                height: calc(100vh - 56px);
+                background: #fff;
+                box-shadow: 0 6px 24px rgba(0,0,0,0.22);
+                padding: 2.5rem 2.5rem 2rem 2.5rem;
+                display: none;
+                z-index: 1000;
+            }
+            nav.active {
+                display: flex;
+            }
+            nav a {
+                margin: 1.2rem 0 0 2.5rem;
+                font-size: 1.4rem;
+                font-weight: bold;
             }
             .menu-toggle {
                 position: absolute;
                 right: 0.4rem;
                 top: 0rem;
                 margin-left: 0;
+                color: rgb(218,0,17);
             }
         }
         .logo img {
@@ -106,24 +126,47 @@
             nav {
                 flex-direction: column;
                 align-items: flex-start;
-                position: absolute;
-                top: 60px;
+                position: fixed;
+                top: 0;
                 left: 0;
                 width: 100vw;
+                height: 100vh;
                 background: #fff;
                 box-shadow: 0 6px 24px rgba(0,0,0,0.22);
-                padding: 1rem 2rem;
+                padding: 3rem 2.5rem 2rem 2.5rem;
                 display: none;
+                z-index: 1000;
             }
             nav.active {
                 display: flex;
             }
             nav a {
-                margin: 1rem 0 0 0;
-                font-size: 1.2rem;
+                margin: 1.2rem 0 0 2.5rem;
+                font-size: 1.4rem;
+                font-weight: bold;
             }
             .menu-toggle {
                 display: block;
+                z-index: 1100;
+            }
+            .menu-toggle.close {
+                background: #fff;
+                border: 2px solid #222;
+                border-radius: 50%;
+                color: #222;
+                width: 44px;
+                height: 44px;
+                text-align: center;
+                line-height: 44px;
+                box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+                position: absolute;
+                top: 0rem;
+                right: 0.4rem;
+                margin-left: 0;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 0;
             }
         }
         main {
@@ -434,10 +477,17 @@ document.getElementById('imgModal').onclick = function(e) {
 <script src="js/redirect.js"></script>
 <script>
 // Hamburger menu toggle
-document.getElementById('menuToggle').onclick = function() {
-    var nav = document.getElementById('mainNav');
+const menuToggle = document.getElementById('menuToggle');
+const nav = document.getElementById('mainNav');
+menuToggle.onclick = function() {
     nav.classList.toggle('active');
 };
+// Optional: close menu if clicking outside nav (on overlay)
+document.addEventListener('click', function(e) {
+    if (nav.classList.contains('active') && !nav.contains(e.target) && e.target !== menuToggle) {
+        nav.classList.remove('active');
+    }
+});
 </script>
 </body>
 </html>
