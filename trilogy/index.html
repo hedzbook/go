@@ -544,6 +544,33 @@ menuClose.onclick = () => {
   header.classList.remove('menu-fixed');
 };
 
+const navOverlay = document.getElementById('navOverlay');
+
+menuToggle.onclick = () => {
+  nav.classList.add('active');
+  menuToggle.style.display = 'none';
+  menuClose.style.display = 'block';
+  
+  document.body.style.overflow = 'hidden';
+  header.classList.add('menu-fixed');
+
+  navOverlay.classList.add('active'); // show dim overlay
+};
+
+menuClose.onclick = () => {
+  nav.classList.remove('active');
+  menuClose.style.display = 'none';
+  menuToggle.style.display = 'block';
+  
+  document.body.style.overflow = '';
+  header.classList.remove('menu-fixed');
+
+  navOverlay.classList.remove('active'); // hide dim overlay
+};
+
+// Optional: clicking overlay closes the menu
+navOverlay.onclick = () => menuClose.click();
+
 // --- Scroll-hide header (only when not fixed) ---
 let lastScrollY = window.scrollY;
 
