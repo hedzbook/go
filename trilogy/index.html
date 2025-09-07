@@ -822,9 +822,9 @@
     });
 
     function updateTransform() {
-      lightboxImg.style.transform = `scale(${zoom}) translate(${imgOffsetX / zoom}px, ${imgOffsetY / zoom}px)`;
-      lightboxImg.style.transformOrigin = `${originX}% ${originY}%`;
-    }
+  lightboxImg.style.transform = `translate(${imgOffsetX}px, ${imgOffsetY}px) scale(${zoom})`;
+  lightboxImg.style.transformOrigin = `${originX}% ${originY}%`;
+}
 
     // --- Close on tap/click on overlay only ---
     lightbox.addEventListener('click', function (e) {
