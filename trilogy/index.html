@@ -86,6 +86,9 @@
           width: 100vw;
           transition: transform 0.3s cubic-bezier(.4,0,.2,1);
         }
+        main {
+          margin-top: 40px !important;
+        }
         .logo img {
           height: 40px;
           vertical-align: middle;
@@ -480,6 +483,17 @@
         menuToggle.style.display = 'block';
       };
 
+      // Always show hamburger when header is hidden (mobile)
+      function updateMenuToggleVisibility() {
+        if (window.innerWidth <= 700) {
+          if (header.style.transform === 'translateY(-100%)') {
+            menuToggle.style.display = 'block';
+          } else if (!nav.classList.contains('active')) {
+            menuToggle.style.display = 'block';
+          }
+        }
+      }
+
       // Mobile-only scroll direction-based header hide/show
       function isMobile() {
         return window.innerWidth <= 700;
@@ -493,6 +507,7 @@
       function handleScrollMobile() {
         if (!isMobile()) {
           header.style.transform = '';
+          menuToggle.style.display = '';
           return;
         }
         const currentScrollY = window.scrollY;
@@ -503,6 +518,7 @@
           if (scrollDownCount >= 2 && !headerHidden && currentScrollY > 10) {
             header.style.transform = 'translateY(-100%)';
             headerHidden = true;
+            updateMenuToggleVisibility();
           }
         } else if (currentScrollY < lastScrollY) {
           // Scrolling up
@@ -511,6 +527,7 @@
           if (scrollUpCount >= 2 && headerHidden) {
             header.style.transform = 'translateY(0)';
             headerHidden = false;
+            updateMenuToggleVisibility();
           }
         }
         lastScrollY = currentScrollY;
@@ -528,6 +545,9 @@
         if (!isMobile()) {
           header.style.transform = '';
           headerHidden = false;
+          menuToggle.style.display = '';
+        } else {
+          updateMenuToggleVisibility();
         }
       });
 
