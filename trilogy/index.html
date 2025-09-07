@@ -86,9 +86,6 @@
           width: 100vw;
           transition: transform 0.3s cubic-bezier(.4,0,.2,1);
         }
-        main {
-          margin-top: 60px !important;
-        }
         .logo img {
           height: 40px;
           vertical-align: middle;
@@ -97,17 +94,14 @@
           font-size: 0.7rem;
         }
         .menu-toggle {
-          display: block !important;
+          display: block;
           background: none;
           margin-right: -1.5rem;
           border: none;
           font-size: 2.5rem;
           color: #222;
           cursor: pointer;
-          z-index: 1102;
-          position: fixed;
-          top: 8px;
-          right: 18px;
+          z-index: 1100;
         }
         .menu-close {
           display: none;
@@ -179,6 +173,7 @@
       @media (max-width: 700px) {
         main {
           margin-left: -2px !important;
+          margin-top: 50px !important;
         }
         main h1 {
           font-size: 1.1rem !important;
@@ -486,14 +481,6 @@
         menuToggle.style.display = 'block';
       };
 
-      // Always show hamburger when header is hidden (mobile)
-      function updateMenuToggleVisibility() {
-        if (window.innerWidth <= 700) {
-          // Always show hamburger when header is hidden or nav is not active
-          menuToggle.style.display = 'block';
-        }
-      }
-
       // Mobile-only scroll direction-based header hide/show
       function isMobile() {
         return window.innerWidth <= 700;
@@ -507,7 +494,6 @@
       function handleScrollMobile() {
         if (!isMobile()) {
           header.style.transform = '';
-          menuToggle.style.display = '';
           return;
         }
         const currentScrollY = window.scrollY;
@@ -518,7 +504,6 @@
           if (scrollDownCount >= 2 && !headerHidden && currentScrollY > 10) {
             header.style.transform = 'translateY(-100%)';
             headerHidden = true;
-            updateMenuToggleVisibility();
           }
         } else if (currentScrollY < lastScrollY) {
           // Scrolling up
@@ -527,7 +512,6 @@
           if (scrollUpCount >= 2 && headerHidden) {
             header.style.transform = 'translateY(0)';
             headerHidden = false;
-            updateMenuToggleVisibility();
           }
         }
         lastScrollY = currentScrollY;
@@ -545,9 +529,6 @@
         if (!isMobile()) {
           header.style.transform = '';
           headerHidden = false;
-          menuToggle.style.display = '';
-        } else {
-          updateMenuToggleVisibility();
         }
       });
 
