@@ -91,7 +91,6 @@
           display: block;
           background: none;
           margin-right: -1.5rem;
-          margin-top: -0.3rem;
           border: none;
           font-size: 2.5rem;
           color: #222;
@@ -101,8 +100,8 @@
         .menu-close {
           display: none;
           position: absolute;
-          right: 1.1rem;
-          top: 0.5rem;
+          right: 0.7rem;
+          top: 0.7rem;
           background: #fff;
           border: 2px solid #222;
           color: #222;
@@ -575,37 +574,33 @@
         }
       });
       window.addEventListener('mouseup', function() {
-        if (!isMobile()) {
-          header.style.transform = '';
-          menuToggle.style.display = '';
-          return;
+        if (isDragging) {
+          isDragging = false;
+          lightboxImg.style.cursor = '';
         }
-        const currentScrollY = window.scrollY;
-        if (currentScrollY > lastScrollY) {
-          // Scrolling down
-          scrollDownCount++;
-          scrollUpCount = 0;
-          if (scrollDownCount >= 3 && !headerHidden) {
-            header.style.transform = 'translateY(-100%)';
-            headerHidden = true;
-            scrollDownCount = 0;
-            scrollUpCount = 0;
-            updateMenuToggleVisibility();
-          }
-        } else if (currentScrollY < lastScrollY) {
-          // Scrolling up
-          scrollUpCount++;
-          scrollDownCount = 0;
-          if (scrollUpCount >= 3 && headerHidden) {
-            header.style.transform = 'translateY(0)';
-            headerHidden = false;
-            scrollDownCount = 0;
-            scrollUpCount = 0;
-            updateMenuToggleVisibility();
-          }
+      });
+
+      // --- Mobile touch-drag panning ---
+      lightboxImg.addEventListener('touchstart', function(e) {
+        if (zoom > 1 && e.touches.length === 1) {
+          isDragging = true;
+          dragStartX = e.touches[0].clientX;
+          dragStartY = e.touches[0].clientY;
         }
-        lastScrollY = currentScrollY;
-        ticking = false;
+      });
+      lightboxImg.addEventListener('touchmove', function(e) {
+        if (isDragging && zoom > 1 && e.touches.length === 1) {
+          imgOffsetX += (e.touches[0].clientX - dragStartX);
+          imgOffsetY += (e.touches[0].clientY - dragStartY);
+          dragStartX = e.touches[0].clientX;
+          dragStartY = e.touches[0].clientY;
+          updateTransform();
+        }
+      });
+      lightboxImg.addEventListener('touchend', function(e) {
+        isDragging = false;
+      });
+
       function updateTransform() {
         lightboxImg.style.transform = `scale(${zoom}) translate(${imgOffsetX/zoom}px, ${imgOffsetY/zoom}px)`;
         lightboxImg.style.transformOrigin = `${originX}% ${originY}%`;
