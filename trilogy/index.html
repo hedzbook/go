@@ -278,11 +278,11 @@ nav {
   flex-direction: column;
   align-items: flex-start;
   position: fixed;
-  top: 50%;
+  top: 48px;               /* just below header */
   left: 50%;
   width: 75vw;             /* 75% of viewport width */
-  max-width: 400px;        /* optional, for very large phones */
-  height: 75vh;            /* 75% of viewport height */
+  max-width: 400px;
+  height: calc(100vh - 48px);  /* full height minus header */
   background: #fff;
   box-shadow: 0 6px 24px rgba(0,0,0,0.22);
   padding: 2.5rem;
@@ -290,10 +290,9 @@ nav {
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   z-index: 1000;
-  border-radius: 12px;     /* optional for nicer look */
-  transform: translate(-50%, -50%); /* center horizontally and vertically */
+  border-radius: 12px;
+  transform: translateX(-50%); /* center horizontally only */
 }
-
 #navOverlay {
   position: fixed;
   top: 0;
