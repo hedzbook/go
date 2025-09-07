@@ -435,12 +435,27 @@
 
       // Buy Now button country-aware redirect (simplified)
       function getAmazonUrl(countryCode, asin) {
+        // Map country code to Amazon marketplace domain
         let domain = 'com';
         switch (countryCode) {
-          case 'UK': domain = 'co.uk'; break;
-          case 'CA': domain = 'ca'; break;
-          case 'IN': domain = 'in'; break;
-          case 'AU': domain = 'com.au'; break;
+          case 'UK': domain = 'co.uk'; break;      // United Kingdom
+          case 'DE': domain = 'de'; break;         // Germany
+          case 'FR': domain = 'fr'; break;         // France
+          case 'ES': domain = 'es'; break;         // Spain
+          case 'IT': domain = 'it'; break;         // Italy
+          case 'NL': domain = 'nl'; break;         // Netherlands
+          case 'JP': domain = 'co.jp'; break;      // Japan
+          case 'CA': domain = 'ca'; break;         // Canada
+          case 'BR': domain = 'com.br'; break;     // Brazil
+          case 'MX': domain = 'com.mx'; break;     // Mexico
+          case 'AU': domain = 'com.au'; break;     // Australia
+          case 'IN': domain = 'in'; break;         // India
+          case 'TR': domain = 'com.tr'; break;     // Turkey
+          case 'SG': domain = 'sg'; break;         // Singapore
+          case 'AE': domain = 'ae'; break;         // United Arab Emirates
+          case 'SA': domain = 'sa'; break;         // Saudi Arabia
+          case 'SE': domain = 'se'; break;         // Sweden
+          case 'PL': domain = 'pl'; break;         // Poland
         }
         return `https://www.amazon.${domain}/dp/${asin}`;
       }
