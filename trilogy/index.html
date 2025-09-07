@@ -97,14 +97,17 @@
           font-size: 0.7rem;
         }
         .menu-toggle {
-          display: block;
+          display: block !important;
           background: none;
           margin-right: -1.5rem;
           border: none;
           font-size: 2.5rem;
           color: #222;
           cursor: pointer;
-          z-index: 1100;
+          z-index: 1102;
+          position: fixed;
+          top: 8px;
+          right: 18px;
         }
         .menu-close {
           display: none;
@@ -486,11 +489,8 @@
       // Always show hamburger when header is hidden (mobile)
       function updateMenuToggleVisibility() {
         if (window.innerWidth <= 700) {
-          if (header.style.transform === 'translateY(-100%)') {
-            menuToggle.style.display = 'block';
-          } else if (!nav.classList.contains('active')) {
-            menuToggle.style.display = 'block';
-          }
+          // Always show hamburger when header is hidden or nav is not active
+          menuToggle.style.display = 'block';
         }
       }
 
