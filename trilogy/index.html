@@ -84,7 +84,9 @@
   left: 0;
   right: 0;
   z-index: 1000;
-  transition: transform 0.4s ease-in-out;
+  transform: translateY(0);
+  transition: none; /* no delay — direct control by JS */
+  will-change: transform;
         }
         header.hide {
   transform: translateY(-100%);
