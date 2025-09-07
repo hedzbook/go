@@ -45,6 +45,12 @@
         position: sticky;
         top: 0;
         z-index: 1101;
+         transition: transform 0.35s cubic-bezier(.4,0,.2,1), opacity 0.35s cubic-bezier(.4,0,.2,1);
+        }
+        header.hide {
+          transform: translateY(-100%);
+          opacity: 0;
+          pointer-events: none;
       }
       .logo {
         margin-left: -1rem;
@@ -473,6 +479,43 @@
         menuToggle.style.display = 'block';
       };
 
+        // --- Header hide/show on scroll ---
+        let lastScrollY = window.scrollY;
+        let scrollDownCount = 0;
+        let scrollUpCount = 0;
+        let headerHidden = false;
+        const header = document.querySelector('header');
+        let ticking = false;
+        function handleScroll() {
+          const currentY = window.scrollY;
+          if (currentY > lastScrollY) {
+            // Scrolling down
+            scrollDownCount++;
+            scrollUpCount = 0;
+            if (scrollDownCount >= 2 && !headerHidden) {
+              header.classList.add('hide');
+              headerHidden = true;
+              scrollDownCount = 0;
+            }
+          } else if (currentY < lastScrollY) {
+            // Scrolling up
+            scrollUpCount++;
+            scrollDownCount = 0;
+            if (scrollUpCount >= 2 && headerHidden) {
+              header.classList.remove('hide');
+              headerHidden = false;
+              scrollUpCount = 0;
+            }
+          }
+          lastScrollY = currentY;
+          ticking = false;
+        }
+        window.addEventListener('scroll', function() {
+          if (!ticking) {
+            window.requestAnimationFrame(handleScroll);
+            ticking = true;
+          }
+        });
       // Buy Now button country-aware redirect (simplified)
       function getAmazonUrl(countryCode, asin) {
         // Map country code to Amazon marketplace domain
