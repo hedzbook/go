@@ -5,35 +5,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HEDZ Forex Trilogy</title>
     <style>
-      html, body {
-        height: 100%;
-      }
+      /* =====================
+         Base Styles
+      ===================== */
+      html, body { height: 100%; }
       body {
         display: flex;
         flex-direction: column;
         min-height: 100vh;
-      }
-      main {
-        flex: 1;
-      }
-      .book-prices {
-        font-size: 1.05rem;
-        line-height: 1.5;
-      }
-      .book-format {
-        font-weight: 600;
-        letter-spacing: 0.5px;
-      }
-      .book-price {
-        font-weight: bold;
-        color: #222;
-      }
-      body {
         font-family: 'Segoe UI', Arial, sans-serif;
         background: #F9F8F4;
         margin: 0;
         color: #222;
       }
+      main { flex: 1; }
+      .intro {
+        text-align: justify;
+        width: 100%;
+        padding-bottom: 2rem;
+        font-size: 1.1rem;
+      }
+      h1 {
+        text-align: center;
+        margin-bottom: 2rem;
+        font-size: 2.5rem;
+        letter-spacing: 2px;
+      }
+      /* =====================
+         Header & Navigation
+      ===================== */
       header {
         background: #fff;
         color: #222;
@@ -46,14 +46,11 @@
         top: 0;
         z-index: 1101;
       }
-      .logo {
-        margin-left: -1rem;
-      }
+      .logo { margin-left: -1rem; }
       .logo img {
         height: 50px;
         vertical-align: middle;
       }
-      /* Desktop nav */
       nav {
         display: flex;
         align-items: center;
@@ -66,168 +63,16 @@
         font-weight: bold;
         transition: color 0.2s;
       }
-      nav a:hover {
-        color: #ffd700;
-      }
-      /* Hide hamburger by default */
-      .menu-toggle,
-      .menu-close {
-        display: none;
-      }
-      /* Mobile nav */
-      @media (max-width: 700px) {
-        header {
-          height: 40px;
-          padding: 0.25rem 2rem;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 1000;
-  transform: translateY(0);
-  transition: none; /* no delay — direct control by JS */
-  will-change: transform;
-        }
-        header.hide {
-  transform: translateY(-100%);
-}
-        .logo img {
-          height: 40px;
-          vertical-align: middle;
-        }
-        footer {
-          font-size: 0.7rem;
-        }
-        .menu-toggle {
-          display: block;
-          background: none;
-          margin-right: -1.5rem;
-          border: none;
-          font-size: 2.5rem;
-          color: #222;
-          cursor: pointer;
-          z-index: 1100;
-        }
-        .menu-close {
-          display: none;
-          position: absolute;
-          right: 0.7rem;
-          top: 0.7rem;
-          background: #fff;
-          border: 2px solid #222;
-          color: #222;
-          border-radius: 50%;
-          width: 32px;
-          height: 32px;
-          font-size: 1rem;
-          cursor: pointer;
-          line-height: 28px;
-          z-index: 1100;
-        }
-        nav {
-          flex-direction: column;
-          align-items: flex-end;
-          position: fixed;
-          top: 51px;
-          right: 0;
-          width: 100vw;
-          height: calc(100vh - 51px);
-          background: #fff;
-          box-shadow: 0 6px 24px rgba(0,0,0,0.22);
-          padding: 2.5rem;
-          display: none;
-          z-index: 1000;
-        }
-        nav a {
-          text-align: left;
-        }
-        nav.active {
-          display: flex;
-        }
-        nav a {
-          margin: 1.2rem 0;
-          font-size: 1.4rem;
-        }
-        /* Lightbox mobile tweaks */
-        .lightbox .prev,
-        .lightbox .next {
-          font-size: 2.2rem;
-          padding: 0 8px;
-          z-index: 3100;
-        }
-        .lightbox .prev { left: 15px; }
-        .lightbox .next { right: 15px; }
-        .lightbox .close {
-          font-size: 2rem;
-          top: 10px;
-          right: 15px;
-          z-index: 3101;
-        }
-      }
+      nav a:hover { color: #ffd700; }
+      .menu-toggle, .menu-close { display: none; }
+      /* =====================
+         Books Grid & Cards
+      ===================== */
       main {
         max-width: 1200px;
-        margin: 5rem auto -1.7rem;  /* top | sides | bottom */
+        margin: 5rem auto -1.7rem; /* top | sides | bottom */
         padding: 0 1rem;
       }
-      h1 {
-        text-align: center;
-        margin-bottom: 2rem;
-        font-size: 2.5rem;
-        letter-spacing: 2px;
-      }
-      @media (max-width: 700px) {
-        main {
-          margin-left: -2px !important;
-        }
-        main h1 {
-          font-size: 1.1rem !important;
-        }
-        main .intro {
-          font-size: 0.88rem !important;
-        }
-        main .book-title {
-          font-size: 0.9rem !important;
-        }
-        main .book-subtitle {
-          font-size: 0.8rem !important;
-        }
-        main .book-desc {
-          font-size: 0.71rem !important;
-        }
-        main .buy-now-button {
-          font-size: 0.7rem !important;
-          padding: 0.5rem 1rem !important;
-        }
-        main .learn-more-button {
-          font-size: 0.54rem !important;
-          padding: 0.5rem 1rem !important;
-        }
-        main .books-grid {
-          gap: 1.2rem !important;
-        }
-        nav a {
-          font-size: 1.1rem !important;
-        }
-        .book-prices {
-          font-size: 0.7rem !important;
-          line-height: 1.7;
-        }
-        .book-format {
-          font-weight: 250 !important;
-          letter-spacing: 0.5px;
-        }
-        .book-price {
-          font-weight: bold !important;
-          color: #222 !important;
-        }
-      }
-      .intro {
-        text-align: justify;
-        width: 100%;
-        padding-bottom: 2rem;
-        font-size: 1.1rem;
-      }
-      /* Books grid */
       .books-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(325px, 1fr));
@@ -253,9 +98,7 @@
         transition: transform 0.2s;
         cursor: pointer;
       }
-      .book-image img:hover {
-        transform: scale(1.05);
-      }
+      .book-image img:hover { transform: scale(1.05); }
       .book-title {
         font-weight: bold;
         text-align: center;
@@ -267,8 +110,21 @@
         text-align: center;
         margin-bottom: 0.5rem;
       }
-      .book-desc {
-        text-align: justify;
+      .book-desc { text-align: justify; }
+      /* =====================
+         Book Prices & Buttons
+      ===================== */
+      .book-prices {
+        font-size: 1.05rem;
+        line-height: 1.5;
+      }
+      .book-format {
+        font-weight: 600;
+        letter-spacing: 0.5px;
+      }
+      .book-price {
+        font-weight: bold;
+        color: #222;
       }
       .buy-now-button {
         display: inline-block;
@@ -284,9 +140,7 @@
         margin-bottom: 0.5rem;
         margin-top: 0;
       }
-      .buy-now-button:hover, .learn-more-button:hover {
-        background: #ffb700;
-      }
+      .buy-now-button:hover, .learn-more-button:hover { background: #ffb700; }
       .learn-more-button {
         display: inline-block;
         background: none;
@@ -301,6 +155,9 @@
         margin-bottom: 0.5rem;
         margin-top: 0;
       }
+      /* =====================
+         Footer
+      ===================== */
       footer {
         background: #F9F8F4;
         color: #222;
@@ -309,7 +166,9 @@
         margin-top: 3rem;
         box-shadow: 0 6px 24px rgba(0,0,0,0.22);
       }
-      /* Lightbox */
+      /* =====================
+         Lightbox Styles
+      ===================== */
       .lightbox {
         display: none;
         position: fixed;
@@ -358,8 +217,138 @@
       }
       .lightbox .prev { left: 7px; }
       .lightbox .next { right: 10px; }
-      .lightbox button:hover {
-        color: #ffd700;
+      .lightbox button:hover { color: #ffd700; }
+      /* =====================
+         Responsive Styles (Mobile)
+         All @media (max-width: 700px) in one block
+      ===================== */
+      @media (max-width: 700px) {
+        /* Header & Navigation */
+        header {
+          height: 40px;
+          padding: 0.25rem 2rem;
+          position: fixed;
+          top: 0;
+          left: 0;
+          right: 0;
+          z-index: 1000;
+          transform: translateY(0);
+          transition: none; /* no delay — direct control by JS */
+          will-change: transform;
+        }
+        header.hide { transform: translateY(-100%); }
+        .logo img {
+          height: 40px;
+          vertical-align: middle;
+        }
+        .menu-toggle {
+          display: block;
+          background: none;
+          margin-right: -1.5rem;
+          border: none;
+          font-size: 2.5rem;
+          color: #222;
+          cursor: pointer;
+          z-index: 1100;
+        }
+        .menu-close {
+          display: none;
+          position: absolute;
+          right: 0.7rem;
+          top: 0.7rem;
+          background: #fff;
+          border: 2px solid #222;
+          color: #222;
+          border-radius: 50%;
+          width: 32px;
+          height: 32px;
+          font-size: 1rem;
+          cursor: pointer;
+          line-height: 28px;
+          z-index: 1100;
+        }
+        nav {
+          flex-direction: column;
+          align-items: flex-end;
+          position: fixed;
+          top: 51px;
+          right: 0;
+          width: 100vw;
+          height: calc(100vh - 51px);
+          background: #fff;
+          box-shadow: 0 6px 24px rgba(0,0,0,0.22);
+          padding: 2.5rem;
+          display: none;
+          z-index: 1000;
+        }
+        nav a {
+          text-align: left;
+          margin: 1.2rem 0;
+          font-size: 1.1rem !important;
+        }
+        nav.active { display: flex; }
+        /* Main & Books Grid */
+        main {
+          margin-left: -2px !important;
+        }
+        main h1 {
+          font-size: 1.1rem !important;
+        }
+        main .intro {
+          font-size: 0.88rem !important;
+        }
+        main .book-title {
+          font-size: 0.9rem !important;
+        }
+        main .book-subtitle {
+          font-size: 0.8rem !important;
+        }
+        main .book-desc {
+          font-size: 0.71rem !important;
+        }
+        main .buy-now-button {
+          font-size: 0.7rem !important;
+          padding: 0.5rem 1rem !important;
+        }
+        main .learn-more-button {
+          font-size: 0.54rem !important;
+          padding: 0.5rem 1rem !important;
+        }
+        main .books-grid {
+          gap: 1.2rem !important;
+        }
+        /* Book Prices */
+        .book-prices {
+          font-size: 0.7rem !important;
+          line-height: 1.7;
+        }
+        .book-format {
+          font-weight: 250 !important;
+          letter-spacing: 0.5px;
+        }
+        .book-price {
+          font-weight: bold !important;
+          color: #222 !important;
+        }
+        /* Footer */
+        footer {
+          font-size: 0.7rem;
+        }
+        /* Lightbox Mobile Tweaks */
+        .lightbox .prev,
+        .lightbox .next {
+          font-size: 2.2rem;
+          padding: 0 8px;
+          z-index: 3100;
+        }
+        .lightbox .prev { left: 15px; }
+        .lightbox .next { right: 15px; }
+        .lightbox .close {
+          font-size: 2rem;
+          top: 10px;
+          right: 15px;
+          z-index: 3101;
+        }
       }
     </style>
   </head>
