@@ -292,34 +292,34 @@
 }
 
 /* Modal-style nav */
-nav {
-  position: fixed;
-  top: 40px; /* header height */
-  left: 50%;
-  width: 75vw;
-  max-width: 400px;
-  max-height: calc(100vh - 80px); /* leaves 40px margin top/bottom */
-  margin-top: 20px;
-  margin-bottom: 20px;
-  background: #fff;
-  padding: 2rem;
-  box-shadow: 0 6px 24px rgba(0,0,0,0.22);
-  border-radius: 12px;
-  transform: translateX(-50%);
-  display: none;
-  flex-direction: column;
-  overflow-y: auto;
-  z-index: 1000;
-}
-nav.active {
-  display: flex;
-}
-
-nav a {
-  margin: 1rem 0;
-  font-size: 1.1rem;
-  text-align: left;
-}
+        nav {
+          position: fixed;
+          top: 40px; /* header height */
+          left: 50%;
+          width: 75vw;
+          max-width: 400px;
+          max-height: calc(100vh - 100px); /* leaves 40px top, 60px bottom */
+          margin-top: 20px;
+          margin-bottom: 40px;
+          background: #fff;
+          padding: 2rem;
+          box-shadow: 0 6px 24px rgba(0,0,0,0.22);
+          border-radius: 12px;
+          transform: translateX(-50%);
+          display: none;
+          flex-direction: column;
+          overflow-y: auto;
+          z-index: 1000;
+        }
+        nav.active {
+          display: flex;
+        }
+        
+        nav a {
+          margin: 1rem 0;
+          font-size: 1.1rem;
+          text-align: left;
+        }
         /* Main & Books Grid */
         main {
           margin-left: -2px !important;
@@ -394,31 +394,11 @@ nav a {
       <button class="menu-toggle" id="menuToggle" aria-label="Open menu">&#9776;</button>
       <button class="menu-close" id="menuClose" aria-label="Close menu">&#10005;</button>
       <nav id="mainNav">
-        <a href="../">Home</a>
-        <a href="./">Forex Trilogy</a>
-        <a href="../classics">Forex Classics</a>
-        <a href="../ZLCHS">ZLCHS Access</a>
-        <a href="../about">About Author</a>
-        <a href="../">Home</a>
-        <a href="./">Forex Trilogy</a>
-        <a href="../classics">Forex Classics</a>
-        <a href="../ZLCHS">ZLCHS Access</a>
-        <a href="../about">About Author</a>
-        <a href="../">Home</a>
-        <a href="./">Forex Trilogy</a>
-        <a href="../classics">Forex Classics</a>
-        <a href="../ZLCHS">ZLCHS Access</a>
-        <a href="../about">About Author</a>
-        <a href="../">Home</a>
-        <a href="./">Forex Trilogy</a>
-        <a href="../classics">Forex Classics</a>
-        <a href="../ZLCHS">ZLCHS Access</a>
-        <a href="../about">About Author</a>
-        <a href="../">Home</a>
-        <a href="./">Forex Trilogy</a>
-        <a href="../classics">Forex Classics</a>
-        <a href="../ZLCHS">ZLCHS Access</a>
-        <a href="../about">About Author</a>
+  <a href="../">Home</a>
+  <a href="./">Forex Trilogy</a>
+  <a href="../classics">Forex Classics</a>
+  <a href="../ZLCHS">ZLCHS Access</a>
+  <a href="../about">About Author</a>
         <a href="../">Home</a>
         <a href="./">Forex Trilogy</a>
         <a href="../classics">Forex Classics</a>
