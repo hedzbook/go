@@ -291,17 +291,16 @@
   pointer-events: auto;
 }
 
-/* Modal-style nav centering */
-        #navOverlay.active {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-        }
-        nav {
-          position: static;
-          width: 90vw;
-          max-width: 340px;
-          max-height: calc(100vh - 100px);
+/* Modal-style nav */
+          nav {
+          position: fixed;
+          top: 60px; /* header height + extra space */
+          left: 1rem;
+          right: 1rem;
+          width: auto;
+          max-width: none;
+          max-height: calc(100vh - 120px);
+          margin: 0;
           background: #fff;
           padding: 2rem;
           box-shadow: 0 6px 24px rgba(0,0,0,0.22);
@@ -309,7 +308,7 @@
           display: none;
           flex-direction: column;
           overflow-y: auto;
-          z-index: 1001;
+          z-index: 1000;
         }
         nav.active {
           display: flex;
