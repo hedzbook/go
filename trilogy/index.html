@@ -588,6 +588,8 @@
           if (scrollDownCount >= 3 && !headerHidden) {
             header.style.transform = 'translateY(-100%)';
             headerHidden = true;
+            scrollDownCount = 0;
+            scrollUpCount = 0;
             updateMenuToggleVisibility();
           }
         } else if (currentScrollY < lastScrollY) {
@@ -597,6 +599,8 @@
           if (scrollUpCount >= 3 && headerHidden) {
             header.style.transform = 'translateY(0)';
             headerHidden = false;
+            scrollDownCount = 0;
+            scrollUpCount = 0;
             updateMenuToggleVisibility();
           }
         }
