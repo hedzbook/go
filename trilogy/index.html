@@ -689,25 +689,19 @@
       }, { passive: false });
 
 
-let lastScrollY = window.scrollY;
 const header = document.querySelector("header");
-let ticking = false;
+let lastScrollY = window.scrollY;
 
 window.addEventListener("scroll", () => {
-  if (!ticking) {
-    window.requestAnimationFrame(() => {
-      if (window.scrollY > lastScrollY + 15) {
-        // scroll down (buffer 15px)
-        header.classList.add("hide");
-      } else if (window.scrollY < lastScrollY - 15) {
-        // scroll up (buffer 15px)
-        header.classList.remove("hide");
-      }
-      lastScrollY = window.scrollY;
-      ticking = false;
-    });
-    ticking = true;
-  }
+  const currentScrollY = window.scrollY;
+  const diff = currentScrollY - lastScrollY;
+
+  // move header up when scrolling down, down when scrolling up
+  let offset = Math.min(0, Math.max(-header.offsetHeight, parseFloat(header.dataset.offset || 0) - diff));
+
+  header.style.transform = `translateY(${offset}px)`;
+  header.dataset.offset = offset; // save current offset
+  lastScrollY = currentScrollY;
 });
 
     </script>
