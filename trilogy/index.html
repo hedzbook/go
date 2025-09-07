@@ -225,38 +225,29 @@
       @media (max-width: 700px) {
         /* Header & Navigation */
         header {
-            height: 40 px;
-            padding: 0.25 rem 2 rem;
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z - index: 1000;
-            transform: translateY(0);
-            transition: none; /* no delay — direct control by JS */
-            will - change: transform;
+          height: 40px;
+          padding: 0.25rem 2rem;
+          position: fixed;
+          top: 0;
+          left: 0;
+          right: 0;
+          z-index: 1000;
+          transform: translateY(0);
+          transition: none; /* no delay — direct control by JS */
+          will-change: transform;
         }
-        header.hide {
-                transform: translateY(-100 % );
-            }
-            .logo img {
-                height: 40 px;
-                vertical - align: middle;
-            }
-        header.menu - fixed {
-                position: fixed!important;
-                top: 0;
-                left: 0;
-                right: 0;
-                transform: translateY(0) !important;
-            }
-            .menu - toggle {
-                display: block;
-                background: none;
-                margin - right: -1.5 rem;
-                border: none;
-                font - size: 2.5 rem;
-                color: #222;
+        header.hide { transform: translateY(-100%); }
+        .logo img {
+          height: 40px;
+          vertical-align: middle;
+        }
+        .menu-toggle {
+          display: block;
+          background: none;
+          margin-right: -1.5rem;
+          border: none;
+          font-size: 2.5rem;
+          color: #222;
           cursor: pointer;
           z-index: 1100;
         }
