@@ -458,6 +458,36 @@
     </div>
 
     <script>
+      // Mobile header show/hide on scroll direction
+      let lastScrollY = window.scrollY;
+      let ticking = false;
+      function handleHeaderScroll() {
+        const header = document.querySelector('header');
+        const currentScrollY = window.scrollY;
+        if (window.innerWidth <= 700) {
+          if (currentScrollY > lastScrollY && currentScrollY > 40) {
+            // Scrolling down, hide header
+            header.style.transform = 'translateY(-100%)';
+          } else if (currentScrollY < lastScrollY) {
+            // Scrolling up, show header
+            header.style.transform = 'translateY(0)';
+          }
+        } else {
+          header.style.transform = 'translateY(0)';
+        }
+        lastScrollY = currentScrollY;
+        ticking = false;
+      }
+      window.addEventListener('scroll', function() {
+        if (!ticking) {
+          window.requestAnimationFrame(handleHeaderScroll);
+          ticking = true;
+        }
+      });
+      // Always reset header on resize
+      window.addEventListener('resize', function() {
+        document.querySelector('header').style.transform = 'translateY(0)';
+      });
       // nav toggle
       const menuToggle = document.getElementById('menuToggle');
       const menuClose = document.getElementById('menuClose');
