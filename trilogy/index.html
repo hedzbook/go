@@ -458,20 +458,45 @@
     </div>
 
     <script>
-      // nav toggle
-      const menuToggle = document.getElementById('menuToggle');
-      const menuClose = document.getElementById('menuClose');
-      const nav = document.getElementById('mainNav');
-      menuToggle.onclick = () => {
-        nav.classList.add('active');
-        menuToggle.style.display = 'none';
-        menuClose.style.display = 'block';
-      };
-      menuClose.onclick = () => {
-        nav.classList.remove('active');
-        menuClose.style.display = 'none';
-        menuToggle.style.display = 'block';
-      };
+// nav toggle
+const menuToggle = document.getElementById('menuToggle');
+const menuClose = document.getElementById('menuClose');
+const nav = document.getElementById('mainNav');
+const header = document.querySelector("header");
+
+menuToggle.onclick = () => {
+  nav.classList.add('active');
+  header.classList.add('menu-fixed');   // lock header
+  header.style.transform = 'translateY(0)'; // reset position
+  menuToggle.style.display = 'none';
+  menuClose.style.display = 'block';
+};
+
+menuClose.onclick = () => {
+  nav.classList.remove('active');
+  header.classList.remove('menu-fixed'); // restore scroll-hide
+  menuClose.style.display = 'none';
+  menuToggle.style.display = 'block';
+};
+
+// --- Scroll-hide header (only when not fixed) ---
+let lastScrollY = window.scrollY;
+
+window.addEventListener("scroll", () => {
+  if (header.classList.contains("menu-fixed")) return; // skip when menu is open
+
+  const currentScrollY = window.scrollY;
+  const diff = currentScrollY - lastScrollY;
+
+  let offset = Math.min(
+    0,
+    Math.max(-header.offsetHeight, parseFloat(header.dataset.offset || 0) - diff)
+  );
+
+  header.style.transform = `translateY(${offset}px)`;
+  header.dataset.offset = offset;
+  lastScrollY = currentScrollY;
+});
 
       // Buy Now button country-aware redirect (simplified)
       function getAmazonUrl(countryCode, asin) {
@@ -678,22 +703,6 @@
         }
         updateTransform();
       }, { passive: false });
-
-
-const header = document.querySelector("header");
-let lastScrollY = window.scrollY;
-
-window.addEventListener("scroll", () => {
-  const currentScrollY = window.scrollY;
-  const diff = currentScrollY - lastScrollY;
-
-  // move header up when scrolling down, down when scrolling up
-  let offset = Math.min(0, Math.max(-header.offsetHeight, parseFloat(header.dataset.offset || 0) - diff));
-
-  header.style.transform = `translateY(${offset}px)`;
-  header.dataset.offset = offset; // save current offset
-  lastScrollY = currentScrollY;
-});
 
     </script>
   </body>
