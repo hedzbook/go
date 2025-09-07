@@ -79,7 +79,11 @@
         header {
           height: 40px;
           padding: 0.25rem 2rem;
+          transition: transform 0.3s ease;
         }
+        header.hide {
+  transform: translateY(-100%);
+}
         .logo img {
           height: 40px;
           vertical-align: middle;
