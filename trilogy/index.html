@@ -290,6 +290,22 @@
           -webkit-overflow-scrolling: touch;
           z-index: 1000;
         }
+        #navOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.4); /* semi-transparent black */
+  z-index: 900; /* below nav which is 1000 */
+  display: none; /* hidden by default */
+  transition: opacity 0.3s ease;
+  pointer-events: none; /* so clicks pass through when hidden */
+}
+#navOverlay.active {
+  display: block;
+  pointer-events: auto; /* block interaction when visible */
+}
         nav a {
           text-align: left;
           margin: 1.2rem 0;
