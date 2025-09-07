@@ -510,17 +510,22 @@ const header = document.querySelector("header");
 
 menuToggle.onclick = () => {
   nav.classList.add('active');
-  header.classList.add('menu-fixed');   // lock header
-  header.style.transform = 'translateY(0)'; // reset position
   menuToggle.style.display = 'none';
   menuClose.style.display = 'block';
+  
+  // Lock body scroll
+  document.body.style.overflow = 'hidden';
+  header.classList.add('menu-fixed'); // ensure header stays fixed
 };
 
 menuClose.onclick = () => {
   nav.classList.remove('active');
-  header.classList.remove('menu-fixed'); // restore scroll-hide
   menuClose.style.display = 'none';
   menuToggle.style.display = 'block';
+  
+  // Restore body scroll
+  document.body.style.overflow = '';
+  header.classList.remove('menu-fixed');
 };
 
 // --- Scroll-hide header (only when not fixed) ---
