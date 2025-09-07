@@ -575,33 +575,33 @@
         }
       });
       window.addEventListener('mouseup', function() {
-        if (isDragging) {
-          isDragging = false;
-          lightboxImg.style.cursor = '';
+        if (!isMobile()) {
+          header.style.transform = '';
+          menuToggle.style.display = '';
+          return;
         }
-      });
-
-      // --- Mobile touch-drag panning ---
-      lightboxImg.addEventListener('touchstart', function(e) {
-        if (zoom > 1 && e.touches.length === 1) {
-          isDragging = true;
-          dragStartX = e.touches[0].clientX;
-          dragStartY = e.touches[0].clientY;
+        const currentScrollY = window.scrollY;
+        if (currentScrollY > lastScrollY) {
+          // Scrolling down
+          scrollDownCount++;
+          scrollUpCount = 0;
+          if (scrollDownCount >= 3 && !headerHidden) {
+            header.style.transform = 'translateY(-100%)';
+            headerHidden = true;
+            updateMenuToggleVisibility();
+          }
+        } else if (currentScrollY < lastScrollY) {
+          // Scrolling up
+          scrollUpCount++;
+          scrollDownCount = 0;
+          if (scrollUpCount >= 3 && headerHidden) {
+            header.style.transform = 'translateY(0)';
+            headerHidden = false;
+            updateMenuToggleVisibility();
+          }
         }
-      });
-      lightboxImg.addEventListener('touchmove', function(e) {
-        if (isDragging && zoom > 1 && e.touches.length === 1) {
-          imgOffsetX += (e.touches[0].clientX - dragStartX);
-          imgOffsetY += (e.touches[0].clientY - dragStartY);
-          dragStartX = e.touches[0].clientX;
-          dragStartY = e.touches[0].clientY;
-          updateTransform();
-        }
-      });
-      lightboxImg.addEventListener('touchend', function(e) {
-        isDragging = false;
-      });
-
+        lastScrollY = currentScrollY;
+        ticking = false;
       function updateTransform() {
         lightboxImg.style.transform = `scale(${zoom}) translate(${imgOffsetX/zoom}px, ${imgOffsetY/zoom}px)`;
         lightboxImg.style.transformOrigin = `${originX}% ${originY}%`;
