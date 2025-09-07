@@ -691,16 +691,23 @@
 
 let lastScrollY = window.scrollY;
 const header = document.querySelector("header");
+let ticking = false;
 
 window.addEventListener("scroll", () => {
-  if (window.scrollY > lastScrollY + 5) {
-    // scrolling down
-    header.classList.add("hide");
-  } else if (window.scrollY < lastScrollY - 5) {
-    // scrolling up
-    header.classList.remove("hide");
+  if (!ticking) {
+    window.requestAnimationFrame(() => {
+      if (window.scrollY > lastScrollY + 15) {
+        // scroll down (buffer 15px)
+        header.classList.add("hide");
+      } else if (window.scrollY < lastScrollY - 15) {
+        // scroll up (buffer 15px)
+        header.classList.remove("hide");
+      }
+      lastScrollY = window.scrollY;
+      ticking = false;
+    });
+    ticking = true;
   }
-  lastScrollY = window.scrollY;
 });
 
     </script>
