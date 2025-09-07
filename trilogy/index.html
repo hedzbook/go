@@ -79,10 +79,6 @@
         header {
           height: 40px;
           padding: 0.25rem 2rem;
-          transition: transform 0.3s ease;
-        }
-        header.hide {
-          transform: translateY(-100%);
         }
         .logo img {
           height: 40px;
@@ -682,83 +678,6 @@
         }
         updateTransform();
       }, { passive: false });
-      // -------- Mobile header show/hide (replace your old block with this) --------
-(function() {
-  const header = document.querySelector('header');
-  const navEl = document.getElementById('mainNav'); // used so header won't hide while nav is open
-  let lastScrollY = window.scrollY || 0;
-  const mobileMax = 700;
-  const delta = 8; // minimal px to treat as a real scroll (prevents flicker)
-  let touchStartY = 0;
-
-  function handleShowHide(currentY) {
-    // don't hide header when mobile menu is open
-    if (navEl && navEl.classList.contains('active')) {
-      header.classList.remove('hide');
-      lastScrollY = currentY;
-      return;
-    }
-
-    // always show near top
-    if (currentY <= 40) {
-      header.classList.remove('hide');
-      lastScrollY = currentY;
-      return;
-    }
-
-    // ignore tiny moves
-    if (Math.abs(currentY - lastScrollY) <= delta) return;
-
-    if (currentY > lastScrollY && currentY > 60) {
-      // scrolling down -> hide
-      header.classList.add('hide');
-    } else if (currentY < lastScrollY) {
-      // scrolling up -> show
-      header.classList.remove('hide');
-    }
-
-    lastScrollY = currentY;
-  }
-
-  // scroll listener (passive for performance)
-  window.addEventListener('scroll', () => {
-    if (window.innerWidth > mobileMax) {
-      header.classList.remove('hide');
-      lastScrollY = window.scrollY;
-      return;
-    }
-    handleShowHide(window.scrollY);
-  }, { passive: true });
-
-  // touch events for more immediate mobile feedback
-  window.addEventListener('touchstart', (e) => {
-    if (e.touches && e.touches.length) touchStartY = e.touches[0].clientY;
-  }, { passive: true });
-
-  window.addEventListener('touchmove', (e) => {
-    if (window.innerWidth > mobileMax) return;
-    if (!e.touches || !e.touches.length) return;
-    const touchY = e.touches[0].clientY;
-    const diff = touchStartY - touchY;
-
-    if (Math.abs(diff) > delta) {
-      if (diff > 0 && window.scrollY > 60) {
-        header.classList.add('hide'); // swipe up -> hide
-      } else {
-        header.classList.remove('hide'); // swipe down -> show
-      }
-      // reset baseline for next small move
-      touchStartY = touchY;
-      lastScrollY = window.scrollY;
-    }
-  }, { passive: true });
-
-  // make sure header resets on resize/landscape change
-  window.addEventListener('resize', () => {
-    if (window.innerWidth > mobileMax) header.classList.remove('hide');
-  });
-})();
-
     </script>
   </body>
 </html>
