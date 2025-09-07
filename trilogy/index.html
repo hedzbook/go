@@ -278,19 +278,19 @@
   flex-direction: column;
   align-items: flex-start;
   position: fixed;
-  top: 50%;           /* center vertically */
-  left: 50%;          /* center horizontally */
-  width: 75vw;        /* 75% of viewport width */
-  height: 75vh;       /* 75% of viewport height */
-  transform: translate(-50%, -50%); /* center perfectly */
+  top: 50%;
+  left: 50%;
+  width: 75vw;          /* 75% of viewport width */
+  max-height: 75vh;     /* restrict height */
+  transform: translate(-50%, -50%);
   background: #fff;
   box-shadow: 0 6px 24px rgba(0,0,0,0.22);
-  padding: 2.5rem;
+  padding: 2rem;        /* adjust padding to fit */
   display: none;
-  overflow-y: auto;
+  overflow-y: auto;     /* allow scrolling if content exceeds height */
   -webkit-overflow-scrolling: touch;
   z-index: 1000;
-  border-radius: 12px; /* optional, for rounded edges */
+  border-radius: 12px;
 }
         #navOverlay {
   position: fixed;
