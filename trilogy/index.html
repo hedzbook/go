@@ -295,17 +295,16 @@
           nav {
           position: fixed;
           top: 60px; /* header height + extra space */
-          left: 50%;
-          width: 60vw; /* reduce width for more left/right overlay */
-          max-width: 260px; /* reduce max-width for more left/right overlay */
-          max-height: calc(100vh - 200px); /* keep top/bottom overlay as is */
-          margin-top: 30px;
-          margin-bottom: 70px;
+          left: 1rem;
+          right: 1rem;
+          width: auto;
+          max-width: none;
+          max-height: calc(100vh - 120px);
+          margin: 0;
           background: #fff;
           padding: 2rem;
           box-shadow: 0 6px 24px rgba(0,0,0,0.22);
           border-radius: 12px;
-          transform: translateX(-50%);
           display: none;
           flex-direction: column;
           overflow-y: auto;
