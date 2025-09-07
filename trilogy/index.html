@@ -5,15 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HEDZ Forex Trilogy</title>
     <style>
-      /* Header hide animation for mobile */
-      @media (max-width: 700px) {
-        header {
-          transition: transform 0.35s cubic-bezier(.7,.2,.3,1);
-        }
-        header.hide {
-          transform: translateY(-100%);
-        }
-      }
       html, body {
         height: 100%;
       }
@@ -467,47 +458,7 @@
     </div>
 
     <script>
-      // Mobile header hide/show on swipe logic (improved)
-      (function() {
-        const header = document.querySelector('header');
-        let lastScrollY = window.scrollY;
-        let upSwipes = 0;
-        let downSwipes = 0;
-        let lastDirection = null;
-        function onScroll() {
-          const currentY = window.scrollY;
-          const direction = currentY > lastScrollY ? 'down' : currentY < lastScrollY ? 'up' : lastDirection;
-          if (window.innerWidth <= 700) {
-            if (direction === 'down') {
-              if (lastDirection === 'down') {
-                downSwipes++;
-              } else {
-                downSwipes = 1;
-                upSwipes = 0;
-              }
-              if (downSwipes >= 2) {
-                header.classList.add('hide');
-              }
-            } else if (direction === 'up') {
-              if (lastDirection === 'up') {
-                upSwipes++;
-              } else {
-                upSwipes = 1;
-                downSwipes = 0;
-              }
-              if (upSwipes >= 2) {
-                header.classList.remove('hide');
-              }
-            }
-          } else {
-            header.classList.remove('hide');
-          }
-          lastDirection = direction;
-          lastScrollY = currentY;
-        }
-        window.addEventListener('scroll', onScroll, { passive: true });
-      })();
-  // ...existing code...
+      // nav toggle
       const menuToggle = document.getElementById('menuToggle');
       const menuClose = document.getElementById('menuClose');
       const nav = document.getElementById('mainNav');
