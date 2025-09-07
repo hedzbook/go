@@ -35,16 +35,17 @@
         color: #222;
       }
       header {
-        background: #fff;
-        color: #222;
-        padding: 0.25rem 2rem;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        box-shadow: 0 6px 24px rgba(0,0,0,0.22);
-        position: sticky;
-        top: 0;
-        z-index: 1101;
+  background: #fff;
+  color: #222;
+  padding: 0.25rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 6px 24px rgba(0,0,0,0.22);
+  position: sticky;
+  top: 0;
+  z-index: 1101;
+  transition: transform 0.3s cubic-bezier(.4,0,.2,1);
       }
       .logo {
         margin-left: -1rem;
@@ -79,6 +80,11 @@
         header {
           height: 40px;
           padding: 0.25rem 2rem;
+          position: fixed;
+          left: 0;
+          top: 0;
+          width: 100vw;
+          transition: transform 0.3s cubic-bezier(.4,0,.2,1);
         }
         .logo img {
           height: 40px;
@@ -462,6 +468,7 @@
       const menuToggle = document.getElementById('menuToggle');
       const menuClose = document.getElementById('menuClose');
       const nav = document.getElementById('mainNav');
+      const header = document.querySelector('header');
       menuToggle.onclick = () => {
         nav.classList.add('active');
         menuToggle.style.display = 'none';
@@ -472,6 +479,57 @@
         menuClose.style.display = 'none';
         menuToggle.style.display = 'block';
       };
+
+      // Mobile-only scroll direction-based header hide/show
+      function isMobile() {
+        return window.innerWidth <= 700;
+      }
+      let lastScrollY = window.scrollY;
+      let scrollDownCount = 0;
+      let scrollUpCount = 0;
+      let headerHidden = false;
+      let ticking = false;
+
+      function handleScrollMobile() {
+        if (!isMobile()) {
+          header.style.transform = '';
+          return;
+        }
+        const currentScrollY = window.scrollY;
+        if (currentScrollY > lastScrollY) {
+          // Scrolling down
+          scrollDownCount++;
+          scrollUpCount = 0;
+          if (scrollDownCount >= 2 && !headerHidden && currentScrollY > 10) {
+            header.style.transform = 'translateY(-100%)';
+            headerHidden = true;
+          }
+        } else if (currentScrollY < lastScrollY) {
+          // Scrolling up
+          scrollUpCount++;
+          scrollDownCount = 0;
+          if (scrollUpCount >= 2 && headerHidden) {
+            header.style.transform = 'translateY(0)';
+            headerHidden = false;
+          }
+        }
+        lastScrollY = currentScrollY;
+        ticking = false;
+      }
+
+      window.addEventListener('scroll', function() {
+        if (!ticking) {
+          window.requestAnimationFrame(handleScrollMobile);
+          ticking = true;
+        }
+      });
+
+      window.addEventListener('resize', function() {
+        if (!isMobile()) {
+          header.style.transform = '';
+          headerHidden = false;
+        }
+      });
 
       // Buy Now button country-aware redirect (simplified)
       function getAmazonUrl(countryCode, asin) {
