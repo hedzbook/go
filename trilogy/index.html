@@ -274,33 +274,15 @@
           line-height: 28px;
           z-index: 1100;
         }
-nav {
-  flex-direction: column;
-  align-items: flex-start;
-  position: fixed;
-  top: 48px;               /* just below header */
-  left: 50%;
-  width: 75vw;             /* 75% of viewport width */
-  max-width: 400px;
-  height: calc(100vh - 48px);  /* full height minus header */
-  background: #fff;
-  box-shadow: 0 6px 24px rgba(0,0,0,0.22);
-  padding: 2.5rem;
-  display: none;
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
-  z-index: 1000;
-  border-radius: 12px;
-  transform: translateX(-50%); /* center horizontally only */
-}
+/* Overlay */
 #navOverlay {
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: rgba(0, 0, 0, 0.4);
-  z-index: 900; 
+  background: rgba(0,0,0,0.4);
+  z-index: 900;
   display: none;
   transition: opacity 0.3s ease;
   pointer-events: none;
@@ -308,6 +290,36 @@ nav {
 #navOverlay.active {
   display: block;
   pointer-events: auto;
+}
+
+/* Centered Nav */
+nav {
+  flex-direction: column;
+  align-items: flex-start;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 75vw;        /* 75% of viewport width */
+  max-width: 400px;
+  max-height: 80vh;   /* scrollable if content is tall */
+  background: #fff;
+  padding: 2rem;
+  box-shadow: 0 6px 24px rgba(0,0,0,0.22);
+  border-radius: 12px;
+  transform: translate(-50%, -50%); /* center both vertically & horizontally */
+  display: none;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  z-index: 1000;
+}
+nav.active {
+  display: flex;
+}
+
+nav a {
+  margin: 1rem 0;
+  font-size: 1.1rem;
+  text-align: left;
 }
         /* Main & Books Grid */
         main {
