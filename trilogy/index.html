@@ -467,25 +467,37 @@
     </div>
 
     <script>
-      // Mobile header hide/show on swipe logic
+      // Mobile header hide/show on swipe logic (improved)
       (function() {
         const header = document.querySelector('header');
         let lastScrollY = window.scrollY;
-        let swipeCount = 0;
+        let upSwipes = 0;
+        let downSwipes = 0;
         let lastDirection = null;
         function onScroll() {
           const currentY = window.scrollY;
           const direction = currentY > lastScrollY ? 'down' : currentY < lastScrollY ? 'up' : lastDirection;
-          if (direction !== lastDirection) {
-            swipeCount = 1;
-          } else if (direction === 'down' || direction === 'up') {
-            swipeCount++;
-          }
           if (window.innerWidth <= 700) {
-            if (direction === 'down' && swipeCount >= 2) {
-              header.classList.add('hide');
-            } else if (direction === 'up' && swipeCount >= 2) {
-              header.classList.remove('hide');
+            if (direction === 'down') {
+              if (lastDirection === 'down') {
+                downSwipes++;
+              } else {
+                downSwipes = 1;
+                upSwipes = 0;
+              }
+              if (downSwipes >= 2) {
+                header.classList.add('hide');
+              }
+            } else if (direction === 'up') {
+              if (lastDirection === 'up') {
+                upSwipes++;
+              } else {
+                upSwipes = 1;
+                downSwipes = 0;
+              }
+              if (upSwipes >= 2) {
+                header.classList.remove('hide');
+              }
             }
           } else {
             header.classList.remove('hide');
