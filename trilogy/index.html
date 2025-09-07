@@ -682,6 +682,24 @@
         }
         updateTransform();
       }, { passive: false });
+      let lastScrollY = window.scrollY;
+const header = document.querySelector("header");
+
+window.addEventListener("scroll", () => {
+  if (window.innerWidth <= 700) {   // mobile only
+    if (window.scrollY > lastScrollY) {
+      // scrolling down
+      header.classList.add("hide");
+    } else {
+      // scrolling up
+      header.classList.remove("hide");
+    }
+  } else {
+    // reset in case you resize back to desktop
+    header.classList.remove("hide");
+  }
+  lastScrollY = window.scrollY;
+});
     </script>
   </body>
 </html>
