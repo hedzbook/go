@@ -275,19 +275,21 @@
           z-index: 1100;
         }
         nav {
-          flex-direction: column;
-          align-items: flex-end;
-          position: fixed;
-          top: 50px;
-          right: 0;
-          width: 100vw;
-          height: calc(100vh - 50px);
-          background: #fff;
-          box-shadow: 0 6px 24px rgba(0,0,0,0.22);
-          padding: 2.5rem;
-          display: none;
-          z-index: 1000;
-        }
+    flex-direction: column;
+    align-items: flex-start;
+    position: fixed;
+    top: 50px; /* below header */
+    right: 0;
+    width: 100vw;
+    height: calc(100vh - 50px); /* full height minus header */
+    background: #fff;
+    box-shadow: 0 6px 24px rgba(0,0,0,0.22);
+    padding: 2.5rem 1.5rem;
+    display: none;
+    overflow-y: auto;       /* <-- allow vertical scroll */
+    -webkit-overflow-scrolling: touch; /* smooth scroll on iOS */
+    z-index: 1000;
+  }
         nav a {
           text-align: left;
           margin: 1.2rem 0;
