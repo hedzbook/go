@@ -274,44 +274,42 @@
           line-height: 28px;
           z-index: 1100;
         }
-        nav {
-          flex-direction: column;
-          align-items: flex-start;
-          position: fixed;
-          top: 48px;
-          left: 50px;
-          width: 100vw;
-          height: calc(100vh - 48px);
-          background: #fff;
-          box-shadow: 0 6px 24px rgba(0,0,0,0.22);
-          padding: 2.5rem;
-          display: none;
-          overflow-y: auto;
-          -webkit-overflow-scrolling: touch;
-          z-index: 1000;
-        }
-        #navOverlay {
+nav {
+  flex-direction: column;
+  align-items: flex-start;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 75vw;             /* 75% of viewport width */
+  max-width: 400px;        /* optional, for very large phones */
+  height: 75vh;            /* 75% of viewport height */
+  background: #fff;
+  box-shadow: 0 6px 24px rgba(0,0,0,0.22);
+  padding: 2.5rem;
+  display: none;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  z-index: 1000;
+  border-radius: 12px;     /* optional for nicer look */
+  transform: translate(-50%, -50%); /* center horizontally and vertically */
+}
+
+#navOverlay {
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: rgba(0, 0, 0, 0.4); /* semi-transparent black */
-  z-index: 900; /* below nav which is 1000 */
-  display: none; /* hidden by default */
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 900; 
+  display: none;
   transition: opacity 0.3s ease;
-  pointer-events: none; /* so clicks pass through when hidden */
+  pointer-events: none;
 }
 #navOverlay.active {
   display: block;
-  pointer-events: auto; /* block interaction when visible */
+  pointer-events: auto;
 }
-        nav a {
-          text-align: left;
-          margin: 1.2rem 0;
-          font-size: 1.1rem !important;
-        }
-        nav.active { display: flex; }
         /* Main & Books Grid */
         main {
           margin-left: -2px !important;
