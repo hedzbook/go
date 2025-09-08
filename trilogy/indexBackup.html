@@ -4,6 +4,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="HEDZ Forex Trilogy – a three-part collection on Foundations, Psychology, and Strategy in Forex Trading. Explore timeless lessons, resilience, and risk-controlled growth.">
+  <link rel="preconnect" href="https://ipapi.co">
   <title>HEDZ Forex Trilogy</title>
   <!-- =====================
     Embedded Styles
@@ -113,7 +116,7 @@
       background: #fff;
       border-radius: 12px;
       box-shadow: 0 6px 24px rgba(0, 0, 0, 0.22);
-      padding: 2rem;
+      padding: 20px 20px 23px 20px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -139,7 +142,7 @@
     .book-title {
       font-weight: bold;
       text-align: center;
-      font-size: 1.15rem;
+      font-size: 1.1rem;
       white-space: nowrap;
     }
 
@@ -147,30 +150,31 @@
       font-weight: bold;
       text-align: center;
       margin-bottom: 0.5rem;
+      font-size: 0.9rem;
     }
 
     .book-desc {
       text-align: justify;
-      font-size: 0.7rem;
+      font-size: 0.91rem;
     }
 
     /* =====================
      Book Prices & Buttons
    ===================== */
-      .book-prices {
-        font-size: 0.8rem !important;
-        line-height: 1.7;
-      }
+    .book-prices {
+      font-size: 1rem !important;
+      line-height: 1.7;
+    }
 
-      .book-format {
-        font-weight: 350 !important;
-        letter-spacing: 0.5px;
-      }
+    .book-format {
+      font-weight: 350 !important;
+      letter-spacing: 0.5px;
+    }
 
-      .book-price {
-        font-weight: bold !important;
-        color: #222 !important;
-      }
+    .book-price {
+      font-weight: bold !important;
+      color: #222 !important;
+    }
 
     .buy-now-button {
       display: inline-block;
@@ -420,15 +424,15 @@
       }
 
       main .book-title {
-        font-size: 0.9rem !important;
+        font-size: 0.92rem !important;
       }
 
       main .book-subtitle {
-        font-size: 0.65rem !important;
+        font-size: 0.75rem !important;
       }
 
       main .book-desc {
-        font-size: 0.5rem !important;
+        font-size: 0.6rem !important;
       }
 
       main .buy-now-button {
@@ -494,15 +498,17 @@
 
 <body>
   <!-- Overlay for modal navigation -->
-  <div id="navOverlay"></div>
+  <div id="navOverlay" aria-hidden="true"></div>
   <!-- Header with logo and navigation -->
   <header>
     <a href="../" class="logo">
-      <img src="../images/HEDZ%20BOOK%20LOGO.png" alt="HEDZ Logo">
+      <img src="../images/hedz-book-logo.png" alt="HEDZ BOOK logo">
     </a>
-    <button class="menu-toggle" id="menuToggle" aria-label="Open menu">&#9776;</button>
-    <button class="menu-close" id="menuClose" aria-label="Close menu">&#10005;</button>
-    <nav id="mainNav">
+    <button class="menu-toggle" id="menuToggle" aria-label="Open main menu"><span
+        aria-hidden="true"></span>&#9776;</button>
+    <button class="menu-close" id="menuClose" aria-label="Close main menu"><span
+        aria-hidden="true"></span>&#10005;</button>
+    <nav id="mainNav" aria-label="Main navigation">
       <a href="../">Home</a>
       <a href="./">Forex Trilogy</a>
       <a href="../classics">Forex Classics</a>
@@ -525,10 +531,23 @@
       <!-- Book 1 -->
       <div class="book-container">
         <div class="book-image">
-          <img src="../images/foundation-front.jpg" alt="Foundation Front Cover" class="popup-img"
-            data-img="../images/foundation-front.jpg" data-group="foundation" loading="lazy">
-          <img src="../images/foundation-back.jpg" alt="Foundation Back Cover" class="popup-img"
-            data-img="../images/foundation-back.jpg" data-group="foundation" style="display:none;" loading="lazy">
+          <!-- Front cover -->
+          <img src="../trilogy/the-foundation-of-forex-trading/the-foundation-of-forex-trading-front-cover.webp"
+            alt="Front cover of The Foundation of Forex Trading book" class="popup-img"
+            data-img="../trilogy/the-foundation-of-forex-trading/the-foundation-of-forex-trading-front-cover.webp"
+            data-group="foundation" loading="lazy">
+
+          <!-- Back cover (hidden but included in lightbox) -->
+          <img src="../trilogy/the-foundation-of-forex-trading/the-foundation-of-forex-trading-back-cover.webp"
+            alt="Back cover of The Foundation of Forex Trading book" class="popup-img"
+            data-img="../trilogy/the-foundation-of-forex-trading/the-foundation-of-forex-trading-back-cover.webp"
+            data-group="foundation" style="display:none;" loading="lazy">
+
+          <!-- Full cover (hidden but included in lightbox) -->
+          <img src="../trilogy/the-foundation-of-forex-trading/the-foundation-of-forex-trading-full-cover.webp"
+            alt="Full cover (front, spine, back) of The Foundation of Forex Trading book" class="popup-img"
+            data-img="../trilogy/the-foundation-of-forex-trading/the-foundation-of-forex-trading-full-cover.webp"
+            data-group="foundation" style="display:none;" loading="lazy">
         </div>
         <div class="book-info">
           <h2 class="book-title">The Foundation of Forex Trading</h2>
@@ -550,9 +569,9 @@
               <a href="#" class="buy-now-button" data-asin="B0FMFN9X4R">Buy Now</a>
             </div>
             <div class="book-prices" style="text-align:right; margin-left:2rem;">
-              <span class="book-format">Kindle</span> &nbsp;&nbsp;<span class="book-price">$9.99</span><br>
-              <span class="book-format">Paperback</span> <span class="book-price">$23.33</span><br>
-              <span class="book-format">Hardcover</span> <span class="book-price">$33.33</span>
+              <span class="book-format">Kindle</span> &nbsp;&nbsp;&nbsp;<span class="book-price">$9.99</span><br>
+              <span class="book-format">Paperback</span> &nbsp;<span class="book-price">$23.33</span><br>
+              <span class="book-format">Hardcover</span> &nbsp;<span class="book-price">$33.33</span>
             </div>
           </div>
         </div>
@@ -560,10 +579,23 @@
       <!-- Book 2 -->
       <div class="book-container">
         <div class="book-image">
-          <img src="../images/psychology-front.jpg" alt="Psychology Front Cover" class="popup-img"
-            data-img="../images/psychology-front.jpg" data-group="psychology" loading="lazy">
-          <img src="../images/psychology-back.jpg" alt="Psychology Back Cover" class="popup-img"
-            data-img="../images/psychology-back.jpg" data-group="psychology" style="display:none;" loading="lazy">
+          <!-- Front cover -->
+          <img src="../trilogy/the-psychology-of-forex-trading/the-psychology-of-forex-trading-front-cover.webp"
+            alt="Front cover of The Psychology of Forex Trading book" class="popup-img"
+            data-img="../trilogy/the-psychology-of-forex-trading/the-psychology-of-forex-trading-front-cover.webp"
+            data-group="psychology" loading="lazy">
+
+          <!-- Back cover (hidden but included in lightbox) -->
+          <img src="../trilogy/the-psychology-of-forex-trading/the-psychology-of-forex-trading-back-cover.webp"
+            alt="Back cover of The Psychology of Forex Trading book" class="popup-img"
+            data-img="../trilogy/the-psychology-of-forex-trading/the-psychology-of-forex-trading-back-cover.webp"
+            data-group="psychology" style="display:none;" loading="lazy">
+
+          <!-- Full cover (hidden but included in lightbox) -->
+          <img src="../trilogy/the-psychology-of-forex-trading/the-psychology-of-forex-trading-full-cover.webp"
+            alt="Full cover (front, spine, back) of The Psychology of Forex Trading book" class="popup-img"
+            data-img="../trilogy/the-psychology-of-forex-trading/the-psychology-of-forex-trading-full-cover.webp"
+            data-group="psychology" style="display:none;" loading="lazy">
         </div>
         <div class="book-info">
           <h2 class="book-title">The Psychology of Forex Trading</h2>
@@ -585,9 +617,9 @@
               <a href="#" class="buy-now-button" data-asin="B0FMFN9X4R">Buy Now</a>
             </div>
             <div class="book-prices" style="text-align:right; margin-left:2rem;">
-              <span class="book-format">Kindle</span> &nbsp;&nbsp;<span class="book-price">$9.99</span><br>
-              <span class="book-format">Paperback</span> <span class="book-price">$23.33</span><br>
-              <span class="book-format">Hardcover</span> <span class="book-price">$33.33</span>
+              <span class="book-format">Kindle</span> &nbsp;&nbsp;&nbsp;<span class="book-price">$9.99</span><br>
+              <span class="book-format">Paperback</span> &nbsp;<span class="book-price">$23.33</span><br>
+              <span class="book-format">Hardcover</span> &nbsp;<span class="book-price">$33.33</span>
             </div>
           </div>
         </div>
@@ -595,14 +627,27 @@
       <!-- Book 3 -->
       <div class="book-container">
         <div class="book-image">
-          <img src="../images/strategy-front.jpg" alt="Strategy Front Cover" class="popup-img"
-            data-img="../images/strategy-front.jpg" data-group="strategy" loading="lazy">
-          <img src="../images/strategy-back.jpg" alt="Strategy Back Cover" class="popup-img"
-            data-img="../images/strategy-back.jpg" data-group="strategy" style="display:none;" loading="lazy">
+          <!-- Front cover -->
+          <img src="../trilogy/the-strategy-of-forex-trading/the-strategy-of-forex-trading-front-cover.webp"
+            alt="Front cover of The Strategy of Forex Trading book" class="popup-img"
+            data-img="../trilogy/the-strategy-of-forex-trading/the-strategy-of-forex-trading-front-cover.webp"
+            data-group="strategy" loading="lazy">
+
+          <!-- Back cover (hidden but included in lightbox) -->
+          <img src="../trilogy/the-strategy-of-forex-trading/the-strategy-of-forex-trading-back-cover.webp"
+            alt="Back cover of The Strategy of Forex Trading book" class="popup-img"
+            data-img="../trilogy/the-strategy-of-forex-trading/the-strategy-of-forex-trading-back-cover.webp"
+            data-group="strategy" style="display:none;" loading="lazy">
+
+          <!-- Full cover (hidden but included in lightbox) -->
+          <img src="../trilogy/the-strategy-of-forex-trading/the-strategy-of-forex-trading-full-cover.webp"
+            alt="Full cover (front, spine, back) of The Strategy of Forex Trading book" class="popup-img"
+            data-img="../trilogy/the-strategy-of-forex-trading/the-strategy-of-forex-trading-full-cover.webp"
+            data-group="strategy" style="display:none;" loading="lazy">
         </div>
         <div class="book-info">
           <h2 class="book-title">The Strategy of Forex Trading</h2>
-          <div class="book-subtitle">Timeless Lessons on ZeroLoss, Compounded Hedging System</div>
+          <div class="book-subtitle">Timeless Lessons on ZeroLoss Compounded Hedging System</div>
           <p class="book-desc"><em>What if "The Mastery of Forex Trading" rests on a strategy built to control risk,
               survive, and compound profits?</em> <strong>Strategy</strong> marks the stage where strong foundations and
             psychology converge into execution. The ZeroLoss Compounded Hedging System (CHS) provides a systematic
@@ -620,9 +665,9 @@
               <a href="#" class="buy-now-button" data-asin="B0FMFN9X4R">Buy Now</a>
             </div>
             <div class="book-prices" style="text-align:right; margin-left:2rem;">
-              <span class="book-format">Kindle</span> &nbsp;&nbsp;<span class="book-price">$9.99</span><br>
-              <span class="book-format">Paperback</span> <span class="book-price">$23.33</span><br>
-              <span class="book-format">Hardcover</span> <span class="book-price">$33.33</span>
+              <span class="book-format">Kindle</span> &nbsp;&nbsp;&nbsp;<span class="book-price">$9.99</span><br>
+              <span class="book-format">Paperback</span> &nbsp;<span class="book-price">$23.33</span><br>
+              <span class="book-format">Hardcover</span> &nbsp;<span class="book-price">$33.33</span>
             </div>
           </div>
         </div>
@@ -636,11 +681,13 @@
 
   <!-- Lightbox for book images -->
   <div id="lightbox" class="lightbox">
-    <button class="prev" aria-label="Previous" onclick="changeImage(-1)">&#10094;</button>
+    <button class="prev" aria-label="Previous Image" onclick="changeImage(-1)"><span
+        aria-hidden="true"></span>&#10094;</button>
     <div class="lightbox-content">
       <img id="lightbox-img" src="" alt="Book Cover">
     </div>
-    <button class="next" aria-label="Next" onclick="changeImage(1)">&#10095;</button>
+    <button class="next" aria-label="Next Image" onclick="changeImage(1)"><span
+        aria-hidden="true"></span>&#10095;</button>
   </div>
 
   <!-- Scripts for navigation, lightbox, and Amazon redirect -->
@@ -650,27 +697,6 @@
     const menuClose = document.getElementById('menuClose');
     const nav = document.getElementById('mainNav');
     const header = document.querySelector("header");
-
-    menuToggle.onclick = () => {
-      nav.classList.add('active');
-      menuToggle.style.display = 'none';
-      menuClose.style.display = 'block';
-
-      // Lock body scroll
-      document.body.style.overflow = 'hidden';
-      header.classList.add('menu-fixed'); // ensure header stays fixed
-    };
-
-    menuClose.onclick = () => {
-      nav.classList.remove('active');
-      menuClose.style.display = 'none';
-      menuToggle.style.display = 'block';
-
-      // Restore body scroll
-      document.body.style.overflow = '';
-      header.classList.remove('menu-fixed');
-    };
-
     const overlay = document.getElementById('navOverlay');
 
     menuToggle.onclick = () => {
@@ -842,7 +868,7 @@
     });
 
     function updateTransform() {
-      lightboxImg.style.transform = `scale(${zoom}) translate(${imgOffsetX / zoom}px, ${imgOffsetY / zoom}px)`;
+      lightboxImg.style.transform = `translate(${imgOffsetX}px, ${imgOffsetY}px) scale(${zoom})`;
       lightboxImg.style.transformOrigin = `${originX}% ${originY}%`;
     }
 
