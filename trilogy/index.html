@@ -974,6 +974,97 @@
     }, { passive: false });
 
   </script>
+  <script>
+(async function() {
+  // Step 1: Detect visitor country
+  let countryCode = 'US';
+  try {
+    const resp = await fetch('https://ipapi.co/country/');
+    countryCode = (await resp.text()).trim();
+  } catch(e) {
+    console.warn('Could not fetch country, defaulting to US');
+  }
+
+  // Step 2: Map country to currency and Amazon domain
+  const countryCurrencyMap = {
+    US: "USD", UK: "GBP", DE: "EUR", FR: "EUR", ES: "EUR",
+    IT: "EUR", NL: "EUR", JP: "JPY", CA: "CAD", BR: "BRL",
+    MX: "MXN", AU: "AUD", IN: "INR", TR: "TRY", SG: "SGD",
+    AE: "AED", SA: "SAR", SE: "SEK"
+  };
+  const domainMap = {
+    US: "com", UK: "co.uk", DE: "de", FR: "fr", ES: "es", IT: "it",
+    NL: "nl", JP: "co.jp", CA: "ca", BR: "com.br", MX: "com.mx",
+    AU: "com.au", IN: "in", TR: "com.tr", SG: "sg", AE: "ae",
+    SA: "sa", SE: "se"
+  };
+
+  const targetCurrency = countryCurrencyMap[countryCode] || "USD";
+  const amazonDomain = domainMap[countryCode] || "com";
+
+  // Step 3: Fetch live USD prices from Amazon
+  // For demo: using embedded data attributes; replace with API fetch if available
+  const bookData = [];
+  document.querySelectorAll('.book-container').forEach(bookEl => {
+    const title = bookEl.querySelector('.book-title').innerText.trim();
+    const author = "HEDZ";
+    const desc = bookEl.querySelector('.book-desc').innerText.trim();
+    const img = bookEl.querySelector('.book-image img').dataset.img || bookEl.querySelector('.book-image img').src;
+    const asin = bookEl.querySelector('.buy-now-button')?.dataset.asin || "";
+    const pricesUSD = Array.from(bookEl.querySelectorAll('.book-price')).map(p => parseFloat(p.innerText.replace(/[^0-9.]/g,'')));
+    const formats = Array.from(bookEl.querySelectorAll('.book-format')).map(f => f.innerText.trim());
+    bookData.push({ title, author, desc, img, asin, pricesUSD, formats });
+  });
+
+  // Step 4: Fetch currency rates
+  let rates = { [targetCurrency]: 1 };
+  if (targetCurrency !== "USD") {
+    try {
+      const resp = await fetch(`https://api.exchangerate.host/latest?base=USD&symbols=${targetCurrency}`);
+      const data = await resp.json();
+      if (data && data.rates && data.rates[targetCurrency]) {
+        rates[targetCurrency] = data.rates[targetCurrency];
+      }
+    } catch(e) {
+      console.warn("Currency conversion failed, using USD");
+    }
+  }
+
+  // Step 5: Currency rounding rules
+  const roundingRules = { JPY:0, INR:0, MXN:2, BRL:2, USD:2, EUR:2, GBP:2, CAD:2, AUD:2, SGD:2, AED:2, SAR:2, SEK:2, TRY:2 };
+  const decimals = roundingRules[targetCurrency] !== undefined ? roundingRules[targetCurrency] : 2;
+
+  // Step 6: Build structured data dynamically
+  const graph = bookData.map(book => {
+    const offers = book.formats.map((format, i) => {
+      const convertedPrice = (book.pricesUSD[i] * rates[targetCurrency]).toFixed(decimals);
+      return {
+        "@type": "Offer",
+        "name": format,
+        "price": convertedPrice,
+        "priceCurrency": targetCurrency,
+        "availability": "https://schema.org/InStock",
+        "itemCondition": "https://schema.org/NewCondition",
+        "url": book.asin ? `https://www.amazon.${amazonDomain}/dp/${book.asin}` : ""
+      };
+    });
+    return {
+      "@type": "Book",
+      "name": book.title,
+      "author": book.author,
+      "image": book.img,
+      "description": book.desc,
+      "offers": offers
+    };
+  });
+
+  document.getElementById('structured-data').textContent = JSON.stringify({
+    "@context": "https://schema.org",
+    "@graph": graph
+  }, null, 2);
+
+})();
+</script>
 </body>
 
 </html>
