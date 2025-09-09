@@ -824,6 +824,9 @@
     const header = document.querySelector("header");
     const overlay = document.getElementById('navOverlay');
 
+    // Initialize aria-expanded
+menuToggle.setAttribute('aria-expanded', false);
+
     menuToggle.onclick = () => {
       nav.classList.add('active');
       overlay.classList.add('active');
