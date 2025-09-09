@@ -2,16 +2,59 @@
 <html lang="en">
 
 <head>
+  <!-- Basic SEO -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description"
     content="HEDZ Forex Trilogy – a three-part collection on Foundations, Psychology, and Strategy in Forex Trading. Explore timeless lessons, resilience, and risk-controlled growth.">
+  <meta name="keywords"
+    content="Forex Trading, Forex Books, Trading Psychology, Trading Strategy, HEDZ Forex Trilogy, Capital Management, Hedging, ZeroLoss Compounded Hedging System">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://hedzbook.github.io/go/">
+
+  <!-- Open Graph / Social Sharing (Facebook, LinkedIn, etc.) -->
+  <meta property="og:title" content="HEDZ Forex Trilogy – Foundations, Psychology, Strategy in Forex Trading">
+  <meta property="og:description"
+    content="Explore the HEDZ Forex Trilogy: Foundations, Psychology, and Strategy in Forex Trading. Gain timeless lessons, discipline, and sustainable growth insights.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://hedzbook.github.io/go/">
+  <meta property="og:image" content="https://hedzbook.github.io/images/hedz-book-logo.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="HEDZ Forex Trilogy – Foundations, Psychology, Strategy in Forex Trading">
+  <meta name="twitter:description"
+    content="Discover the HEDZ Forex Trilogy: Foundations, Psychology, and Strategy for mastering Forex Trading.">
+  <meta name="twitter:image" content="https://hedzbook.github.io/images/hedz-book-logo.png">
+
+  <!-- Theme Color for Mobile Browsers -->
+  <meta name="theme-color" content="#F9F8F4">
   <link rel="preconnect" href="https://ipapi.co">
-  <title>HEDZ Forex Trilogy</title>
+  <title>HEDZ Forex Trilogy – Foundations, Psychology & Strategy in Forex Trading</title>
+  <script type="application/ld+json" id="structured-data">
+{
+  "@context": "https://schema.org",
+  "@graph": []
+}
+</script>
   <!-- =====================
     Embedded Styles
   ===================== -->
   <style>
+    :root {
+  --primary-bg: #F9F8F4;
+  --header-bg: #fff;
+  --text-color: #222;
+  --highlight: #ffd700;
+  --card-radius: 12px;
+  --shadow-light: rgba(0, 0, 0, 0.10);
+  --shadow-dark: rgba(0, 0, 0, 0.28);
+}
+body { background: var(--primary-bg); color: var(--text-color); }
+header { background: var(--header-bg); }
+.book-container { border-radius: var(--card-radius); box-shadow: 0 6px 24px var(--shadow-dark); }
+.buy-now-button { background: var(--highlight); }
+.buy-now-button:hover { background: #ffb700; }
     /* =====================
      Base Styles
    ===================== */
@@ -101,9 +144,10 @@
    ===================== */
     main {
       max-width: 1200px;
-      margin: 5rem auto -1.7rem;
-      /* top | sides | bottom */
-      padding: 0 1rem;
+      margin: 5vh auto 4vh;
+      /* top | sides | bottom using viewport height */
+      padding: 0 1rem 2rem;
+      /* horizontal padding + bottom padding */
     }
 
     .books-grid {
@@ -219,7 +263,8 @@
       color: #222;
       text-align: center;
       padding: 1rem 0;
-      margin-top: 3rem;
+      margin-top: 4vh;
+      /* gap scales with viewport height */
       border-top: 1px solid rgba(0, 0, 0, 0.1);
     }
 
@@ -533,21 +578,25 @@
         <div class="book-image">
           <!-- Front cover -->
           <img src="../trilogy/the-foundation-of-forex-trading/the-foundation-of-forex-trading-front-cover.webp"
-            alt="Front cover of The Foundation of Forex Trading book" class="popup-img"
+            alt="Front cover of 'The Foundation of Forex Trading' by HEDZ – Forex trading fundamentals"
+            class="popup-img"
             data-img="../trilogy/the-foundation-of-forex-trading/the-foundation-of-forex-trading-front-cover.webp"
             data-group="foundation" loading="lazy">
 
-          <!-- Back cover (hidden but included in lightbox) -->
+          <div aria-hidden="true" style="display:none;">
+          <!-- Back cover -->
           <img src="../trilogy/the-foundation-of-forex-trading/the-foundation-of-forex-trading-back-cover.webp"
-            alt="Back cover of The Foundation of Forex Trading book" class="popup-img"
+            alt="Back cover of 'The Foundation of Forex Trading' by HEDZ – Forex trading fundamentals" class="popup-img"
             data-img="../trilogy/the-foundation-of-forex-trading/the-foundation-of-forex-trading-back-cover.webp"
             data-group="foundation" style="display:none;" loading="lazy">
 
-          <!-- Full cover (hidden but included in lightbox) -->
+          <!-- Full cover -->
           <img src="../trilogy/the-foundation-of-forex-trading/the-foundation-of-forex-trading-full-cover.webp"
-            alt="Full cover (front, spine, back) of The Foundation of Forex Trading book" class="popup-img"
+            alt="Full cover (front, spine, back) of 'The Foundation of Forex Trading' by HEDZ – Forex trading fundamentals"
+            class="popup-img"
             data-img="../trilogy/the-foundation-of-forex-trading/the-foundation-of-forex-trading-full-cover.webp"
             data-group="foundation" style="display:none;" loading="lazy">
+        </div>
         </div>
         <div class="book-info">
           <h2 class="book-title">The Foundation of Forex Trading</h2>
@@ -565,8 +614,8 @@
           <div
             style="display:flex; justify-content:space-between; align-items:center; width:100%; margin-bottom:0.5rem;">
             <div style="display:flex; flex-direction:column; align-items:flex-start;">
-              <a href="#" class="learn-more-button">Learn More</a>
-              <a href="#" class="buy-now-button" data-asin="B0FMFN9X4R">Buy Now</a>
+              <a href="the-foundation-of-forex-trading" class="learn-more-button">Learn More</a>
+              <a href="https://www.amazon.com/dp/B0FQ11LS2Q" class="buy-now-button" data-asin="B0FQ11LS2Q">Buy Now</a>
             </div>
             <div class="book-prices" style="text-align:right; margin-left:2rem;">
               <span class="book-format">Kindle</span> &nbsp;&nbsp;&nbsp;<span class="book-price">$9.99</span><br>
@@ -581,22 +630,25 @@
         <div class="book-image">
           <!-- Front cover -->
           <img src="../trilogy/the-psychology-of-forex-trading/the-psychology-of-forex-trading-front-cover.webp"
-            alt="Front cover of The Psychology of Forex Trading book" class="popup-img"
+            alt="Front cover of 'The Psychology of Forex Trading' by HEDZ – trading psychology book" class="popup-img"
             data-img="../trilogy/the-psychology-of-forex-trading/the-psychology-of-forex-trading-front-cover.webp"
             data-group="psychology" loading="lazy">
 
-          <!-- Back cover (hidden but included in lightbox) -->
+          <div aria-hidden="true" style="display:none;">
+          <!-- Back cover -->
           <img src="../trilogy/the-psychology-of-forex-trading/the-psychology-of-forex-trading-back-cover.webp"
-            alt="Back cover of The Psychology of Forex Trading book" class="popup-img"
+            alt="Back cover of 'The Psychology of Forex Trading' by HEDZ – trading psychology book" class="popup-img"
             data-img="../trilogy/the-psychology-of-forex-trading/the-psychology-of-forex-trading-back-cover.webp"
             data-group="psychology" style="display:none;" loading="lazy">
 
-          <!-- Full cover (hidden but included in lightbox) -->
+          <!-- Full cover -->
           <img src="../trilogy/the-psychology-of-forex-trading/the-psychology-of-forex-trading-full-cover.webp"
-            alt="Full cover (front, spine, back) of The Psychology of Forex Trading book" class="popup-img"
+            alt="Full cover (front, spine, back) of 'The Psychology of Forex Trading' by HEDZ – trading psychology book"
+            class="popup-img"
             data-img="../trilogy/the-psychology-of-forex-trading/the-psychology-of-forex-trading-full-cover.webp"
             data-group="psychology" style="display:none;" loading="lazy">
         </div>
+      </div>
         <div class="book-info">
           <h2 class="book-title">The Psychology of Forex Trading</h2>
           <div class="book-subtitle">Timeless Lessons on Biases, Behaviour, and Breakthroughs</div>
@@ -613,8 +665,8 @@
           <div
             style="display:flex; justify-content:space-between; align-items:center; width:100%; margin-bottom:0.5rem;">
             <div style="display:flex; flex-direction:column; align-items:flex-start;">
-              <a href="#" class="learn-more-button">Learn More</a>
-              <a href="#" class="buy-now-button" data-asin="B0FMFN9X4R">Buy Now</a>
+              <a href="the-psychology-of-forex-trading" class="learn-more-button">Learn More</a>
+              <a href="https://www.amazon.com/dp/B0FMFN9X4R" class="buy-now-button" data-asin="B0FMFN9X4R">Buy Now</a>
             </div>
             <div class="book-prices" style="text-align:right; margin-left:2rem;">
               <span class="book-format">Kindle</span> &nbsp;&nbsp;&nbsp;<span class="book-price">$9.99</span><br>
@@ -629,21 +681,26 @@
         <div class="book-image">
           <!-- Front cover -->
           <img src="../trilogy/the-strategy-of-forex-trading/the-strategy-of-forex-trading-front-cover.webp"
-            alt="Front cover of The Strategy of Forex Trading book" class="popup-img"
+            alt="Front cover of 'The Strategy of Forex Trading' by HEDZ – zero-loss compounding hedging system"
+            class="popup-img"
             data-img="../trilogy/the-strategy-of-forex-trading/the-strategy-of-forex-trading-front-cover.webp"
             data-group="strategy" loading="lazy">
 
-          <!-- Back cover (hidden but included in lightbox) -->
+          <div aria-hidden="true" style="display:none;">
+          <!-- Back cover -->
           <img src="../trilogy/the-strategy-of-forex-trading/the-strategy-of-forex-trading-back-cover.webp"
-            alt="Back cover of The Strategy of Forex Trading book" class="popup-img"
+            alt="Back cover of 'The Strategy of Forex Trading' by HEDZ – zero-loss compounding hedging system"
+            class="popup-img"
             data-img="../trilogy/the-strategy-of-forex-trading/the-strategy-of-forex-trading-back-cover.webp"
             data-group="strategy" style="display:none;" loading="lazy">
 
-          <!-- Full cover (hidden but included in lightbox) -->
+          <!-- Full cover -->
           <img src="../trilogy/the-strategy-of-forex-trading/the-strategy-of-forex-trading-full-cover.webp"
-            alt="Full cover (front, spine, back) of The Strategy of Forex Trading book" class="popup-img"
+            alt="Full cover (front, spine, back) of 'The Strategy of Forex Trading' by HEDZ – zero-loss compounding hedging system"
+            class="popup-img"
             data-img="../trilogy/the-strategy-of-forex-trading/the-strategy-of-forex-trading-full-cover.webp"
             data-group="strategy" style="display:none;" loading="lazy">
+        </div>
         </div>
         <div class="book-info">
           <h2 class="book-title">The Strategy of Forex Trading</h2>
@@ -661,8 +718,8 @@
           <div
             style="display:flex; justify-content:space-between; align-items:center; width:100%; margin-bottom:0.5rem;">
             <div style="display:flex; flex-direction:column; align-items:flex-start;">
-              <a href="#" class="learn-more-button">Learn More</a>
-              <a href="#" class="buy-now-button" data-asin="B0FMFN9X4R">Buy Now</a>
+              <a href="the-strategy-of-forex-trading" class="learn-more-button">Learn More</a>
+              <a href="https://www.amazon.com/dp/B0FQ11LS2Q" class="buy-now-button" data-asin="B0FQ11LS2Q">Buy Now</a>
             </div>
             <div class="book-prices" style="text-align:right; margin-left:2rem;">
               <span class="book-format">Kindle</span> &nbsp;&nbsp;&nbsp;<span class="book-price">$9.99</span><br>
@@ -765,23 +822,27 @@
       }
       return `https://www.amazon.${domain}/dp/${asin}`;
     }
-    document.querySelectorAll('.buy-now-button').forEach(btn => {
-      btn.addEventListener('click', function (e) {
-        e.preventDefault();
-        const asin = btn.getAttribute('data-asin');
-        fetch('https://ipapi.co/country/')
-          .then(resp => resp.text())
-          .then(countryCode => {
-            countryCode = countryCode.trim();
-            const url = getAmazonUrl(countryCode, asin);
-            window.open(url, '_blank');
-          })
-          .catch(() => {
-            // fallback to US
-            window.open(getAmazonUrl('US', asin), '_blank');
-          });
-      });
-    });
+document.querySelectorAll('.buy-now-button').forEach(btn => {
+  btn.addEventListener('click', function (e) {
+    e.preventDefault();
+    const asin = btn.getAttribute('data-asin');
+
+    let cachedCountry = localStorage.getItem('amazonCountry');
+    if (cachedCountry) {
+      window.open(getAmazonUrl(cachedCountry, asin), '_blank');
+    } else {
+      fetch('https://ipapi.co/country/')
+        .then(resp => resp.text())
+        .then(countryCode => {
+          countryCode = countryCode.trim();
+          localStorage.setItem('amazonCountry', countryCode);
+          window.open(getAmazonUrl(countryCode, asin), '_blank');
+        })
+        .catch(() => window.open(getAmazonUrl('US', asin), '_blank'));
+    }
+
+  });
+});
 
     // Lightbox
     const lightbox = document.getElementById("lightbox");
@@ -814,12 +875,15 @@
       lightbox.style.display = "none";
       resetZoom();
     }
-    function changeImage(step) {
-      if (!currentGroup.length) return;
-      currentIndex = (currentIndex + step + currentGroup.length) % currentGroup.length;
-      lightboxImg.src = currentGroup[currentIndex].dataset.img;
-      resetZoom();
-    }
+function changeImage(step) {
+  if (!currentGroup.length) return;
+  currentIndex = (currentIndex + step + currentGroup.length) % currentGroup.length;
+  lightboxImg.src = currentGroup[currentIndex].dataset.img;
+  resetZoom();      // reset zoom & pan
+  imgOffsetX = 0;   // center image
+  imgOffsetY = 0;
+}
+
 
     // --- Desktop click-and-drag panning ---
     lightboxImg.addEventListener('mousedown', function (e) {
@@ -945,6 +1009,97 @@
       updateTransform();
     }, { passive: false });
 
+  </script>
+  <script>
+    (async function () {
+      // Step 1: Detect visitor country
+      let countryCode = 'US';
+      try {
+        const resp = await fetch('https://ipapi.co/country/');
+        countryCode = (await resp.text()).trim();
+      } catch (e) {
+        console.warn('Could not fetch country, defaulting to US');
+      }
+
+      // Step 2: Map country to currency and Amazon domain
+      const countryCurrencyMap = {
+        US: "USD", UK: "GBP", DE: "EUR", FR: "EUR", ES: "EUR",
+        IT: "EUR", NL: "EUR", JP: "JPY", CA: "CAD", BR: "BRL",
+        MX: "MXN", AU: "AUD", IN: "INR", TR: "TRY", SG: "SGD",
+        AE: "AED", SA: "SAR", SE: "SEK"
+      };
+      const domainMap = {
+        US: "com", UK: "co.uk", DE: "de", FR: "fr", ES: "es", IT: "it",
+        NL: "nl", JP: "co.jp", CA: "ca", BR: "com.br", MX: "com.mx",
+        AU: "com.au", IN: "in", TR: "com.tr", SG: "sg", AE: "ae",
+        SA: "sa", SE: "se"
+      };
+
+      const targetCurrency = countryCurrencyMap[countryCode] || "USD";
+      const amazonDomain = domainMap[countryCode] || "com";
+
+      // Step 3: Fetch live USD prices from Amazon
+      // For demo: using embedded data attributes; replace with API fetch if available
+      const bookData = [];
+      document.querySelectorAll('.book-container').forEach(bookEl => {
+        const title = bookEl.querySelector('.book-title').innerText.trim();
+        const author = "HEDZ";
+        const desc = bookEl.querySelector('.book-desc').innerText.trim();
+        const img = bookEl.querySelector('.book-image img').dataset.img || bookEl.querySelector('.book-image img').src;
+        const asin = bookEl.querySelector('.buy-now-button')?.dataset.asin || "";
+        const pricesUSD = Array.from(bookEl.querySelectorAll('.book-price')).map(p => parseFloat(p.innerText.replace(/[^0-9.]/g, '')));
+        const formats = Array.from(bookEl.querySelectorAll('.book-format')).map(f => f.innerText.trim());
+        bookData.push({ title, author, desc, img, asin, pricesUSD, formats });
+      });
+
+      // Step 4: Fetch currency rates
+      let rates = { [targetCurrency]: 1 };
+      if (targetCurrency !== "USD") {
+        try {
+          const resp = await fetch(`https://api.exchangerate.host/latest?base=USD&symbols=${targetCurrency}`);
+          const data = await resp.json();
+          if (data && data.rates && data.rates[targetCurrency]) {
+            rates[targetCurrency] = data.rates[targetCurrency];
+          }
+        } catch (e) {
+          console.warn("Currency conversion failed, using USD");
+        }
+      }
+
+      // Step 5: Currency rounding rules
+      const roundingRules = { JPY: 0, INR: 0, MXN: 2, BRL: 2, USD: 2, EUR: 2, GBP: 2, CAD: 2, AUD: 2, SGD: 2, AED: 2, SAR: 2, SEK: 2, TRY: 2 };
+      const decimals = roundingRules[targetCurrency] !== undefined ? roundingRules[targetCurrency] : 2;
+
+      // Step 6: Build structured data dynamically
+      const graph = bookData.map(book => {
+        const offers = book.formats.map((format, i) => {
+          const convertedPrice = (book.pricesUSD[i] * rates[targetCurrency]).toFixed(decimals);
+          return {
+            "@type": "Offer",
+            "name": format,
+            "price": convertedPrice,
+            "priceCurrency": targetCurrency,
+            "availability": "https://schema.org/InStock",
+            "itemCondition": "https://schema.org/NewCondition",
+            "url": book.asin ? `https://www.amazon.${amazonDomain}/dp/${book.asin}` : ""
+          };
+        });
+        return {
+          "@type": "Book",
+          "name": book.title,
+          "author": book.author,
+          "image": book.img,
+          "description": book.desc,
+          "offers": offers
+        };
+      });
+
+      document.getElementById('structured-data').textContent = JSON.stringify({
+        "@context": "https://schema.org",
+        "@graph": graph
+      }, null, 2);
+
+    })();
   </script>
 </body>
 
