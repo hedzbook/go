@@ -27,10 +27,38 @@
     content="Discover the HEDZ Forex Trilogy: Foundations, Psychology, and Strategy for mastering Forex Trading.">
   <meta name="twitter:image" content="https://hedzbook.github.io/images/hedz-book-logo.png">
 
-  <!-- Theme Color for Mobile Browsers -->
-  <meta name="theme-color" content="#F9F8F4">
   <link rel="preconnect" href="https://ipapi.co">
   <title>HEDZ Forex Trilogy – Foundations, Psychology & Strategy in Forex Trading</title>
+  <link rel="preload" as="image" href="../images/hedz-book-logo.png">
+  <link rel="preload" as="image"
+    href="../trilogy/the-foundation-of-forex-trading/the-foundation-of-forex-trading-front-cover.webp">
+  <link rel="preload" as="image"
+    href="../trilogy/the-psychology-of-forex-trading/the-psychology-of-forex-trading-front-cover.webp">
+  <link rel="preload" as="image"
+    href="../trilogy/the-strategy-of-forex-trading/the-strategy-of-forex-trading-front-cover.webp">
+  <!-- Favicon -->
+  <!-- Favicons for browser tabs -->
+  <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="48x48" href="images/favicon-48x48.png">
+
+  <!-- Apple Touch Icons for iOS devices -->
+  <link rel="apple-touch-icon" sizes="72x72" href="images/favicon-72x72.png">
+  <link rel="apple-touch-icon" sizes="96x96" href="images/favicon-96x96.png">
+  <link rel="apple-touch-icon" sizes="128x128" href="images/favicon-128x128.png">
+  <link rel="apple-touch-icon" sizes="192x192" href="images/favicon-192x192.png">
+  <link rel="apple-touch-icon" sizes="512x512" href="images/favicon-512x512.png">
+
+  <!-- PWA Manifest -->
+  <link rel="manifest" href="./manifest.json">
+
+  <!-- Theme color for mobile browsers -->
+  <meta name="theme-color" content="#F9F8F4">
+
+  <!-- Optional meta for Apple devices -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+
   <script type="application/ld+json" id="book-schema">
 {
   "@context": "https://schema.org",
@@ -65,7 +93,7 @@
           "@type": "Book",
           "name": "HEDZ Forex Trilogy: Psychology",
           "author": { "@type": "Person", "name": "HEDZ" },
-          "identifier": { "@type": "PropertyValue", "propertyID": "ASIN", "value": "B0CP7LZGFZ" },
+          "identifier": { "@type": "PropertyValue", "propertyID": "ASIN", "value": "B0FQ11LS2Q" },
           "description": "Explores the mental game of forex trading—decision-making, emotional control, and the mindset of consistent success.",
           "bookFormat": "https://schema.org/EBook",
           "image": "https://hedzbook.github.io/go/trilogy/the-psychology-of-forex-trading/the-psychology-of-forex-trading-front-cover.webp"
@@ -74,7 +102,7 @@
           "@type": "Book",
           "name": "HEDZ Forex Trilogy: Strategy",
           "author": { "@type": "Person", "name": "HEDZ" },
-          "identifier": { "@type": "PropertyValue", "propertyID": "ASIN", "value": "B0XXXXX123" },
+          "identifier": { "@type": "PropertyValue", "propertyID": "ASIN", "value": "B0FQ11LS2Q" },
           "description": "Focuses on practical trading strategies, advanced tools, and system-building to gain an edge in the forex markets.",
           "bookFormat": "https://schema.org/EBook",
           "image": "https://hedzbook.github.io/go/trilogy/the-strategy-of-forex-trading/the-strategy-of-forex-trading-front-cover.webp"
@@ -104,10 +132,10 @@
     }
 
     /* Keyboard focus indicator */
-:focus-visible {
-  outline: 2px dashed #222;
-  outline-offset: 3px;
-}
+    :focus-visible {
+      outline: 2px dashed #222;
+      outline-offset: 3px;
+    }
 
     header {
       background: var(--header-bg);
@@ -618,14 +646,14 @@
   <!-- Header with logo and navigation -->
   <header>
     <a href="../" class="logo">
-      <img src="../images/hedz-book-logo.png" alt="HEDZ BOOK logo">
+      <img src="../images/hedz-book-logo.png" alt="HEDZ BOOK logo" decoding="async">
     </a>
-<button class="menu-toggle" id="menuToggle" aria-label="Open main menu">
-  <span aria-hidden="true">&#9776;</span>
-</button>
-<button class="menu-close" id="menuClose" aria-label="Close main menu">
-  <span aria-hidden="true">&#10005;</span>
-</button>
+    <button class="menu-toggle" id="menuToggle" aria-label="Open main menu">
+      <span aria-hidden="true">&#9776;</span>
+    </button>
+    <button class="menu-close" id="menuClose" aria-label="Close main menu">
+      <span aria-hidden="true">&#10005;</span>
+    </button>
     <nav id="mainNav" aria-label="Main navigation">
       <a href="../">Home</a>
       <a href="./">Forex Trilogy</a>
@@ -654,7 +682,7 @@
             alt="Front cover of 'The Foundation of Forex Trading' by HEDZ – Forex trading fundamentals"
             class="popup-img"
             data-img="../trilogy/the-foundation-of-forex-trading/the-foundation-of-forex-trading-front-cover.webp"
-            data-group="foundation" loading="lazy">
+            data-group="foundation" loading="lazy" decoding="async" fetchpriority="high">
 
           <div aria-hidden="true" style="display:none;">
             <!-- Back cover -->
@@ -662,14 +690,14 @@
               alt="Back cover of 'The Foundation of Forex Trading' by HEDZ – Forex trading fundamentals"
               class="popup-img"
               data-img="../trilogy/the-foundation-of-forex-trading/the-foundation-of-forex-trading-back-cover.webp"
-              data-group="foundation" style="display:none;" loading="lazy">
+              data-group="foundation" style="display:none;" loading="lazy" decoding="async">
 
             <!-- Full cover -->
             <img src="../trilogy/the-foundation-of-forex-trading/the-foundation-of-forex-trading-full-cover.webp"
               alt="Full cover (front, spine, back) of 'The Foundation of Forex Trading' by HEDZ – Forex trading fundamentals"
               class="popup-img"
               data-img="../trilogy/the-foundation-of-forex-trading/the-foundation-of-forex-trading-full-cover.webp"
-              data-group="foundation" style="display:none;" loading="lazy">
+              data-group="foundation" style="display:none;" loading="lazy" decoding="async">
           </div>
         </div>
         <div class="book-info">
@@ -706,21 +734,21 @@
           <img src="../trilogy/the-psychology-of-forex-trading/the-psychology-of-forex-trading-front-cover.webp"
             alt="Front cover of 'The Psychology of Forex Trading' by HEDZ – trading psychology book" class="popup-img"
             data-img="../trilogy/the-psychology-of-forex-trading/the-psychology-of-forex-trading-front-cover.webp"
-            data-group="psychology" loading="lazy">
+            data-group="psychology" loading="lazy" decoding="async" fetchpriority="high">
 
           <div aria-hidden="true" style="display:none;">
             <!-- Back cover -->
             <img src="../trilogy/the-psychology-of-forex-trading/the-psychology-of-forex-trading-back-cover.webp"
               alt="Back cover of 'The Psychology of Forex Trading' by HEDZ – trading psychology book" class="popup-img"
               data-img="../trilogy/the-psychology-of-forex-trading/the-psychology-of-forex-trading-back-cover.webp"
-              data-group="psychology" style="display:none;" loading="lazy">
+              data-group="psychology" style="display:none;" loading="lazy" decoding="async">
 
             <!-- Full cover -->
             <img src="../trilogy/the-psychology-of-forex-trading/the-psychology-of-forex-trading-full-cover.webp"
               alt="Full cover (front, spine, back) of 'The Psychology of Forex Trading' by HEDZ – trading psychology book"
               class="popup-img"
               data-img="../trilogy/the-psychology-of-forex-trading/the-psychology-of-forex-trading-full-cover.webp"
-              data-group="psychology" style="display:none;" loading="lazy">
+              data-group="psychology" style="display:none;" loading="lazy" decoding="async">
           </div>
         </div>
         <div class="book-info">
@@ -758,7 +786,7 @@
             alt="Front cover of 'The Strategy of Forex Trading' by HEDZ – zero-loss compounding hedging system"
             class="popup-img"
             data-img="../trilogy/the-strategy-of-forex-trading/the-strategy-of-forex-trading-front-cover.webp"
-            data-group="strategy" loading="lazy">
+            data-group="strategy" loading="lazy" decoding="async" fetchpriority="high">
 
           <div aria-hidden="true" style="display:none;">
             <!-- Back cover -->
@@ -766,14 +794,14 @@
               alt="Back cover of 'The Strategy of Forex Trading' by HEDZ – zero-loss compounding hedging system"
               class="popup-img"
               data-img="../trilogy/the-strategy-of-forex-trading/the-strategy-of-forex-trading-back-cover.webp"
-              data-group="strategy" style="display:none;" loading="lazy">
+              data-group="strategy" style="display:none;" loading="lazy" decoding="async">
 
             <!-- Full cover -->
             <img src="../trilogy/the-strategy-of-forex-trading/the-strategy-of-forex-trading-full-cover.webp"
               alt="Full cover (front, spine, back) of 'The Strategy of Forex Trading' by HEDZ – zero-loss compounding hedging system"
               class="popup-img"
               data-img="../trilogy/the-strategy-of-forex-trading/the-strategy-of-forex-trading-full-cover.webp"
-              data-group="strategy" style="display:none;" loading="lazy">
+              data-group="strategy" style="display:none;" loading="lazy" decoding="async">
           </div>
         </div>
         <div class="book-info">
@@ -805,7 +833,7 @@
       </div>
     </div>
   </main>
-  
+
   <!-- Footer -->
   <footer role="contentinfo">
     &copy; 2025 HEDZ BOOK. All rights reserved.
@@ -832,7 +860,7 @@
     const overlay = document.getElementById('navOverlay');
 
     // Initialize aria-expanded
-menuToggle.setAttribute('aria-expanded', false);
+    menuToggle.setAttribute('aria-expanded', false);
 
     menuToggle.onclick = () => {
       nav.classList.add('active');
@@ -843,7 +871,7 @@ menuToggle.setAttribute('aria-expanded', false);
       header.classList.add('menu-fixed');
 
       // Update aria-expanded
-  menuToggle.setAttribute('aria-expanded', true);
+      menuToggle.setAttribute('aria-expanded', true);
     };
 
     menuClose.onclick = () => {
@@ -855,7 +883,7 @@ menuToggle.setAttribute('aria-expanded', false);
       header.classList.remove('menu-fixed');
 
       // Update aria-expanded
-  menuToggle.setAttribute('aria-expanded', false);
+      menuToggle.setAttribute('aria-expanded', false);
     };
 
     // Optional: close menu when overlay is clicked
@@ -1094,12 +1122,12 @@ menuToggle.setAttribute('aria-expanded', false);
     }, { passive: false });
 
     // --- Keyboard navigation for focus trap ---
-lightbox.addEventListener('keydown', function(e) {
-  if (e.key === "Tab") {
-    e.preventDefault();
-    // optional: manage focus between close, prev, next buttons
-  }
-});
+    lightbox.addEventListener('keydown', function (e) {
+      if (e.key === "Tab") {
+        e.preventDefault();
+        // optional: manage focus between close, prev, next buttons
+      }
+    });
 
     (async function () {
       let countryCode = 'US';
