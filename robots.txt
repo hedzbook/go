@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://hedzbook.github.io/go/sitemap.xml
