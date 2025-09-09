@@ -865,12 +865,15 @@ header { background: var(--header-bg); }
       lightbox.style.display = "none";
       resetZoom();
     }
-    function changeImage(step) {
-      if (!currentGroup.length) return;
-      currentIndex = (currentIndex + step + currentGroup.length) % currentGroup.length;
-      lightboxImg.src = currentGroup[currentIndex].dataset.img;
-      resetZoom();
-    }
+function changeImage(step) {
+  if (!currentGroup.length) return;
+  currentIndex = (currentIndex + step + currentGroup.length) % currentGroup.length;
+  lightboxImg.src = currentGroup[currentIndex].dataset.img;
+  resetZoom();      // reset zoom & pan
+  imgOffsetX = 0;   // center image
+  imgOffsetY = 0;
+}
+
 
     // --- Desktop click-and-drag panning ---
     lightboxImg.addEventListener('mousedown', function (e) {
