@@ -1086,6 +1086,14 @@ menuToggle.setAttribute('aria-expanded', false);
       updateTransform();
     }, { passive: false });
 
+    // --- Keyboard navigation for focus trap ---
+lightbox.addEventListener('keydown', function(e) {
+  if (e.key === "Tab") {
+    e.preventDefault();
+    // optional: manage focus between close, prev, next buttons
+  }
+});
+
     (async function () {
       let countryCode = 'US';
       try {
