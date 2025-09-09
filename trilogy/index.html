@@ -831,6 +831,9 @@
       menuClose.style.display = 'block';
       document.body.style.overflow = 'hidden';
       header.classList.add('menu-fixed');
+
+      // Update aria-expanded
+  menuToggle.setAttribute('aria-expanded', true);
     };
 
     menuClose.onclick = () => {
@@ -840,6 +843,9 @@
       menuToggle.style.display = 'block';
       document.body.style.overflow = '';
       header.classList.remove('menu-fixed');
+
+      // Update aria-expanded
+  menuToggle.setAttribute('aria-expanded', false);
     };
 
     // Optional: close menu when overlay is clicked
