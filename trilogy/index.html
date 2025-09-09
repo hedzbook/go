@@ -104,10 +104,10 @@
     }
 
     /* Keyboard focus indicator */
-:focus-visible {
-  outline: 2px dashed #222;
-  outline-offset: 3px;
-}
+    :focus-visible {
+      outline: 2px dashed #222;
+      outline-offset: 3px;
+    }
 
     header {
       background: var(--header-bg);
@@ -620,12 +620,12 @@
     <a href="../" class="logo">
       <img src="../images/hedz-book-logo.png" alt="HEDZ BOOK logo">
     </a>
-<button class="menu-toggle" id="menuToggle" aria-label="Open main menu">
-  <span aria-hidden="true">&#9776;</span>
-</button>
-<button class="menu-close" id="menuClose" aria-label="Close main menu">
-  <span aria-hidden="true">&#10005;</span>
-</button>
+    <button class="menu-toggle" id="menuToggle" aria-label="Open main menu">
+      <span aria-hidden="true">&#9776;</span>
+    </button>
+    <button class="menu-close" id="menuClose" aria-label="Close main menu">
+      <span aria-hidden="true">&#10005;</span>
+    </button>
     <nav id="mainNav" aria-label="Main navigation">
       <a href="../">Home</a>
       <a href="./">Forex Trilogy</a>
@@ -805,7 +805,7 @@
       </div>
     </div>
   </main>
-  
+
   <!-- Footer -->
   <footer role="contentinfo">
     &copy; 2025 HEDZ BOOK. All rights reserved.
@@ -832,7 +832,7 @@
     const overlay = document.getElementById('navOverlay');
 
     // Initialize aria-expanded
-menuToggle.setAttribute('aria-expanded', false);
+    menuToggle.setAttribute('aria-expanded', false);
 
     menuToggle.onclick = () => {
       nav.classList.add('active');
@@ -843,7 +843,7 @@ menuToggle.setAttribute('aria-expanded', false);
       header.classList.add('menu-fixed');
 
       // Update aria-expanded
-  menuToggle.setAttribute('aria-expanded', true);
+      menuToggle.setAttribute('aria-expanded', true);
     };
 
     menuClose.onclick = () => {
@@ -855,7 +855,7 @@ menuToggle.setAttribute('aria-expanded', false);
       header.classList.remove('menu-fixed');
 
       // Update aria-expanded
-  menuToggle.setAttribute('aria-expanded', false);
+      menuToggle.setAttribute('aria-expanded', false);
     };
 
     // Optional: close menu when overlay is clicked
@@ -1094,12 +1094,12 @@ menuToggle.setAttribute('aria-expanded', false);
     }, { passive: false });
 
     // --- Keyboard navigation for focus trap ---
-lightbox.addEventListener('keydown', function(e) {
-  if (e.key === "Tab") {
-    e.preventDefault();
-    // optional: manage focus between close, prev, next buttons
-  }
-});
+    lightbox.addEventListener('keydown', function (e) {
+      if (e.key === "Tab") {
+        e.preventDefault();
+        // optional: manage focus between close, prev, next buttons
+      }
+    });
 
     (async function () {
       let countryCode = 'US';
