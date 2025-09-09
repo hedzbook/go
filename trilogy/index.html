@@ -816,23 +816,27 @@ header { background: var(--header-bg); }
       }
       return `https://www.amazon.${domain}/dp/${asin}`;
     }
-    document.querySelectorAll('.buy-now-button').forEach(btn => {
-      btn.addEventListener('click', function (e) {
-        e.preventDefault();
-        const asin = btn.getAttribute('data-asin');
-        fetch('https://ipapi.co/country/')
-          .then(resp => resp.text())
-          .then(countryCode => {
-            countryCode = countryCode.trim();
-            const url = getAmazonUrl(countryCode, asin);
-            window.open(url, '_blank');
-          })
-          .catch(() => {
-            // fallback to US
-            window.open(getAmazonUrl('US', asin), '_blank');
-          });
-      });
-    });
+document.querySelectorAll('.buy-now-button').forEach(btn => {
+  btn.addEventListener('click', function (e) {
+    e.preventDefault();
+    const asin = btn.getAttribute('data-asin');
+
+    let cachedCountry = localStorage.getItem('amazonCountry');
+    if (cachedCountry) {
+      window.open(getAmazonUrl(cachedCountry, asin), '_blank');
+    } else {
+      fetch('https://ipapi.co/country/')
+        .then(resp => resp.text())
+        .then(countryCode => {
+          countryCode = countryCode.trim();
+          localStorage.setItem('amazonCountry', countryCode);
+          window.open(getAmazonUrl(countryCode, asin), '_blank');
+        })
+        .catch(() => window.open(getAmazonUrl('US', asin), '_blank'));
+    }
+
+  });
+});
 
     // Lightbox
     const lightbox = document.getElementById("lightbox");
